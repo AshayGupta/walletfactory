@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  import { NavController } from '@ionic/angular';
-import { addAccountData } from 'models/addAccount'; 
+import { addAccountData } from '../../models/addAccount'; 
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PopupType } from 'src/common/enums/enums';

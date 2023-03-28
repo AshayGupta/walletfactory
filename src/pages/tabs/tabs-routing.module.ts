@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../billpay/billpay.module').then(m => m.BillpayPageModule)
       },
       {
+        path: 'tabScan',
+        loadChildren: () => import('../tabScan/tabScan.module').then(m => m.TabScanPageModule)
+      },
+      {
         path: 'cashback',
         loadChildren: () => import('../cashback/cashback.module').then(m => m.CashbackPageModule)
       },

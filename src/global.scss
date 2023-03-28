@@ -165,8 +165,19 @@ ion-popover {
 	}
   }
 
-  .picker-button{   color: green; }
-
-  .picker-button.sc-ion-picker-md.test{
-	background: forestgreen;
+  .ion-color-rose {
+	--ion-color-base: var(--ion-color-rose);
+	--ion-color-base-rgb: var(--ion-color-rose-rgb);
+	--ion-color-contrast: var(--ion-color-rose-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-rose-contrast-rgb);
+	--ion-color-shade: var(--ion-color-rose-shade);
+	--ion-color-tint: var(--ion-color-rose-tint);
   }
+  
+//   ion-datetime {
+// 	--background: #f8faf9;
+// 	--background-rgb: 255, 241, 242;
+  
+// 	border-radius: 16px;
+// 	box-shadow: rgba(var(--ion-color-rose-rgb), 0.3) 0px 10px 15px -3px;
+//   }

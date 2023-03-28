@@ -1,3 +1,4 @@
+import { TransactionPopup } from './../../models/transactionPopup.interface';
 import { PopupType } from './../../common/enums/enums';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,9 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TransapopupPage implements OnInit {
 
-  
   popupToOpen;
-
+  popup: TransactionPopup;
   get PopupType() { return PopupType; }
 
   constructor(
@@ -24,7 +24,7 @@ export class TransapopupPage implements OnInit {
   }
 
   handleClick() {
-    this.router.navigate(['/enter-mobile-number']);
+    // this.router.navigate(['/enter-mobile-number']);
   }
 
   cancelClicked() {

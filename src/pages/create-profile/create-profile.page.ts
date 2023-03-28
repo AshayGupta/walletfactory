@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  import { NavController } from '@ionic/angular';
-import { createProfileData } from 'models/createProfileData'; 
+import { createProfileData } from '../../models/createProfileData'; 
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
  
