@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+  <g id="tick_1_" data-name="tick (1)" transform="translate(-1.5 -1.5)">
+    <path id="Path_340" data-name="Path 340" d="M18,10a8,8,0,1,1-8-8A8,8,0,0,1,18,10Z" fill="#4ade80"/>
+    <path id="Path_341" data-name="Path 341" d="M15.354,10.354l-4,4a.5.5,0,0,1-.707,0l-2-2a.5.5,0,0,1,.707-.707L11,13.293l3.647-3.647a.5.5,0,0,1,.707.707Z" transform="translate(-2 -2)" fill="#fff"/>
+    <path id="Path_342" data-name="Path 342" d="M10,1.5A8.5,8.5,0,1,0,18.5,10,8.51,8.51,0,0,0,10,1.5Zm0,16.19A7.69,7.69,0,1,1,17.69,10,7.7,7.7,0,0,1,10,17.69Z" fill="#0f172a"/>
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+ <ion-header style="--background: #fff">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Payment Method" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>OTP</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [fullscreen]="true">
+  <div class="page-container">
+    <div class="header">
+      <h1>Add A Bank Using Your Debit Card</h1>
+      <h2>Linking an external account allows you to move money in and out of your cash App balance</h2>
+    </div>
+
+
+    <form [formGroup]="addAccountDataForm" (ngSubmit)="clickSave()">
+        
+      <ion-item>
+        <ion-label class="label-email" position="stacked">Card Number</ion-label>
+        <div class="email-input-container">
+        <ion-input class="input-email" type="text" formControlName="cardNumber"></ion-input>      
+        </div>
+       </ion-item>
+
+   
+       <ion-grid> 
+        <ion-row>
+        <ion-col>
+             <ion-label class="label-email" position="stacked">Exp. Date</ion-label>
+        </ion-col>
+        <ion-col>
+             <div class="email-input-container">
+              <ion-input class="input-email" type="text" placeholder="MM/YY" formControlName="expDate"></ion-input>      
+              </div>
+        </ion-col>
+        <ion-col>
+          <ion-label class="label-email" position="stacked">3 Digit CVV</ion-label>
+     </ion-col>
+     <ion-col>
+          <div class="email-input-container">
+           <ion-input class="input-email" type="number" placeholder="CVV" formControlName="threeDigitCVV"></ion-input>      
+           </div>
+     </ion-col>
+    </ion-row>
+</ion-grid>
+    
+    <ion-item>
+    <ion-label class="label-email" position="stacked">Country</ion-label>
+    <div class="email-input-container"> 
+    <ion-input class="input-email" type="text" placeholder="United State" formControlName="country"></ion-input>
+    </div>
+    </ion-item>
+
+    <ion-item>
+    <ion-label class="label-email" position="stacked">Zip Code</ion-label>
+    <div class="email-input-container">
+    <ion-input class="input-email" type="text" placeholder="XXXXXX" formControlName="zipCode"></ion-input>
+    </div>
+    </ion-item>
+     
+      <ion-button
+      class="otp-btn"
+      expand="block"
+      color="new-primary"
+      type="submit">Save
+    </ion-button>
+      
+    </form>
+
+  
+  </div>
+</ion-content>
+
+ 

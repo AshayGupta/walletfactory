@@ -1,0 +1,69 @@
+<ion-header style="--background: #fff">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="OTP" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>OTP</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-container">
+    <ion-img class="group335" src="../../assets/project-icons/group335/group335.png" alt="X"></ion-img>
+    <div class="otp-info-container">
+      <ion-label class="info-1">Verification Code</ion-label>
+      <ion-label class="info-2">We have sent the code verification to Your Mobile Number</ion-label>
+      <ion-label class="info-3">+44 (555) 555-1234
+        <ion-img class="edit" src="../../assets/project-icons/edit/edit.png" alt="X"></ion-img>
+      </ion-label>
+       
+      <ion-list formCodeValidate lines="none">
+        <ion-item>
+          <ion-input
+            #codesInpunt0
+            (keyup)="changeFocus(1)"
+            [(ngModel)]="code[0]"
+            type="tel"
+            maxlength="1"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            #codesInpunt1
+            (keyup)="changeFocus(2)"
+            [(ngModel)]="code[1]"
+            type="tel"
+            maxlength="1"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            #codesInpunt2
+            (keyup)="changeFocus(3)"
+            [(ngModel)]="code[2]"
+            type="tel"
+            maxlength="1"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            #codesInpunt3
+            (keyup)="changeFocus(4)"
+            [(ngModel)]="code[3]"
+            type="tel"
+            maxlength="1"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-button
+    class="submit-btn"
+    expand="block"
+    type="submit"
+    (click)="onSubmit()">Submit
+  </ion-button>
+</ion-footer>

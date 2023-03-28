@@ -1,0 +1,172 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "node_modules/flag-icon-css/sass/flag-icon.scss";
+
+
+:root {
+	--ion-color-tab-home: #541572;
+	--ion-color-tab-home-rgb: 84,21,114;
+	--ion-color-tab-home-contrast: #ffffff;
+	--ion-color-tab-home-contrast-rgb: 255,255,255;
+	--ion-color-tab-home-shade: #4a1264;
+	--ion-color-tab-home-tint: #652c80;
+
+    --ion-color-tab-billpay: #ffffff;
+	--ion-color-tab-billpay-rgb: 255,255,255;
+	--ion-color-tab-billpay-contrast: #000000;
+	--ion-color-tab-billpay-contrast-rgb: 0,0,0;
+	--ion-color-tab-billpay-shade: #e0e0e0;
+	--ion-color-tab-billpay-tint: #ffffff;
+
+    --ion-color-tab-cashback: #ffffff;
+	--ion-color-tab-cashback-rgb: 255,255,255;
+	--ion-color-tab-cashback-contrast: #000000;
+	--ion-color-tab-cashback-contrast-rgb: 0,0,0;
+	--ion-color-tab-cashback-shade: #e0e0e0;
+	--ion-color-tab-cashback-tint: #ffffff;
+
+    --ion-color-tab-more: #541572;
+	--ion-color-tab-more-rgb: 84,21,114;
+	--ion-color-tab-more-contrast: #ffffff;
+	--ion-color-tab-more-contrast-rgb: 255,255,255;
+	--ion-color-tab-more-shade: #4a1264;
+	--ion-color-tab-more-tint: #652c80;
+
+	--ion-color-ion-button-class: #541572;
+	--ion-color-ion-button-class-rgb: 84,21,114;
+	--ion-color-ion-button-class-contrast: #ffffff;
+	--ion-color-ion-button-class-contrast-rgb: 255,255,255;
+	--ion-color-ion-button-class-shade: #4a1264;
+	--ion-color-ion-button-class-tint: #652c80;
+}
+
+.ion-color-tab-home {
+	--ion-color-base: var(--ion-color-tab-home);
+	--ion-color-base-rgb: var(--ion-color-tab-home-rgb);
+	--ion-color-contrast: var(--ion-color-tab-home-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tab-home-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tab-home-shade);
+	--ion-color-tint: var(--ion-color-tab-home-tint);
+}
+
+.ion-color-tab-billpay {
+	--ion-color-base: var(--ion-color-tab-billpay);
+	--ion-color-base-rgb: var(--ion-color-tab-billpay-rgb);
+	--ion-color-contrast: var(--ion-color-tab-billpay-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tab-billpay-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tab-billpay-shade);
+	--ion-color-tint: var(--ion-color-tab-billpay-tint);
+}
+
+.ion-color-tab-cashback {
+	--ion-color-base: var(--ion-color-tab-cashback);
+	--ion-color-base-rgb: var(--ion-color-tab-cashback-rgb);
+	--ion-color-contrast: var(--ion-color-tab-cashback-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tab-cashback-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tab-cashback-shade);
+	--ion-color-tint: var(--ion-color-tab-cashback-tint);
+}
+
+.ion-color-tab-more {
+	--ion-color-base: var(--ion-color-tab-more);
+	--ion-color-base-rgb: var(--ion-color-tab-more-rgb);
+	--ion-color-contrast: var(--ion-color-tab-more-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tab-more-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tab-more-shade);
+	--ion-color-tint: var(--ion-color-tab-more-tint);
+}
+
+
+.ion-color-ion-button-class {
+	--ion-color-base: var(--ion-color-ion-button-class);
+	--ion-color-base-rgb: var(--ion-color-ion-button-class-rgb);
+	--ion-color-contrast: var(--ion-color-ion-button-class-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-ion-button-class-contrast-rgb);
+	--ion-color-shade: var(--ion-color-ion-button-class-shade);
+	--ion-color-tint: var(--ion-color-ion-button-class-tint);
+}
+
+ion-footer {
+	height: 80px;
+    background: white;
+
+	ion-button.submit-btn {
+		margin-left: 28px;
+		margin-right: 28px;
+		font-size: 16px;
+		height: 44px;
+		--background: #541572;
+		--border-radius: 22px;
+	}
+}
+
+.primary-btn {
+	height: 44px;
+	--border-radius: 22px;
+	font-size: 16px;
+	font-weight: 400;
+	--background: #541572;
+	color: #ffffff;
+}
+
+.secondary-btn {
+	height: 44px;
+	--border-radius: 22px;
+    border-radius: 22px;
+    --font-size: 16px;
+	font-size: 16px;
+	font-weight: 400;
+    font-weight: 400;
+    --background: transparent;
+    --color: #ffffff;
+    border: 2px solid white;
+}
+
+ion-popover {
+	&.width-80 {
+	  --width: 80%;
+	}
+  }
+
+  ion-modal {
+	&.bottom-end {
+	  align-items: flex-end;
+	  --height: auto;
+	  .ion-page {
+		position: relative;
+		display: block;
+		contain: content;
+	  }
+	}
+  }
+
+  .picker-button{   color: green; }
+
+  .picker-button.sc-ion-picker-md.test{
+	background: forestgreen;
+  }

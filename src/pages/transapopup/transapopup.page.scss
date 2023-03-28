@@ -1,0 +1,84 @@
+ion-content {
+    --background: #0A4E90;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin: auto 30px;
+}
+
+.popup-container {
+    margin: 0px 0px 65px;
+    border-radius: 13px;
+    box-shadow: 0px 3px 6px #00000029;
+    background: white;
+}
+
+.close-icon {
+    font-size: 22px;
+    border-radius: 11px;
+    position: absolute;
+    right: 0;
+    margin: 8px 10px;
+    background: #571E60;
+    color: white;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto 25px;
+
+    .title-lbl {
+        font-size: 18px;
+        height: 25px;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: #000;
+    }
+    .sub-title-lbl {
+        font-size: 16px;
+        height: 23px;
+        font-weight: 300;
+        color: #000;
+    }
+    .avatar-img {
+        width: 83px;
+        margin: 10px 0px;
+    }
+    .amt-lbl {
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: #571E60;
+
+        span {
+            font-size: 38px;
+        }
+    }
+    .fee-lbl {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+    }
+}
+
+.transaction-content {
+    .avatar-img {
+        height: 68px;
+        width: 68px;
+    }
+    .title-lbl {
+        font-size: 25px;
+        height: 75px;
+        font-weight: 500;
+        text-align: center;
+        word-break: break-word;
+        margin: 0px 15px;
+        text-transform: capitalize;
+    }
+}

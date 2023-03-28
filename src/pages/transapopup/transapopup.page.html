@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="page-container">
+    <ion-card class="popup-container" (click)="handleClick()">
+      <ion-icon name="close-outline" class="close-icon" (click)="cancelClicked()"></ion-icon>
+
+      <div class="popup-content" *ngIf="PopupType.SEND_MONEY == popupToOpen">
+        <ion-label class="title-lbl">Transfer Successful</ion-label>
+        <ion-label class="sub-title-lbl">To Mom</ion-label>
+        <ion-img class="avatar-img" src="../../assets/project-imgs/avatar-icon/profile@2x.png"></ion-img>
+        <ion-label class="amt-lbl">USD <span>100.</span>00</ion-label>
+        <ion-label class="fee-lbl">Fee : USD 0.15</ion-label>
+      </div>
+
+      <div class="popup-content" *ngIf="PopupType.TRANSFER == popupToOpen">
+        <ion-label class="title-lbl">Request Sent</ion-label>
+        <ion-label class="sub-title-lbl">To jane Cooper and 2 others</ion-label>
+        <ion-img class="avatar-img" src="../../assets/project-icons/check/check@2x.png"></ion-img>
+        <ion-label class="amt-lbl">USD <span>400.</span>00</ion-label>
+      </div>
+
+      <div class="popup-content transaction-content" *ngIf="PopupType.TRANSACTION == popupToOpen">
+        <ion-img class="avatar-img" src="../../assets/project-icons/check/check@2x.png"></ion-img>
+        <ion-label class="title-lbl">13534XXXX Successfully Add</ion-label>
+        <ion-label class="sub-title-lbl">Feel Free to transaction</ion-label>
+      </div>
+
+      <div class="popup-content transaction-content" *ngIf="PopupType.CASH_OUT_TRANSFER == popupToOpen">
+        <ion-img class="avatar-img" src="../../assets/project-icons/group934.svg"></ion-img>
+        <ion-label class="title-lbl">13534XXXX Successfully Add</ion-label>
+        <ion-label class="sub-title-lbl">Feel Free to transaction</ion-label>
+      </div>
+
+      <div class="popup-content transaction-content" *ngIf="PopupType.CARD_EDIT == popupToOpen">
+        <ion-img class="avatar-img" src="../../assets/project-icons/group934.svg"></ion-img>
+        <ion-label class="title-lbl">13534XXXX Successfully Add</ion-label>
+        <ion-label class="sub-title-lbl">Feel Free to transaction</ion-label>
+      </div>
+      
+    </ion-card>
+
+    <ion-button
+      *ngIf="PopupType.SEND_MONEY == popupToOpen || PopupType.TRANSFER == popupToOpen"
+      class="primary-btn"
+      expand="block"
+      (click)="backToHome()">Back to Home
+    </ion-button>
+    <ion-button
+      *ngIf="PopupType.SEND_MONEY == popupToOpen"
+      class="secondary-btn"
+      expand="block"
+      (click)="addToFav()">Add to Favorites
+    </ion-button>
+  </div>
+</ion-content>

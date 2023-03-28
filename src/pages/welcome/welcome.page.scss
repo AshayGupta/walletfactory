@@ -1,0 +1,138 @@
+ion-slides {
+    // height: 100%;
+
+    
+ 
+  }
+
+
+.slide1{
+  /* Layout Properties */
+  top: 0px;
+  left: 0px;
+  width: 375px;
+  height: 662px;
+  /* UI Properties */
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 19px;
+  opacity: 1;
+}
+
+.slide2{
+ /* Layout Properties */
+top: 29px;
+left: 0px;
+width: 375px;
+height: 662px;
+/* UI Properties */
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border-radius: 19px;
+opacity: 1;
+}
+
+
+  .swiper-slide {
+    display: block;
+  }
+  .swiper-slide h2 {
+    margin-top: 2.8rem;
+  }
+  .swiper-slide img {
+    max-height: 50%;
+    // max-width: 50%;
+    // margin: 60px 0 40px;
+    pointer-events: none;
+  }
+  // p {
+  //   padding: 0 40px;
+  //   font-size: 14px;
+  //   line-height: 1.5;
+  //   // color: var(--ion-color-step-600, #60646b);
+  // }
+
+
+
+  .ionButton{
+    /* Layout Properties */
+    top: 595px;
+    left: 28px;
+    width: 319px;
+    height: 44px;
+    /* UI Properties */
+    background: #541572 0% 0% no-repeat padding-box;
+    border-radius: 22px;
+    opacity: 1;
+    color: white;
+    margin-top: 20px;
+  }
+
+ 
+
+  /******************************************/
+
+  .welcome-background{
+
+  /* Layout Properties */
+top: 0px;
+left: 0px;
+width: 375px;
+height: 667px;
+/* UI Properties */
+background: #DBE6E9 0% 0% no-repeat padding-box;
+opacity: 1;
+  }
+
+  .img-containor{
+    /* Layout Properties */
+    top: 96px;
+    left: 32px;
+    width: 311px;
+    height: 339px;
+    /* UI Properties */
+    background: transparent 0% 0% no-repeat padding-box;
+    opacity: 1;
+  }
+
+  .slide1-text{
+    /* Layout Properties */
+top: 448px;
+left: 29px;
+width: 317px;
+height: 62px;
+/* UI Properties */
+text-align: center;
+font: normal normal medium 14px/21px Poppins;
+letter-spacing: 0px;
+color: #858282;
+opacity: 1;
+  }
+
+  .slideSkip{
+    /* Layout Properties */
+    top: 51px;
+    left: 319px;
+    width: 28px;
+    height: 20px;
+    /* UI Properties */
+    text-align: left;
+    text-decoration: underline;
+    font: normal normal normal 14px/16px Poppins;
+    letter-spacing: 0px;
+    color: #402544;
+    opacity: 1;
+      float: right;
+
+  }
+
+
+  .top-header-skip{
+   /* Layout Properties */
+top: 0px;
+left: 0px;
+width: 375px;
+height: 667px;
+/* UI Properties */
+background: #DBE6E9 0% 0% no-repeat padding-box;
+opacity: 1;
+  }
+ 

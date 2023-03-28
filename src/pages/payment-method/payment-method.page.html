@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment Method</ion-title>
+
+   </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding [fullscreen]="true">
+
+  <div class="page-container">
+    <div class="header">
+      <h1>Payment Method</h1>
+      <h2>You can link here your account</h2>
+    </div>
+
+
+    <ion-card (click)="openBankAccount('bankOfAmerica')" class="wallet-card">
+      <ion-card-content class="wallet-card-content">
+        <div>
+          <ion-img src="../../assets/project-icons/bank/bank.png"></ion-img>
+        </div>
+        <div>
+          <ion-label class="lbl1">Bank of America</ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card (click)="openBankAccount('citybank')" class="wallet-card">
+      <ion-card-content class="wallet-card-content">
+        <div>
+          <ion-img src="../../assets/project-icons/bank/bank.png"></ion-img>
+        </div>
+        <div>
+          <ion-label class="lbl1">City Bank</ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item>
+      <div class="imgContainor">
+        <ion-img class="iconImage" src="../../assets/project-icons/bank/bank.png"></ion-img>
+
+      </div>
+
+      <span (click)="openAddAccount()" class="labelAddaccount">Add Bank Account</span>
+
+    </ion-item>
+
+  </div>
+</ion-content>

@@ -1,0 +1,125 @@
+<ion-content>
+
+  <ion-card class="card-layout profile-card">
+    <ion-list lines="none">
+      <ion-item no-lines>
+        <ion-avatar slot="start">
+          <img src="../../assets/project-imgs/avatar-icon/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Angelica Williams</h2>
+          <div class="wallet-box">
+            <ion-img src="../../assets/project-icons/group934/group934.png"></ion-img>
+            <p>Standard Wallet</p>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div class="right-arrow">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div>
+  </ion-card>
+
+  <ion-card class="card-layout" (click)="openWalletLevel()">
+    <ion-list lines="none">
+      <ion-item no-lines>
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Wallets Levels</h2>
+          <p class="card-sub-title">Limits</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div class="right-arrow">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div>
+  </ion-card>
+
+  <ion-card class="card-layout" (click)="openSettings()">
+    <ion-list lines="none">
+      <ion-item no-lines>
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Settings</h2>
+          <p class="card-sub-title">Change Language, PIN, etc.</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div class="right-arrow">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div>
+  </ion-card>
+
+  <ion-card class="card-layout" (click)="openSupport()">
+    <ion-list lines="none">
+      <ion-item no-lines>
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Support</h2>
+          <p class="card-sub-title">Chat, FAQ</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div class="right-arrow">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div>
+  </ion-card>
+
+  <ion-card class="card-layout" (click)="openLegal()">
+    <ion-list lines="none">
+      <ion-item no-lines>
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Legal</h2>
+          <p class="card-sub-title">Privacy policy</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <!-- <div class="right-arrow">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div> -->
+  </ion-card>
+
+  <ion-card class="card-layout" (click)="addAccount()">
+    <ion-list lines="none">
+      <ion-item no-lines>
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Link bank Account</h2>
+          <p class="card-sub-title">Dabit card/ Bank Account</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <!-- <div class="right-arrow">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div> -->
+  </ion-card>
+
+  <ion-card class="card-layout" (click)="logout()">
+    <ion-list lines="none">
+      <ion-item no-lines>
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Log Out</h2>
+          <p class="card-sub-title">Log out from your account</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <!-- <div class="right-arrow">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div> -->
+  </ion-card>
+
+</ion-content>

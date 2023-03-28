@@ -1,0 +1,105 @@
+.home-page {
+  --background: #DBE6E9;
+}
+
+.wallet-detail-card {
+  margin: 10px;
+  height: 33%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px 0px 15px;
+  color: #fff;
+  background-color: #652c80;
+
+  .info1 {
+    text-transform: capitalize;
+  }
+  .wallet-amt {
+    margin: auto;
+    /* Layout Properties */
+        width: 97px;
+      height: 53px;
+      /* UI Properties */
+      text-align: left;
+      letter-spacing: NaNpx;
+      color: #FFFFFF;
+      text-transform: capitalize;
+      opacity: 1;
+  }
+  .wallet-img {
+    width: 31px;
+    height: 28px;
+    margin-bottom: 20px;
+  }
+}
+
+ion-slides {
+  margin: 15px 0px;
+}
+
+.slide-container {
+  width: 104px;
+  height: 125px;
+  margin: 0px 10px 7px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0px 3px 6px #00000029;
+
+  .slide-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 7px;
+    margin: 15px auto 16px;
+    background: #F4F6F7;
+
+    ion-img {
+      width: 20px;
+      height: inherit;
+      margin: auto;
+    }
+  }
+  ion-label {
+    font-size: 12px;
+    font-weight: 600;
+    width: 50px;
+    display: inline-block;
+    color: #571E60;
+  }
+}
+
+
+.right-arrow {
+  display: flex;
+  flex-grow: 2;
+  justify-content: flex-end;
+  // margin-right: 10px;
+  font-size: 30px;
+  color: #BDB5B5;
+}
+
+.wallet-card {
+  margin: 0px 10px;
+  border-radius: 22px;
+}
+
+.wallet-card-content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  
+  ion-img {
+    height: 53px;
+    width: 53px;
+  }
+  .lbl1 {
+    height: 23px;
+    font-size: 14px;
+    color: #571E60;
+    font-weight: 600;
+  }
+  .lbl2 {
+    font-size: 12px;
+    color: #555;
+  }
+}

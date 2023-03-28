@@ -1,0 +1,49 @@
+ 
+  <ion-header style="--background: #fff">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="Wallet Levels" icon="caret-back"></ion-back-button>
+      </ion-buttons>
+      <!-- <ion-title>OTP</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <ion-content>
+    <ion-card class="wallet-card">
+      <ion-card-content class="wallet-card-content">
+        <div>
+          <ion-img src="../../assets/project-icons/group930/group930.png"></ion-img>
+        </div>
+        <div>
+          <ion-label class="lbl1">Standered Wallet</ion-label>
+          <p class="lbl2">Allows you to cover your basic daily transactions.</p>
+        </div>
+        <span (click)="standardDetailCLick()" class="labelDetails">Details</span>
+
+      </ion-card-content>
+      <div class="currentLevel">
+        <ion-icon [src]="currentLevel" class="font-size-60"></ion-icon>
+        <span style="margin-left: 10px;">This is your current level!</span>
+      </div>
+    </ion-card>
+
+    <ion-card class="wallet-card">
+      <ion-card-content class="wallet-card-content">
+        <div>
+          <ion-img src="../../assets/project-icons/advanceWallet.svg"></ion-img>
+        </div>
+        <div>
+          <ion-label class="lbl1">Advance Wallet</ion-label>
+          <p class="lbl2">Allows you to cover higher transactions amount.</p>
+        </div>
+        <span (click)="standardDetailCLick()" class="labelDetails">Details</span>
+
+      </ion-card-content>
+      <ion-button class="apply-btn" expand="block" color="new-primary" type="submit">Apply
+      </ion-button>
+    </ion-card>
+
+
+  </ion-content>

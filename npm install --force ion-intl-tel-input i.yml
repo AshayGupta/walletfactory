@@ -1,0 +1,53 @@
+npm install --force ion-intl-tel-input ionic-selectable flag-icon-css google-libphonenumber --save
+
+npm i -g cordova-res
+--------------------------------------------
+
+Building a Mobile Application
+You have to create a production build for generating mobile applications.
+
+Production Build
+$ ionic build --prod
+
+Build iOS App
+Following commands for executing Xcode build, watch the video tutorial you will understand more.
+$ ionic capacitor add ios
+$ ionic capacitor open ios
+
+Build Android App
+Open Android build using Android SDK
+$ ionic capacitor add android
+$ ionic capacitor open andriod
+
+
+Project Updates
+If you want to update your project changes.
+$ ionic capacitor copy ios
+$ ionic capacitor copy ios
+
+---------------------------------------------------
+
+Checking Java JDK and Android SDK versions
+ANDROID_SDK_ROOT=undefined (recommended setting)
+ANDROID_HOME=undefined (DEPRECATED)
+Failed to run "javac -version", make sure that you have a JDK version 8 installed.
+You can get it from the following location:
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+
+Checking Java JDK and Android SDK versions
+ANDROID_SDK_ROOT=undefined (recommended setting)
+ANDROID_HOME=undefined (DEPRECATED)
+Using Android SDK: C:\Users\user\AppData\Local\Android\sdk
+Could not find an installed version of Gradle either in Android Studio,
+or on your system to install the gradle wrapper. Please include gradle
+in your path, or install Android Studio
+
+
+ionic generate 
+$ ionic generate page
+$ ionic generate page contact
+$ ionic generate component contact/form
+$ ionic generate component login-form --change-detection=OnPush
+$ ionic generate directive ripple --skip-import
+$ ionic generate service api/user

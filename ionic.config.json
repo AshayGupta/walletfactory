@@ -1,0 +1,7 @@
+{
+  "name": "walletfactory",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

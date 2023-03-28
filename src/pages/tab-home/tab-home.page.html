@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true" class="home-page">
+
+  <ion-card class="wallet-detail-card">
+    <ion-label class="info1">USD Wallet</ion-label>
+    <ion-label class="wallet-amt">USD 0.00</ion-label>
+    <ion-img class="wallet-img" src="../../assets/project-icons/wallet/wallet.png"></ion-img>
+  </ion-card>
+
+  <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+    <ion-slide *ngFor="let card of cardsItems" class="slide-container">
+      <ion-col (click)="goToClickOption(card.id)" style="min-height: 100%">
+        <div class="slide-icon">
+          <ion-img src="{{card.icon}}"></ion-img>
+        </div>
+        <ion-label>{{ card.name }}</ion-label>
+      </ion-col>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card (click)="showWalletLevelsPage()" class="wallet-card">  
+    <ion-card-content class="wallet-card-content">
+      <div>
+        <ion-img src="../../assets/project-icons/group930/group930.png"></ion-img>
+      </div>
+      <div>
+        <ion-label class="lbl1">Standard Wallet</ion-label>
+        <p class="lbl2">Upgrade your wallet level to enjoy higher transaction limits</p>
+      </div>
+      <div class="right-arrow">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>
+    </ion-card-content>    
+  </ion-card> 
+
+</ion-content>

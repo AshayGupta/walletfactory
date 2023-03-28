@@ -1,0 +1,81 @@
+<ion-content > 
+   <ion-slides #slides pager="true"> 
+    <ion-slide class="slide1">     
+      <ion-toolbar>
+        <ion-buttons class="slideSkip" end>
+          <button  ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="slide">
+        <img class="img-containor" src="../../assets/project-imgs/welcome-screen-images/group413/group413.png" />
+        <h2>This is presentation app</h2>
+        <ion-label class="slide1-text">
+          All in app transactions are emulated. No real payments or withdrawal can be done. No user date are collected</ion-label>
+      </div>
+      <ion-button  (click)="next(slides)"  class="ionButton" fill="clear" routerLink="">Next </ion-button>
+    </ion-slide>
+
+    <ion-slide class="slide2">
+      <ion-toolbar>
+        <ion-buttons class="slideSkip" end>
+          <button  ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="slide">
+      <img class="img-containor" src="../../assets/project-imgs/welcome-screen-images/group419/group419.png" />
+      <h2>Virtual Bonus For Easy Start!</h2>
+      <ion-label class="slide1-text">
+        There will be $100 on your virtual wallet to explore app capabilities.
+      </ion-label>
+      </div>
+      <ion-button   (click)="next(slides)" class="ionButton" fill="clear" routerLink="">Next  </ion-button>
+    </ion-slide>
+
+    <ion-slide class="slide2">
+      <ion-toolbar>
+        <ion-buttons class="slideSkip" end>
+          <button  ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="slide">
+        <img class="img-containor" src="../../assets/project-imgs/welcome-screen-images/group656/group656.png" />
+        <h2>P2P Transfers</h2>
+        <ion-label class="slide1-text">
+          Send money and split bills with contacts, issue invoice, buy and send vouchers, add/credit/debit cards as payments tools
+        </ion-label>
+        </div>
+    <ion-button   (click)="next(slides)" class="ionButton" fill="clear" routerLink="">Next  </ion-button>
+  </ion-slide>
+
+    <ion-slide class="slide2">
+      <ion-toolbar>
+        <ion-buttons class="slideSkip" end>
+          <button  ion-button color="primary">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div class="slide">
+        <img class="img-containor" src="../../assets/project-imgs/welcome-screen-images/group742/group742.png" />
+      <h2>In App Payment</h2>
+       <ion-label class="slide1-text">
+        Make utility payments, top up your phone, purchase goods (all operations are emulated )      </ion-label>
+    </div>
+    <ion-button   (click)="next(slides)" class="ionButton" fill="clear" routerLink="">Next  </ion-button>
+  </ion-slide>
+
+  <ion-slide class="slide2">
+    <ion-toolbar>
+      <ion-buttons class="slideSkip" end>
+        <button  ion-button color="primary">Skip</button>
+      </ion-buttons>
+    </ion-toolbar>
+    <div class="slide">
+      <img class="img-containor" src="../../assets/project-imgs/welcome-screen-images/group927/group927.png" />
+      <h2>Top Up</h2>
+     <ion-label class="slide1-text">
+      Try topping up your balance with 3rd party cards (emulated operations , any card number will work ) </ion-label>
+  </div> 
+  <ion-button  routerLink="/enter-mobile-number" (click)="next(slides)" class="ionButton" fill="clear">Let's Start  </ion-button>
+</ion-slide>
+<!-- enter-mobile-number -->
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,120 @@
+.page-container {
+  margin-left: 26px;
+  margin-right: 26px;
+  opacity: 1;
+}
+
+.header > h1 {
+  margin-top: 28px;
+  margin-bottom: 0px;
+  height: 25px;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+}
+
+.header > h2 {
+  margin-top: 3px;
+  height: 20px;
+  color: #858282;
+  font-size: 14px;
+  letter-spacing: 0px;
+}
+
+.wallet-card {
+  margin: 13px 10px;
+  border-radius: 5px;
+  }
+
+.wallet-card-content {
+    display: flex;
+    gap: 20px;
+    align-items: center; 
+
+
+    /* Layout Properties */
+  width: 356px;
+height: 71px;
+/* UI Properties */
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #00000029;
+border-radius: 13px;
+opacity: 1;
+    
+    ion-img {
+      height: 53px;
+      width: 53px;
+    }
+    .lbl1 {
+     /* Layout Properties */
+      top: 147px;
+      left: 117px;
+      width: 114px;
+      height: 20px;
+      /* UI Properties */
+      text-align: left;
+      font: normal normal normal 14px/21px Poppins;
+      letter-spacing: 0px;
+      color: #555555;
+      opacity: 1;
+    }
+    .lbl2 {
+     /* Layout Properties */
+top: 227px;
+left: 120px;
+width: 65px;
+height: 20px;
+/* UI Properties */
+text-align: left;
+font: normal normal normal 14px/21px Poppins;
+letter-spacing: 0px;
+color: #555555;
+opacity: 1;
+    }
+  }
+
+  .payment-icon{
+    /* Layout Properties */
+top: 321px;
+left: 55px;
+width: 25px;
+height: 25px;
+/* UI Properties */
+background: transparent  0% 0% no-repeat padding-box;
+opacity: 1;
+  }
+
+  .labelAddaccount{
+    /* Layout Properties */
+     transform: matrix(1, 0, 0, 1, 0, 0);
+    /* UI Properties */
+     text-decoration: underline;
+    font: normal normal medium 12px/14px Poppins;
+    letter-spacing: 0px;
+    color: #541572;
+    opacity: 1;
+    padding-left: 18px;
+   }
+
+  .imgContainor{
+    top: 306px;
+    left: 18px;
+    width: 99px;
+    height: 55px;
+    /* UI Properties */
+    border: 2px dashed #541572;
+    opacity: 1;
+  }
+
+  .iconImage{
+    /* Layout Properties */
+     left: 55px;
+    // width: 25px;
+     /* UI Properties */
+    // background: transparent  0% 0% no-repeat padding-box;
+     height: 25px;
+    opacity: 1;
+    margin-top: 12px;
+  }
+ 
