@@ -26,8 +26,8 @@
       <ion-item *ngIf="segment === 'phonenumber'" lines="none">
         <ion-label class="label-phoneNo" position="stacked">Phone Number</ion-label>
         <div class="phone-input-container">
-          <ion-img class="country-flag" src="../../assets/project-icons/usa-flag.png"></ion-img>
-          <span style="margin-top: 11px; color: darkgray;">+1</span> 
+          <ion-img class="country_flag" src="../../assets/project-icons/usa-flag.png"></ion-img>
+          <span class="country_code">+1</span> 
           <ion-input
             type="number"
             class="input-phone"
@@ -38,9 +38,8 @@
       </ion-item>
 
       <ion-button
-        class="otp-btn"
+        class="primary-btn otp-btn"
         expand="block"
-        color="new-primary"
         type="submit">Request OTP
       </ion-button>
     </form>
