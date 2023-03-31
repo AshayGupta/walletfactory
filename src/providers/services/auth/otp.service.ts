@@ -1,39 +1,28 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ApiUrls } from './../../../common/constants/constants';
 import { Injectable } from '@angular/core';
-import { ApiUrl } from '../../../common/constants/constants';
+import { Otp } from 'src/models/otp.model';
 import { HttpService } from '../../httpService';
-import { ApiRouter, StatusCode } from '../../../common/enums/enums';
-import { OtpSerializer, OtpResp, OtpReq } from '../../../dataModels/otp.model';
+@Injectable({
+  providedIn: 'root'
+})
+export class OtpService {
 
-const endPoint = ApiRouter.ApiRouter2 + 'lfr/cust/sendOtp';
+  private sendOtpEndPoint = ApiUrls.sendOtp;
+  private verifyOtpEndPoint = ApiUrls.verifyOtp;
 
-@Injectable()
-export class OtpService extends HttpService<OtpResp> {
+  constructor(private httpService: HttpService) {}
 
-  constructor(http: HttpClient) {
-    super(
-      http,
-      ApiUrl.baseUrl,
-      endPoint,
-      new OtpSerializer()
-    );
+  async sendOtp(data: Otp) {
+    const form = new FormData();
+    form.append("phoneNumber", "+919971997554");
+
+    this.httpService.post(this.sendOtpEndPoint, form).subscribe(resp => {
+      console.log('send Otp', resp);
+    })
   }
 
-  generateOTP(data: OtpReq, cbResp: (res: OtpResp) => void, cbErr?: (err: HttpErrorResponse) => void) {
-    super.create(data).subscribe((resp: OtpResp) => {
-      console.log('generateOTP response ->', resp);
-      if (resp.statusCode == StatusCode.Status200) {
-        cbResp(resp);
-      }
-    },
-      (error: HttpErrorResponse) => {
-        console.log('generateOTP error ->', error);
-        // if (error.status == StatusCode.Status403) {
-        //   cbErr(true);
-        // }
-        cbErr(error);
-      });
+  verifyOtp(data: Otp) {
+    
   }
 
 }
-

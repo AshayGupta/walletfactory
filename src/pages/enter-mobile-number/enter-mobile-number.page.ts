@@ -1,3 +1,4 @@
+import { OtpService } from './../../providers/services/auth/otp.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -21,7 +22,8 @@ export class EnterMobileNumberPage {
 
   constructor(
     public router: Router,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private otpService: OtpService
   ) {
     this.validateForm();
   }
@@ -40,6 +42,7 @@ export class EnterMobileNumberPage {
   }
 
   onSubmit() {
+    this.otpService.sendOtp({phoneNumber: "+919971997554"})
     let phoneNumber = this.form.controls['phoneNumber'].value;
     if (phoneNumber == null) {
       alert('Please enter valid mobile no.');

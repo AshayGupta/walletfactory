@@ -1,3 +1,4 @@
+import { OtpService } from './../../providers/services/auth/otp.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +20,9 @@ import { IonIntlTelInputModule } from 'ion-intl-tel-input';
     IonicModule,
     EnterMobileNumberPageRoutingModule
   ],
-  declarations: [EnterMobileNumberPage]
+  declarations: [EnterMobileNumberPage],
+  providers: [
+    OtpService
+  ]
 })
 export class EnterMobileNumberPageModule {}

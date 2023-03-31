@@ -33,3 +33,11 @@ export class ApiUrl {
 export const Environment = {
   prod: ApiUrl.baseUrl.includes(ApiUrl.prodUrl) ? true : false 
 }
+
+export class ApiUrls {
+  static readonly baseUrl = 'http://cashdrop.v3ainfo.com/api';
+
+  static readonly sendOtp = '/send-otp';
+  static readonly verifyOtp = '/verify-otp';
+  static readonly saveProfile = '/save-profile';
+}
