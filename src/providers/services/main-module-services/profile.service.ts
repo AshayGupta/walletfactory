@@ -12,7 +12,13 @@ export class ProfileService {
   constructor(private httpService: HttpService) {}
 
   saveProfile(profileData: Profile) {
-    return this.httpService.post(ApiUrls.saveProfile, profileData);
+    const keys = Object.keys(profileData);
+
+    const form = new FormData();
+    for(let i=0; i<keys.length; i++) {
+      form.append(keys[i], profileData[keys[i]]);
+    }
+    return this.httpService.post(ApiUrls.saveProfile, form);
   }
 
 
