@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
 @Injectable()
-export class CommonService {
+export class ToastService {
   constructor(private toastCtrl: ToastController) {}
 
   async showToast(msg = "") {

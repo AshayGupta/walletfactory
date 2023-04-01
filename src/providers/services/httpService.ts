@@ -1,8 +1,8 @@
-import { ApiUrls } from './../common/constants/constants';
+import { ApiUrls } from '../../common/constants/constants';
 import { map, timeout, retryWhen, scan, delay } from 'rxjs/operators';
 import { Observable } from "rxjs";
-import { ApiResource, Serializer } from "../common/interfaces/serializer";
-import { LocalStorageKey } from "../common/enums/enums";
+import { ApiResource, Serializer } from "../../common/interfaces/serializer";
+import { LocalStorageKey } from "../../common/enums/enums";
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

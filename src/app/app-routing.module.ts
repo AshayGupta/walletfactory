@@ -85,10 +85,6 @@ const routes: Routes = [
     loadChildren: () => import('../pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'otp-screen',
-    loadChildren: () => import('../pages/otp-screen/otp-screen.module').then( m => m.OtpScreenPageModule)
-  },
-  {
     path: 'add-account',
     loadChildren: () => import('../pages/add-account/add-account.module').then( m => m.AddAccountPageModule)
   },

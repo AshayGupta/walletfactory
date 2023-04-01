@@ -2,7 +2,7 @@ import { SetPasswordResp, SetPasswordReq, SetPasswordSerializer } from './../../
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiUrl } from '../../../common/constants/constants';
-import { HttpService } from '../../httpService';
+import { HttpService } from '../httpService';
 import { ApiRouter, StatusCode } from '../../../common/enums/enums';
 
 const endPoint = ApiRouter.ApiRouter2 + 'lfr/cust/updatepassword';

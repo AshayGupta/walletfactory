@@ -4,7 +4,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { CommonService } from 'src/providers/common.service';
+import { ToastService } from 'src/providers/plugin-services/toast.service';
 
 @Component({
   selector: 'app-otp',
@@ -29,7 +29,7 @@ export class OtpPage {
     public router: Router,
     public formBuilder: FormBuilder,
     public platform: Platform,
-    private commonService: CommonService,
+    private toastService: ToastService,
     public activatedRoute: ActivatedRoute,
     private otpService: OtpService,
   ) {
@@ -78,12 +78,12 @@ export class OtpPage {
         if(!data.error) {
           this.router.navigate(['/create-profile']);
         }
-        this.commonService.showToast(data.message);
+        this.toastService.showToast(data.message);
       });
     }
     else {
       this.codesInpunt0.setFocus();
-      this.commonService.showToast();
+      this.toastService.showToast();
     }
   }
 }

@@ -1,4 +1,4 @@
-import { CommonService } from 'src/providers/common.service';
+import { ToastService } from 'src/providers/plugin-services/toast.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +24,7 @@ import { DatePipe } from '@angular/common';
   providers: [
     DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    CommonService
+    ToastService
   ],
   bootstrap: [AppComponent],
 })

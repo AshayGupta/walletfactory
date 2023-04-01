@@ -1,4 +1,4 @@
-import { CommonService } from 'src/providers/common.service';
+import { ToastService } from 'src/providers/plugin-services/toast.service';
 import { ProfileService } from './../../providers/services/main-module-services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
@@ -31,7 +31,7 @@ export class CreateProfilePage {
     public navCtrl: NavController,
     public router: Router,
     public formBuilder: FormBuilder,
-    private commonService: CommonService,
+    private toastService: ToastService,
   ) {
     this.currentDate = new Date();
     this.modifyDate = this.datePipe.transform(this.currentDate, 'y-M-d');
@@ -63,7 +63,7 @@ export class CreateProfilePage {
       if(!data.error) {
         this.router.navigate(['/tabs/tab-home']);
       }
-      this.commonService.showToast(data.message);
+      this.toastService.showToast(data.message);
     });
   }
 

@@ -1,7 +1,7 @@
 import { LoginSerializer, LoginResp, LoginReq } from './../../../dataModels/login.model';
 import { Injectable } from '@angular/core';
 import { ApiUrl } from '../../../common/constants/constants';
-import { HttpService } from '../../httpService';
+import { HttpService } from '../httpService';
 import { ApiRouter, StatusCode } from '../../../common/enums/enums';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
