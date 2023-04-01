@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <p>{{otpData.otp}}</p>
   <div class="content-container">
     <ion-img class="group335" src="../../assets/project-icons/group335/group335.png" alt="X"></ion-img>
     <div class="otp-info-container">
@@ -17,6 +16,7 @@
       <ion-label class="info-3">{{otpData.phoneNumber}}
         <ion-img class="edit" src="../../assets/project-icons/edit/edit.png" alt="X"></ion-img>
       </ion-label>
+      <ion-label class="info-3">Please enter the OTP : {{otpData.otp}}</ion-label>
        
       <ion-list formCodeValidate lines="none">
         <ion-item>
