@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
  import { NavController } from '@ionic/angular';
-import { createProfileData } from '../../models/createProfileData'; 
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
  
 import { DatePipe } from '@angular/common'; 
+import { Profile } from 'src/models/profile.model';
 
  // import { Observable } from 'rxjs/Observable';
 // import { HttpClient } from '@angular/common/http';
@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CreateProfilePage implements OnInit {
   // create_profile_form = {} as create_profileForm;
-   createProfileData: createProfileData;
+   profile: Profile;
    createProfileForm: FormGroup;
    submitAttempt: boolean = false;
    date;
@@ -70,7 +70,7 @@ export class CreateProfilePage implements OnInit {
 
 
   clickSave() {
-    let createprofileReq = new createProfileData();
+    let createprofileReq: Profile;
     createprofileReq.firstName = this.createProfileForm.controls['firstName'].value;
     // createprofileReq.middleName = this.createProfileForm.controls['middleName'].value;
     createprofileReq.lastName = this.createProfileForm.controls['lastName'].value;

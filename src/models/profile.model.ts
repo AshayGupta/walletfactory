@@ -1,4 +1,4 @@
-export class createProfileData {
+export class Profile {
 	firstName: string;
 	middleName: string;
 	lastName: string;
@@ -6,4 +6,5 @@ export class createProfileData {
 	phone: string;
 	dob: string;
 	handler:string;
+	
 }

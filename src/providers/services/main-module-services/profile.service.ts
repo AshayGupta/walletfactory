@@ -2,22 +2,17 @@ import { ApiUrls } from './../../../common/constants/constants';
 import { Injectable } from '@angular/core';
 import { Otp } from 'src/models/otp.model';
 import { HttpService } from '../../httpService';
+
 @Injectable({
   providedIn: 'root'
 })
-export class OtpService {
+export class ProfileService {
 
   constructor(private httpService: HttpService) {}
 
-  sendOtp(phoneNumber) {
-    const form = new FormData();
-    form.append("phoneNumber", phoneNumber);
-
-    return this.httpService.post(ApiUrls.sendOtp, form);
+  saveProfile(profileData) {
+    return this.httpService.post(ApiUrls.sendOtp, profileData);
   }
 
-  verifyOtp(data: Otp) {
-    return this.httpService.post(ApiUrls.verifyOtp, data);
-  }
 
 }

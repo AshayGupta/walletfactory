@@ -13,8 +13,7 @@ export class HttpService {
 
     private baseApiUrl: string = ApiUrls.baseUrl;
     private defaultHeader = {
-        'content-type': 'application/x-www-form-urlencoded'
-        // 'Access-Control-Allow-Origin': "*"
+        // 'content-type': 'application/x-www-form-urlencoded'
     };
 
     constructor(
@@ -25,9 +24,9 @@ export class HttpService {
         let httpHeaders = new HttpHeaders(this.defaultHeader);
         // httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + localStorage.getItem(LocalStorageKey.BearerToken));
         
-        let params = new HttpParams();
+        // let params = new HttpParams();
 
-        return this.http.post(this.baseApiUrl + path, data, { headers: httpHeaders, params });
+        return this.http.post(this.baseApiUrl + path, data, { headers: httpHeaders });
     }
     
     get(path: string): Observable<any> {

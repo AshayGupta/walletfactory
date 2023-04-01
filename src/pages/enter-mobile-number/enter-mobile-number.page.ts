@@ -2,7 +2,6 @@ import { OtpService } from './../../providers/services/auth/otp.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
-  FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
@@ -17,6 +16,7 @@ import { Router } from '@angular/router';
 export class EnterMobileNumberPage {
   form: FormGroup;
   preferredCountries = ['us'];
+  isFormSubmit = true;
 
   segment: string = 'phonenumber';
 
@@ -34,24 +34,25 @@ export class EnterMobileNumberPage {
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('[0-9]{0-10}'),
+          Validators.pattern('[0-9]{10}'),
         ]),
       ],
-      emailId: [''],
+      // emailId: [''],
     });
   }
 
   onSubmit() {
-    this.otpService.sendOtp({phoneNumber: "+919971997554"})
-    let phoneNumber = this.form.controls['phoneNumber'].value;
-    if (phoneNumber == null) {
-      alert('Please enter valid mobile no.');
-    } else {
-      console.log(phoneNumber);
-      localStorage.setItem('Mobile', phoneNumber);
-      // this.router.navigate(['/otp']);
-      this.router.navigate(['/otp']);
+    if(!this.form.valid) {
+      this.isFormSubmit = false;
+      return;
     }
+
+    const phoneNumber = "+91"+this.form.controls['phoneNumber'].value;
+    this.otpService.sendOtp(phoneNumber).subscribe(resp => {
+      console.log('send otp resp', resp);
+      localStorage.setItem('mobile', phoneNumber);
+      this.router.navigate(['/otp', {otp: resp.data.otp, mobile: resp.data.mobileNumber}]);
+    });
   }
 
   termsCondition() {

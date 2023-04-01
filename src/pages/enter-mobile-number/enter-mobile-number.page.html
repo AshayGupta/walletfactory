@@ -32,9 +32,14 @@
             type="number"
             class="input-phone"
             placeholder="316 555 0116"
+            minlength="10"
+            maxlength="10"
             formControlName="phoneNumber">
           </ion-input>  
         </div>
+        <ng-template [ngIf]="!isFormSubmit && form.invalid">
+          <ion-label class="err-validation" position="stacked">Please enter valid mobile number</ion-label>
+        </ng-template>
       </ion-item>
 
       <ion-button

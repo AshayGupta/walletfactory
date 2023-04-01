@@ -1,83 +1,49 @@
-import { ChangeDetectorRef, Component, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import { OtpService } from './../../providers/services/auth/otp.service';
+import { Otp, VerifyOtp } from 'src/models/otp.model';
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Platform, ToastController } from '@ionic/angular';
-// import { NavDataServiceService } from '../services/nav-data-service.service';
-
 
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.page.html',
   styleUrls: ['./otp.page.scss'],
 })
-export class OtpPage implements OnInit {
-
-  otpForm: FormGroup;
-  submitAttempt: boolean = false;
-   resendOtpTxt: any;
-  otpResendTime: number = 120;
-  headerTitle: string;
-  subTitle: string;
-  isSignupFlow: boolean;
-  mobile: string;
-  email: string;
-  tncTxt: string = 'Terms and Conditions';
-  otpTxt: string;
-  // isProdEnv: boolean = Environment.prod;
-
-  phoneNumber= ''
-  verificationId="1234";
-  code = Array();
-  started=false;
-  verificationInProgress=false;
+export class OtpPage {
   @ViewChild('codesInpunt0') codesInpunt0;
   @ViewChild('codesInpunt1') codesInpunt1;
   @ViewChild('codesInpunt2') codesInpunt2;
   @ViewChild('codesInpunt3') codesInpunt3;
-  constructor(public router: Router,
-    // public navParams: NavParams,
+  enteredCode: string = '';
+  code = Array();
+  otpForm: FormGroup;
+  submitAttempt: boolean = false;
+  otpData = {
+    otp: '',
+    phoneNumber: ''
+  };
+
+  constructor(
+    public router: Router,
     public formBuilder: FormBuilder,
-    // public navData:NavDataServiceService,
-    public platform : Platform,
-    public toastCtrl: ToastController) {
-      this.started=false;
-
-      // this.validateForm();
-
-
-     }
-
-    //  validateForm() {
-    //   this.otpForm = this.formBuilder.group({
-    //     otp: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(6)])],
-    //   });
-    // }
-
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad OtpPage');
-      // this.setupPage();
-    }
-    setupPage() {
-      // localStorage.getItem('Mobile', phoneNumber);
-      // this.mobile = localStorage.getItem('Mobile');
-   
-        
-  
-      // this.sendOtp();
-    }
-
-    ////////////////////////////////////////////////////////////
-
-     ngOnInit() {
-      let data = {'phoneNumber':"1234567890","smscode":"1234"}; //this.navData.getDataWithoutId();
-      this.phoneNumber = data['phoneNumber'];
-      this.verificationId = data['smscode'];
-      console.log("route special "+this.phoneNumber+" verif code "+this.verificationId)
+    public platform: Platform,
+    public toastCtrl: ToastController,
+    public activatedRoute: ActivatedRoute,
+    private otpService: OtpService,
+  ) {
+    this.setupPage();
   }
+
   ionViewDidEnter() {
     this.codesInpunt0.setFocus();
-  } 
+  }
+
+  setupPage() {
+    this.otpData.otp = this.activatedRoute.snapshot.params['otp'];
+    this.otpData.phoneNumber = this.activatedRoute.snapshot.params['mobile'];
+  }
+
   changeFocus(inputToFocus) {
     switch (inputToFocus) {
       case 1:
@@ -89,73 +55,43 @@ export class OtpPage implements OnInit {
       case 3:
         this.codesInpunt3.setFocus();
         break;
-       case 4:
-         this.codesInpunt3.setFocus();
-        let enteredCode = this.code[0]+this.code[1] + this.code[2] + this.code[3];
-       
-          //   this.resetCode()
-        // if (this.verificationInProgress==false){
-        //   this.verificationInProgress=true;
-          this.activate(enteredCode);
-        // }
-       break;
+      case 4:
+        this.codesInpunt3.setFocus();
+        break;
     }
+    this.enteredCode =
+      this.code[0] + this.code[1] + this.code[2] + this.code[3];
   }
-  activate(enteredCode) {
-    if (enteredCode){
-      console.log("Compare code sms "+enteredCode+" avec "+this.verificationId)
-      if (enteredCode.length == 4) {
-        console.log(enteredCode);
-        console.log("veificationCode is" + this.verificationId);
-        if (enteredCode==this.verificationId){
-          //Good job
-          this.onSubmit();
 
-          // this.resetCode(); 
-        }
-        else{
-          this.presentToastError();
-        }
-      }
-      else{
-        this.presentToastError();
-      }
-    }
-    else{
-      this.presentToastAgain();
-    }
+  resetCode() {
+    this.code = [];
   }
-  resetCode(){
-      this.code[0]="";
-      this.code[1]="";
-      this.code[2]="";
-      this.code[3]="";
-  }
-  async presentToastAgain(){
+
+  async showToast(msg = "Enter valid otp") {
     let toast = await this.toastCtrl.create({
-      message: "Please enter code again",
+      message: msg,
       duration: 2000,
-      position: 'bottom'
+      position: 'bottom',
     });
     toast.present();
-    this.verificationInProgress=false;
-    this.resetCode()
-    this.codesInpunt0.setFocus();
-  }
-  async presentToastError() {
-    this.verificationInProgress=false;
-    this.codesInpunt0.setFocus();
-    let toast = await this.toastCtrl.create({
-      message: "Code invalid",
-      duration: 2000,
-      position: 'bottom'
-    });
-   toast.present();
   }
 
   onSubmit() {
-    this.router.navigate(['/create-profile']);
-
-    
+    if (
+      this.enteredCode.length == 4 &&
+      this.enteredCode == this.otpData.otp
+    ) {
+      this.otpService.verifyOtp(this.otpData).subscribe(resp => {
+        const data: VerifyOtp = resp.data;
+        if(!data.error) {
+          this.showToast(data.message);
+          this.router.navigate(['/create-profile']);
+        }
+      });
+    }
+    else {
+      this.codesInpunt0.setFocus();
+      this.showToast();
+    }
   }
 }

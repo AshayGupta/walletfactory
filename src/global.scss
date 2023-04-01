@@ -147,6 +147,10 @@ ion-footer {
     border: 2px solid white;
 }
 
+.err-validation {
+	color: orangered !important;
+}
+
 ion-popover {
 	&.width-80 {
 	  --width: 80%;
