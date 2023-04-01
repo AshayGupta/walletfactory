@@ -76,9 +76,9 @@ export class OtpPage {
       this.otpService.verifyOtp(this.otpData).subscribe(resp => {
         const data: VerifyOtp = resp.data;
         if(!data.error) {
-          this.commonService.showToast(data.message);
           this.router.navigate(['/create-profile']);
         }
+        this.commonService.showToast(data.message);
       });
     }
     else {

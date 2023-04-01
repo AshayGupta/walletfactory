@@ -44,11 +44,16 @@ export class CreateProfilePage {
       fName: ['', Validators.compose([Validators.required])],
       lName: ['', Validators.compose([Validators.required])],
       dob: ['', Validators.compose([Validators.required])],
-      handle: ['', Validators.compose([Validators.required])],
+      handle: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
     });
   }
 
   clickSave() {
+    if(!this.form.valid) {
+      this.isFormSubmit = false;
+      return;
+    }
+
     let profileData: Profile = this.form.value;
     profileData['mobileNumber'] = localStorage.getItem('mobile');
     profileData.dob = profileData.dob.split('T')[0];
@@ -56,9 +61,9 @@ export class CreateProfilePage {
     this.profileService.saveProfile(profileData).subscribe(resp => {
       const data: Profile = resp.data;
       if(!data.error) {
-        this.commonService.showToast(data.message);
         this.router.navigate(['/tabs/tab-home']);
       }
+      this.commonService.showToast(data.message);
     });
   }
 

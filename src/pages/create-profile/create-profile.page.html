@@ -125,7 +125,7 @@
             formControlName="handle"
           ></ion-input>
         </div>
-        <ng-template [ngIf]="!isFormSubmit && form.invalid">
+        <ng-template [ngIf]="!isFormSubmit && form.controls['handle'].invalid">
           <ion-label class="err-validation" position="stacked">Handle should be more than 4 digits</ion-label>
         </ng-template>
       </ion-item>
