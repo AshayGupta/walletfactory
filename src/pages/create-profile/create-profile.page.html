@@ -16,7 +16,7 @@
       <h2>Complete Your Profile</h2>
     </div>
 
-    <form [formGroup]="createProfileForm" (ngSubmit)="clickSave()">
+    <form [formGroup]="form" (ngSubmit)="clickSave()">
       <ion-item>
         <ion-label class="label-email" position="stacked">First Name</ion-label>
         <div class="email-input-container">
@@ -117,20 +117,22 @@
        </ion-modal> -->
 
       <ion-item>
-        <ion-label class="label-email" position="stacked">Handler</ion-label>
+        <ion-label class="label-email" position="stacked">Handle</ion-label>
         <div class="email-input-container">
           <ion-input
             class="input-email"
             type="text"
-            formControlName="handler"
+            formControlName="handle"
           ></ion-input>
         </div>
+        <ng-template [ngIf]="!isFormSubmit && form.invalid">
+          <ion-label class="err-validation" position="stacked">Handle should be more than 4 digits</ion-label>
+        </ng-template>
       </ion-item>
 
       <ion-button
-        class="otp-btn"
+        class="primary-btn"
         expand="block"
-        color="new-primary"
         type="submit"
         >Next
       </ion-button>

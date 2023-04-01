@@ -4,5 +4,7 @@ export class Profile {
 	email: string;
 	mobileNumber: string;
 	dob: string;
-	handler:string;	
+	handle:string;
+    error: boolean;
+    message: string;
 }

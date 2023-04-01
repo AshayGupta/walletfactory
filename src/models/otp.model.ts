@@ -4,12 +4,12 @@ export interface Otp {
 }
 
 export interface VerifyOtp {
-    error: boolean;
     fname: string;
     isBankAdded: string;
     isProfileComplete: boolean;
     lname: string;
-    message: string;
     mobileNumber: string;
     sec: number;
+    error: boolean;
+    message: string;
 }

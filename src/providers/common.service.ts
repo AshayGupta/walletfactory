@@ -9,7 +9,7 @@ export class CommonService {
     let toast = await this.toastCtrl.create({
       message: msg || 'Enter valid otp',
       duration: 2000,
-      position: 'middle',
+      position: 'bottom',
     });
     toast.present();
   }
