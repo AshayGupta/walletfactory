@@ -1,13 +1,8 @@
 import { Component, ViewChild,OnInit } from '@angular/core';
-import { StatusCode, UserStatus } from './../../common/enums/enums';
 import { NavController,ToastController } from '@ionic/angular';
 import { FormGroup, FormBuilder, FormControl,Validators } from '@angular/forms';
 
-import { Utils } from './../../common/utils/utils';
-import { PageName, LocalStorageKey } from '../../common/enums/enums';
-import { Environment } from '../../common/constants/constants';
-
-import { HttpErrorResponse } from '@angular/common/http';
+import { PageName } from '../../common/enums/enums';
 // import { AlertService } from '../../providers/plugin-services/alert.service';
 // import { VerifyOtpService } from '../../providers/services/auth/verify-otp.service';
 import { Router } from '@angular/router';
