@@ -75,7 +75,9 @@ export class OtpPage {
     ) {
       this.otpService.verifyOtp(this.otpData).subscribe(resp => {
         const data: VerifyOtp = resp.data;
-        if(!data.error) {
+        if(!data.error && !!data.isProfileComplete) {
+          this.router.navigate(['/tabs/tab-home']);
+        }else{
           this.router.navigate(['/create-profile']);
         }
         this.toastService.showToast(data.message);
