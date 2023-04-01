@@ -1,10 +1,8 @@
 export class Profile {
-	firstName: string;
-	middleName: string;
-	lastName: string;
+	fName: string;
+	lName: string;
 	email: string;
-	phone: string;
+	mobileNumber: string;
 	dob: string;
-	handler:string;
-	
+	handler:string;	
 }

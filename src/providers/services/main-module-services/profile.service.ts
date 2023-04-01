@@ -1,3 +1,4 @@
+import { Profile } from 'src/models/profile.model';
 import { ApiUrls } from './../../../common/constants/constants';
 import { Injectable } from '@angular/core';
 import { Otp } from 'src/models/otp.model';
@@ -10,8 +11,8 @@ export class ProfileService {
 
   constructor(private httpService: HttpService) {}
 
-  saveProfile(profileData) {
-    return this.httpService.post(ApiUrls.sendOtp, profileData);
+  saveProfile(profileData: Profile) {
+    return this.httpService.post(ApiUrls.saveProfile, profileData);
   }
 
 

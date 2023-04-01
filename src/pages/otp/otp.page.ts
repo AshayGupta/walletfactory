@@ -1,9 +1,10 @@
 import { OtpService } from './../../providers/services/auth/otp.service';
-import { Otp, VerifyOtp } from 'src/models/otp.model';
+import { VerifyOtp } from 'src/models/otp.model';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Platform, ToastController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+import { CommonService } from 'src/providers/common.service';
 
 @Component({
   selector: 'app-otp',
@@ -28,7 +29,7 @@ export class OtpPage {
     public router: Router,
     public formBuilder: FormBuilder,
     public platform: Platform,
-    public toastCtrl: ToastController,
+    private commonService: CommonService,
     public activatedRoute: ActivatedRoute,
     private otpService: OtpService,
   ) {
@@ -67,15 +68,6 @@ export class OtpPage {
     this.code = [];
   }
 
-  async showToast(msg = "Enter valid otp") {
-    let toast = await this.toastCtrl.create({
-      message: msg,
-      duration: 2000,
-      position: 'bottom',
-    });
-    toast.present();
-  }
-
   onSubmit() {
     if (
       this.enteredCode.length == 4 &&
@@ -84,14 +76,14 @@ export class OtpPage {
       this.otpService.verifyOtp(this.otpData).subscribe(resp => {
         const data: VerifyOtp = resp.data;
         if(!data.error) {
-          this.showToast(data.message);
+          this.commonService.showToast(data.message);
           this.router.navigate(['/create-profile']);
         }
       });
     }
     else {
       this.codesInpunt0.setFocus();
-      this.showToast();
+      this.commonService.showToast();
     }
   }
 }

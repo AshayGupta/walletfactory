@@ -1,12 +1,15 @@
- <ion-header style="--background: #fff">
+<ion-header style="--background: #fff">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Complete Your Profile" icon="caret-back"></ion-back-button>
+      <ion-back-button
+        text="Complete Your Profile"
+        icon="caret-back"
+      ></ion-back-button>
     </ion-buttons>
     <!-- <ion-title>OTP</ion-title> -->
   </ion-toolbar>
 </ion-header>
- 
+
 <ion-content padding [fullscreen]="true">
   <div class="page-container">
     <div class="header">
@@ -14,18 +17,25 @@
     </div>
 
     <form [formGroup]="createProfileForm" (ngSubmit)="clickSave()">
-
       <ion-item>
         <ion-label class="label-email" position="stacked">First Name</ion-label>
         <div class="email-input-container">
-          <ion-input class="input-email" type="text" formControlName="firstName"></ion-input>
+          <ion-input
+            class="input-email"
+            type="text"
+            formControlName="fName"
+          ></ion-input>
         </div>
       </ion-item>
- 
+
       <ion-item>
         <ion-label class="label-email" position="stacked">Last Name</ion-label>
         <div class="email-input-container">
-          <ion-input class="input-email" type="text" formControlName="lastName"></ion-input>
+          <ion-input
+            class="input-email"
+            type="text"
+            formControlName="lName"
+          ></ion-input>
         </div>
       </ion-item>
 
@@ -49,28 +59,28 @@
           <ion-input class="input-email" type="text" formControlName="dob"></ion-input>
         </div>
       </ion-item> -->
-         <ion-item>
-          <ion-label>Date of Birth</ion-label>
-          <ion-input
-            value="{{ date | date: 'dd.MM.yyyy' }}"
-            id="date"
-            class="ion-text-end"
-            required
-          ></ion-input>
-          
+      <ion-item>
+        <ion-label>Date of Birth</ion-label>
+        <ion-input
+          value="{{ date | date: 'dd.MM.yyyy' }}"
+          id="date"
+          class="ion-text-end"
+          required
+        ></ion-input>
+
         <!-- locale="es-US"  color="rose"-->
-          <ion-popover trigger="date" size="cover">
-            <ng-template>
-              <ion-datetime             
+        <ion-popover trigger="date" size="cover">
+          <ng-template>
+            <ion-datetime
               formControlName="dob"
-                presentation="date"
-                [(ngModel)]="date"
-              ></ion-datetime>
-            </ng-template>
-          </ion-popover>
-        </ion-item>
- 
-        <!-- <ion-list>
+              presentation="date"
+              [(ngModel)]="date"
+            ></ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+
+      <!-- <ion-list>
           <ion-item>
             <ion-label>Date of Birth</ion-label>
             <ion-note slot="end" id="open-popover1">{{dateExample | date}}</ion-note>
@@ -85,8 +95,8 @@
             </ng-template>
           </ion-popover>
         </ion-list> -->
-        <!--  -->
-        <!-- <ion-item class="">
+      <!--  -->
+      <!-- <ion-item class="">
           <ion-label class="" position="floating">Date Of Birth</ion-label>
           <ion-datetime required #dateTime  [showDefaultButtons]="true" [(ngModel)]="birthday" (ionFocus)="onDateFocused()"  formControlName="dob" value="{{modifyDate}}"></ion-datetime>
           
@@ -97,9 +107,8 @@
           </ion-buttons>   
 
         </ion-item> -->
-      
 
-       <!-- <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      <!-- <ion-datetime-button datetime="datetime"></ion-datetime-button>
 
        <ion-modal [keepContentsMounted]="true">
          <ng-template>
@@ -107,19 +116,24 @@
          </ng-template>
        </ion-modal> -->
 
-
-
-        <ion-item>
+      <ion-item>
         <ion-label class="label-email" position="stacked">Handler</ion-label>
         <div class="email-input-container">
-          <ion-input class="input-email" type="text" formControlName="handler"></ion-input>
+          <ion-input
+            class="input-email"
+            type="text"
+            formControlName="handler"
+          ></ion-input>
         </div>
       </ion-item>
 
-      <ion-button class="otp-btn" expand="block" color="new-primary" type="submit">Next
+      <ion-button
+        class="otp-btn"
+        expand="block"
+        color="new-primary"
+        type="submit"
+        >Next
       </ion-button>
     </form>
-
   </div>
 </ion-content>
- 
