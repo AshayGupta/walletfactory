@@ -17,12 +17,6 @@ export class CreateProfilePage {
   profile: Profile;
   form: FormGroup;
   date;
-  currentDate: any;
-  modifyDate: any;
-  customPickerOptions: any;
-  focused = false;
-  birthday;
-  dateExample;
   isFormSubmit = true;
 
   constructor(
@@ -31,11 +25,8 @@ export class CreateProfilePage {
     public navCtrl: NavController,
     public router: Router,
     public formBuilder: FormBuilder,
-    private toastService: ToastService,
+    private toastService: ToastService
   ) {
-    this.currentDate = new Date();
-    this.modifyDate = this.datePipe.transform(this.currentDate, 'y-M-d');
-
     this.validateForm();
   }
 
@@ -44,12 +35,15 @@ export class CreateProfilePage {
       fName: ['', Validators.compose([Validators.required])],
       lName: ['', Validators.compose([Validators.required])],
       dob: ['', Validators.compose([Validators.required])],
-      handle: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      handle: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(4)]),
+      ],
     });
   }
 
   clickSave() {
-    if(!this.form.valid) {
+    if (!this.form.valid) {
       this.isFormSubmit = false;
       return;
     }
@@ -57,21 +51,13 @@ export class CreateProfilePage {
     let profileData: Profile = this.form.value;
     profileData['mobileNumber'] = localStorage.getItem('mobile');
     profileData.dob = profileData.dob.split('T')[0];
-    
-    this.profileService.saveProfile(profileData).subscribe(resp => {
+
+    this.profileService.saveProfile(profileData).subscribe((resp) => {
       const data: Profile = resp.data;
-      if(!data.error) {
+      if (!data.error) {
         this.router.navigate(['/tabs/tab-home']);
       }
       this.toastService.showToast(data.message);
     });
   }
-
-  onDateFocused() {
-    this.focused = true;
-  }
-
-  confirm(closeOverlay?: boolean) {}
-
-  cancel(closeOverlay?: boolean) {}
 }

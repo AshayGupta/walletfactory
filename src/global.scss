@@ -126,12 +126,12 @@ ion-footer {
 }
 
 .primary-btn {
-	height: 44px;
-	--border-radius: 22px;
-	font-size: 16px;
-	font-weight: 400;
-	--background: #541572;
-	color: #ffffff;
+	height: 44px !important;
+	--border-radius: 22px !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	--background: #541572 !important;
+	color: #ffffff !important;
 }
 
 .secondary-btn {
