@@ -22,8 +22,9 @@ export class OtpPage {
   submitAttempt: boolean = false;
   otpData = {
     otp: '',
-    phoneNumber: ''
+    phoneNumber: '',
   };
+  phone = ""
 
   constructor(
     public router: Router,
@@ -43,6 +44,7 @@ export class OtpPage {
   setupPage() {
     this.otpData.otp = this.activatedRoute.snapshot.params['otp'];
     this.otpData.phoneNumber = this.activatedRoute.snapshot.params['mobile'];
+    this.phone = this.otpData.phoneNumber.replace("+91", "+1")
   }
 
   changeFocus(inputToFocus) {
@@ -81,6 +83,9 @@ export class OtpPage {
           this.router.navigate(['/create-profile']);
         }
         this.toastService.showToast(data.message);
+      },
+      err => {
+        this.toastService.showToast(err);
       });
     }
     else {
