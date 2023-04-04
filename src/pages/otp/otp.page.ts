@@ -12,12 +12,10 @@ import { ToastService } from 'src/providers/plugin-services/toast.service';
   styleUrls: ['./otp.page.scss'],
 })
 export class OtpPage {
-  @ViewChild('codesInpunt0') codesInpunt0;
-  @ViewChild('codesInpunt1') codesInpunt1;
-  @ViewChild('codesInpunt2') codesInpunt2;
-  @ViewChild('codesInpunt3') codesInpunt3;
-  enteredCode: string = '';
-  code = Array();
+  @ViewChild('otp1') otp1;
+  @ViewChild('otp2') otp2;
+  @ViewChild('otp3') otp3;
+  @ViewChild('otp4') otp4;
   otpForm: FormGroup;
   submitAttempt: boolean = false;
   otpData = {
@@ -38,7 +36,7 @@ export class OtpPage {
   }
 
   ionViewDidEnter() {
-    this.codesInpunt0.setFocus();
+    this.otp1.setFocus();
   }
 
   setupPage() {
@@ -47,33 +45,20 @@ export class OtpPage {
     this.phone = this.otpData.phoneNumber.replace("+91", "+1")
   }
 
-  changeFocus(inputToFocus) {
-    switch (inputToFocus) {
-      case 1:
-        this.codesInpunt1.setFocus();
-        break;
-      case 2:
-        this.codesInpunt2.setFocus();
-        break;
-      case 3:
-        this.codesInpunt3.setFocus();
-        break;
-      case 4:
-        this.codesInpunt3.setFocus();
-        break;
+  otpController(event,next,prev) {
+    if(event.target.value.length < 1 && prev){
+      prev.setFocus()
     }
-    this.enteredCode =
-      this.code[0] + this.code[1] + this.code[2] + this.code[3];
-  }
-
-  resetCode() {
-    this.code = [];
+    else if(next && event.target.value.length > 0){
+      next.setFocus();
+    }
   }
 
   onSubmit() {
+    const enteredOtp = this.otp1.value + this.otp2.value + this.otp3.value + this.otp4.value;
     if (
-      this.enteredCode.length == 4 &&
-      this.enteredCode == this.otpData.otp
+      enteredOtp.length == 4 &&
+      enteredOtp == this.otpData.otp
     ) {
       this.otpService.verifyOtp(this.otpData).subscribe(resp => {
         const data: VerifyOtp = resp.data;
@@ -92,7 +77,7 @@ export class OtpPage {
       });
     }
     else {
-      this.codesInpunt0.setFocus();
+      this.otp1.setFocus();
       this.toastService.showToast();
     }
   }

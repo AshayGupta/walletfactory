@@ -21,38 +21,34 @@
       <ion-list formCodeValidate lines="none">
         <ion-item>
           <ion-input
-            #codesInpunt0
-            (keyup)="changeFocus(1)"
-            [(ngModel)]="code[0]"
+            #otp1
             type="tel"
             maxlength="1"
+            (keyup)="otpController($event,otp2,'')"
           ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input
-            #codesInpunt1
-            (keyup)="changeFocus(2)"
-            [(ngModel)]="code[1]"
+            #otp2
             type="tel"
             maxlength="1"
+            (keyup)="otpController($event,otp3,otp1)"
           ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input
-            #codesInpunt2
-            (keyup)="changeFocus(3)"
-            [(ngModel)]="code[2]"
+            #otp3
             type="tel"
             maxlength="1"
+            (keyup)="otpController($event,otp4,otp2)"
           ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input
-            #codesInpunt3
-            (keyup)="changeFocus(4)"
-            [(ngModel)]="code[3]"
+            #otp4
             type="tel"
             maxlength="1"
+            (keyup)="otpController($event,'',otp3)"
           ></ion-input>
         </ion-item>
       </ion-list>
