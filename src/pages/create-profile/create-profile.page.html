@@ -26,6 +26,11 @@
             formControlName="fName"
           ></ion-input>
         </div>
+        <ng-template [ngIf]="!isFormSubmit && form.controls['fName'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter first name</ion-label
+          >
+        </ng-template>
       </ion-item>
 
       <ion-item lines="none">
@@ -37,28 +42,12 @@
             formControlName="lName"
           ></ion-input>
         </div>
+        <ng-template [ngIf]="!isFormSubmit && form.controls['lName'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter last name</ion-label
+          >
+        </ng-template>
       </ion-item>
-
-      <!-- <ion-item>
-        <ion-label class="input-label" position="stacked">Email</ion-label>
-        <div class="input-container">
-          <ion-input class="input-email" type="text" formControlName="email"></ion-input>
-        </div>
-      </ion-item>
-
-      <ion-item>
-        <ion-label class="input-label" position="stacked">Phone Number</ion-label>
-        <div class="input-container">
-          <ion-input class="input-email" type="number" formControlName="phone"></ion-input>
-        </div>
-      </ion-item> -->
-
-      <!-- <ion-item>
-        <ion-label class="input-label" position="stacked">Date of Birth</ion-label>
-        <div class="input-container">
-          <ion-input class="input-email" type="text" formControlName="dob"></ion-input>
-        </div>
-      </ion-item> -->
       <ion-item lines="none">
         <ion-label class="input-label" position="stacked">Date of Birth</ion-label>
         <div class="input-container">
@@ -78,43 +67,13 @@
             ></ion-datetime>
           </ng-template>
         </ion-popover>
-      </ion-item>
 
-      <!-- <ion-list>
-          <ion-item>
-            <ion-label>Date of Birth</ion-label>
-            <ion-note slot="end" id="open-popover1">{{dateExample | date}}</ion-note>
-          </ion-item>
-          <ion-popover trigger="open-popover1" cssClass="width-80">
-            <ng-template>
-              <ion-datetime
-                presentation="date"
-                [(ngModel)]="dateExample"
-                size="cover"
-              ></ion-datetime>
-            </ng-template>
-          </ion-popover>
-        </ion-list> -->
-      <!--  -->
-      <!-- <ion-item class="">
-          <ion-label class="" position="floating">Date Of Birth</ion-label>
-          <ion-datetime required #dateTime  [showDefaultButtons]="true" [(ngModel)]="birthday" (ionFocus)="onDateFocused()"  formControlName="dob" value="{{modifyDate}}"></ion-datetime>
-          
-         <ion-buttons slot="buttons">
-            <ion-button color="danger" (click)="dateTime.reset()">Reset</ion-button>
-            <ion-button color="primary" (click)="dateTime.cancel()">Never mind</ion-button>
-            <ion-button color="primary" (click)="dateTime.confirm()">All Set</ion-button>
-          </ion-buttons>   
-
-        </ion-item> -->
-
-      <!-- <ion-datetime-button datetime="datetime"></ion-datetime-button>
-
-       <ion-modal [keepContentsMounted]="true">
-         <ng-template>
-           <ion-datetime id="datetime"></ion-datetime>
-         </ng-template>
-       </ion-modal> -->
+        <ng-template [ngIf]="!isFormSubmit && form.controls['dob'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter valid date of birth</ion-label
+          >
+        </ng-template>
+      </ion-item>    
 
       <ion-item lines="none">
         <ion-label class="input-label" position="stacked">Handle</ion-label>
