@@ -80,8 +80,9 @@
         <div class="input-container">
           <ion-input
             class="input-handle"
-            type="text"
+            type="number"
             formControlName="handle"
+            minlength="4"
           ></ion-input>
         </div>
         <ng-template [ngIf]="!isFormSubmit && form.controls['handle'].invalid">

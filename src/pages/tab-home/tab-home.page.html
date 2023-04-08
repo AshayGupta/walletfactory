@@ -2,7 +2,7 @@
 
   <ion-card class="wallet-detail-card">
     <ion-label class="info1">USD Wallet</ion-label>
-    <ion-label class="wallet-amt">USD 0.00</ion-label>
+    <ion-label class="wallet-amt">USD <span>0.</span>00</ion-label>
     <ion-img class="wallet-img" src="../../assets/project-icons/wallet/wallet.png"></ion-img>
   </ion-card>
 
@@ -20,11 +20,11 @@
   <ion-card (click)="showWalletLevelsPage()" class="wallet-card">  
     <ion-card-content class="wallet-card-content">
       <div>
-        <ion-img src="../../assets/project-icons/group930/group930.png"></ion-img>
+        <ion-img [src]='walletTypes[1].icon'></ion-img>
       </div>
       <div>
-        <ion-label class="lbl1">Standard Wallet</ion-label>
-        <p class="lbl2">Upgrade your wallet level to enjoy higher transaction limits</p>
+        <ion-label class="lbl1">{{walletTypes[1].title}}</ion-label>
+        <p class="lbl2">{{walletTypes[1].subTitle}}</p>
       </div>
       <div class="right-arrow">
         <ion-icon name="chevron-forward-outline"></ion-icon>

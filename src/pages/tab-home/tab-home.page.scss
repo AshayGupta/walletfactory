@@ -15,16 +15,20 @@
   .info1 {
     text-transform: capitalize;
   }
+
   .wallet-amt {
     margin: auto;
-    /* Layout Properties */
-       /* UI Properties */
-      text-align: left;
-      letter-spacing: NaNpx;
-      color: #FFFFFF;
-      text-transform: capitalize;
-      opacity: 1;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-transform: capitalize;
+
+    span {
+      font-size: 38px;
+    }
   }
+
   .wallet-img {
     width: 31px;
     height: 28px;
@@ -57,6 +61,7 @@ ion-slides {
       margin: auto;
     }
   }
+
   ion-label {
     font-size: 12px;
     font-weight: 600;
@@ -85,17 +90,19 @@ ion-slides {
   display: flex;
   gap: 10px;
   align-items: center;
-  
+
   ion-img {
     height: 53px;
     width: 53px;
   }
+
   .lbl1 {
     height: 23px;
     font-size: 14px;
     color: #571E60;
     font-weight: 600;
   }
+
   .lbl2 {
     font-size: 12px;
     color: #555;

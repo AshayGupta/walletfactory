@@ -11,12 +11,6 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class TabhomePage {
   result: any;
-
-
-
-  constructor(public navCtrl: NavController,private router: Router,
-    private actionSheetCtrl: ActionSheetController) {}
-
  
   cardsItems = [
     {"id":1,"name":"Cash In","icon-name":"arrow-right","icon":"/assets/project-icons/arrow-right/arrow-right.png"},
@@ -25,7 +19,17 @@ export class TabhomePage {
     {"id":4,"name":"Cash Out","icon-name":"arrow-down-outline","icon":"/assets/project-icons/arrow-right/arrow-right.png"},
     {"id":5,"name":"Scan To Pay","icon-name":"arrow-down-outline","icon":"/assets/project-icons/arrow-right/arrow-right.png"},
     {"id":6,"name":"All","icon-name":"arrow-down-outline","icon":"/assets/project-icons/arrow-right/arrow-right.png"}
-  ] 
+  ];
+  walletTypes = [
+    { title: "Standard Wallet", subTitle: "Upgrade your wallet level to enjoy higher transaction limits", icon: "../../assets/project-icons/group930/group930.png" },
+    { title: "Advanced Wallet", subTitle: "Enjoy High transaction limits.", icon: "../../assets/project-icons/group932/group932.png" }
+  ];
+
+  constructor(
+    public navCtrl: NavController,
+    private router: Router,
+    private actionSheetCtrl: ActionSheetController
+  ) {}
 
   goToClickOption(id:any):void{
     console.log(id);
