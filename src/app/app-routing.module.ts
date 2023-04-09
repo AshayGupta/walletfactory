@@ -100,7 +100,10 @@ const routes: Routes = [
     path: 'payment-method',
     loadChildren: () => import('../pages/payment-method/payment-method.module').then( m => m.PaymentMethodPageModule)
   },
- 
+  {
+    path: 'mx-account',
+    loadChildren: () => import('../pages/mx-account/mx-account.module').then( m => m.MxAccountPageModule)
+  },
   
 ];
 @NgModule({

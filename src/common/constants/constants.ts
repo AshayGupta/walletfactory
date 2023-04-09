@@ -12,4 +12,7 @@ export class ApiUrls {
   static readonly sendOtp = '/send-otp';
   static readonly verifyOtp = '/verify-otp';
   static readonly saveProfile = '/save-profile';
+  static readonly mxAccount = '/mx-widget-url';
+
+  
 }

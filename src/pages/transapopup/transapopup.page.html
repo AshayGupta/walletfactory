@@ -35,6 +35,12 @@
         <ion-label class="title-lbl">13534XXXX Successfully Add</ion-label>
         <ion-label class="sub-title-lbl">Feel Free to transaction</ion-label>
       </div>
+
+      <div class="popup-content transaction-content" *ngIf="PopupType.MX_ACCOUNT == popupToOpen">
+        <ion-img class="avatar-img" src="../../assets/project-imgs/avatar-icon/profile@2x.png"></ion-img>
+        <ion-label class="title-lbl">{{mxAccountMessage}}</ion-label>
+        <ion-label class="sub-title-lbl">Your MX Account ID : {{mx_userId}}</ion-label>
+        </div>  
       
     </ion-card>
 
@@ -50,5 +56,20 @@
       expand="block"
       (click)="addToFav()">Add to Favorites
     </ion-button>
+
+    <ion-button
+    *ngIf="PopupType.MX_ACCOUNT == popupToOpen"
+    class="primary-btn"
+    expand="block"
+    (click)="linkBankAccount()">Link Bank Account
+    </ion-button>
+ 
+    <ion-button
+    *ngIf="PopupType.MX_ACCOUNT == popupToOpen"
+    class="primary-btn"
+    expand="block"
+    (click)="skipAccountLink()">Skip Bank Link
+    </ion-button>
+
   </div>
 </ion-content>

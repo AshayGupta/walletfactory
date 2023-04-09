@@ -90,4 +90,6 @@ export enum PopupType {
     TRANSFER,
     CASH_OUT_TRANSFER,
     CARD_EDIT,
+    MX_ACCOUNT, 
+
 }

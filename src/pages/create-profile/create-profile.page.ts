@@ -1,12 +1,14 @@
-import { ToastService } from 'src/providers/plugin-services/toast.service';
+import { ToastService } from './../../providers/plugin-services/toast.service';
 import { ProfileService } from './../../providers/services/main-module-services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 import { DatePipe } from '@angular/common';
-import { Profile } from 'src/models/profile.model';
+import { Profile } from '../../models/profile.model';
+ import { MxAccount } from '../../models/profile.model';  
+ import { PopupType } from '../../common/enums/enums'; 
+
 
 @Component({
   selector: 'app-create-profile',
@@ -18,7 +20,8 @@ export class CreateProfilePage {
   form: FormGroup;
   date;
   isFormSubmit = true;
-
+  mx_redirecturl:any='http://cashdrop.v3ainfo.com/api/mx-linkbank-callback';
+ 
   constructor(
     private datePipe: DatePipe,
     private profileService: ProfileService,
@@ -52,12 +55,21 @@ export class CreateProfilePage {
     profileData['mobileNumber'] = localStorage.getItem('mobile');
     profileData.dob = profileData.dob.split('T')[0];
 
-    this.profileService.saveProfile(profileData).subscribe((resp) => {
+    this.profileService.saveProfile(profileData).subscribe((resp) => { 
       const data: Profile = resp.data;
       if (!data.error) {
-        this.router.navigate(['/tabs/tab-home']);
+        // this.router.navigate(['/tabs/tab-home']); 
+        let mxAccountData:any=new MxAccount();  
+        mxAccountData.guid=data.mxGuid; 
+        mxAccountData.mx_redirecturl=this.mx_redirecturl;  
+        this.profileService.mxCreateAccount(mxAccountData).subscribe((resp) => {  
+          const mxAccoutData: MxAccount = resp.data;              
+          if (!mxAccoutData.error) { 
+               this.router.navigate(['/transapopup', {  widgetUrl: encodeURI(mxAccoutData.widgetUrl),message:mxAccoutData.message,mx_userId: mxAccoutData.mx_userId,popupType: PopupType.MX_ACCOUNT}]);
+           } 
+         });
       }
-      this.toastService.showToast(data.message);
+      this.toastService.showToast(data.message); 
     });
   }
 }

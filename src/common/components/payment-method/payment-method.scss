@@ -1,0 +1,127 @@
+payment-method {
+  .apply-loan-head {
+    .toolbar-background-md {
+      padding: 17px;
+      background: #ffffff;
+      font-family: poppins;
+    }
+    .content-part {
+      padding: 8px;
+    }
+    .header-class {
+      font-size: 20px;
+      font-family: poppins;
+      font-weight: bold;
+      color: #0077be;
+      span {
+        color: #e42215;
+      }
+    }
+    .md-alarm {
+      color: #0077be;
+    }
+    .payment-header {
+      font-size: 20px;
+      font-family: poppins;
+      font-weight: 400;
+      color: #0077be;
+    }
+    .payment-option.col-12 {
+      width: 100%;
+      margin: 16px 0 16px 0;
+    }
+    .payment-option .col-4 {
+      width: 30%;
+      float: left;
+      text-align: center;
+      border: 1px solid#ccc;
+      border-radius: 10px;
+      margin-right: 10px;
+      padding: 10px 0 10px 0;
+    }
+    .payment-option .col-4 p {
+      font-family: roboto;
+      font-size: 9px;
+      font-weight: 400;
+      color: #707070;
+      text-transform: capitalize;
+    }
+    .payment-option .col-4 .img-maxHeight {
+      height: 56px;
+    }
+    .submitBtn {
+      background: #d6d6d6;
+      font-size: 14px;
+      font-family: roboto;
+      font-weight: 400;
+      color: #ffffff;
+      text-transform: uppercase;
+      height: 48px;
+      border-radius: 0;
+    }
+  }
+
+  page-payment-cart {
+    .apply-loan-head {
+      .toolbar-background-md {
+        padding: 17px;
+        background: #ffffff;
+        font-family: poppins;
+      }
+    }
+  }
+  .content-part {
+    padding: 8px;
+  }
+  .header-class {
+    font-size: 20px;
+    font-family: poppins;
+    font-weight: bold;
+    color: #0077be;
+    span {
+      color: #e42215;
+    }
+  }
+  .md-alarm {
+    color: #0077be;
+  }
+  .payment-header {
+    font-size: 20px;
+    font-family: poppins;
+    font-weight: 400;
+    color: #0077be;
+  }
+  .payment-option.col-12 {
+    width: 100%;
+    margin: 16px 0 16px 0;
+  }
+  .payment-option .col-4 {
+    width: 30%;
+    float: left;
+    text-align: center;
+    border: 1px solid#ccc;
+    border-radius: 10px;
+    margin-right: 10px;
+    padding: 10px 0 10px 0;
+  }
+  .payment-option .col-4 p {
+    font-family: roboto;
+    font-size: 9px;
+    font-weight: 400;
+    color: #707070;
+    text-transform: capitalize;
+  }
+  .payment-option .col-4 .img-maxHeight {
+    height: 56px;
+  }
+  .submitBtn {
+    background: #d6d6d6;
+    font-size: 14px;
+    font-family: roboto;
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+    height: 48px;
+    border-radius: 0;
+  }
+}
