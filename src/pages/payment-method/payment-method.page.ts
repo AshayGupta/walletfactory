@@ -6,18 +6,20 @@ import { Router } from '@angular/router';
   templateUrl: './payment-method.page.html',
   styleUrls: ['./payment-method.page.scss'],
 })
-export class PaymentMethodPage implements OnInit {
+export class PaymentMethodPage {
+  
+  constructor(public router: Router) {}
 
-  constructor(public router:Router) { }
+  banksList = [
+    { id: 1, name: "Bank of America", icon: "../../assets/project-icons/bank/bank.png" },
+    { id: 2, name: "City Bank", icon: "../../assets/project-icons/bank/bank.png" }
+  ];
 
-  ngOnInit() {
+  openBankAccount(bank) {
+    console.log(bank);
   }
 
-  openBankAccount(bankName){
-console.log(bankName);
-  }
-  openAddAccount(){
-    this.router.navigate(['/add-account']);  //add-account
-
+  openAddAccount() {
+    this.router.navigate(['/add-account']);
   }
 }

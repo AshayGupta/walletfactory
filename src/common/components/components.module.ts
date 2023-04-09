@@ -3,7 +3,6 @@ import { PageSegmentsComponent } from './page-segments/page-segments';
 import { IonicModule } from 'ionic-angular';
 import { CommonModule } from '@angular/common';
 import { AppHeaderComponent } from './app-header/app-header';
-import { PaymentMethodComponent } from './payment-method/payment-method';
 
 @NgModule({
 	declarations: [
@@ -17,8 +16,7 @@ import { PaymentMethodComponent } from './payment-method/payment-method';
 	],
 	exports: [
 		PageSegmentsComponent,
-		AppHeaderComponent,
-		PaymentMethodComponent
+		AppHeaderComponent
 	]
 })
 export class ComponentsModule { }

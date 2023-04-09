@@ -1,54 +1,32 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button icon="caret-back"></ion-back-button>
+      <ion-back-button text="Payment Method" icon="caret-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>Payment Method</ion-title>
-
-   </ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding [fullscreen]="true">
-
   <div class="page-container">
     <div class="header">
       <h1>Payment Method</h1>
       <h2>You can link here your account</h2>
     </div>
 
+    <div class="acc-card-list">
+      <ion-card *ngFor="let bank of banksList" (click)="openBankAccount(bank.id)" class="account-card">
+        <ion-card-content class="account-card-content">
+          <ion-img src="{{bank.icon}}"></ion-img>
+          <ion-label class="lbl-bankName">{{bank.name}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </div>
 
-    <ion-card (click)="openBankAccount('bankOfAmerica')" class="wallet-card">
-      <ion-card-content class="wallet-card-content">
-        <div>
-          <ion-img src="../../assets/project-icons/bank/bank.png"></ion-img>
-        </div>
-        <div>
-          <ion-label class="lbl1">Bank of America</ion-label>
-        </div>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card (click)="openBankAccount('citybank')" class="wallet-card">
-      <ion-card-content class="wallet-card-content">
-        <div>
-          <ion-img src="../../assets/project-icons/bank/bank.png"></ion-img>
-        </div>
-        <div>
-          <ion-label class="lbl1">City Bank</ion-label>
-        </div>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-item>
-      <div class="imgContainor">
-        <ion-img class="iconImage" src="../../assets/project-icons/bank/bank.png"></ion-img>
-
+    <ion-item style="margin-top: 35px;" lines="none">
+      <div class="imgContainer">
+        <ion-img class="bank_icon" src="../../assets/project-icons/bank/bank.png"></ion-img>
       </div>
-
-      <span (click)="openAddAccount()" class="labelAddaccount">Add Bank Account</span>
-
+      <ion-label class="add_bank-lbl" (click)="openBankAccount('')">Add Bank Account</ion-label>
     </ion-item>
-
   </div>
 </ion-content>
