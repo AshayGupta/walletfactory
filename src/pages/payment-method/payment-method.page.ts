@@ -15,11 +15,11 @@ export class PaymentMethodPage {
     { id: 2, name: "City Bank", icon: "../../assets/project-icons/bank/bank.png" }
   ];
 
-  openBankAccount(bank) {
+  selectBank(bank) {
     console.log(bank);
   }
 
-  openAddAccount() {
+  addBank() {
     this.router.navigate(['/add-account']);
   }
 }

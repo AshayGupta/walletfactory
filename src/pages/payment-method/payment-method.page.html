@@ -14,7 +14,7 @@
     </div>
 
     <div class="acc-card-list">
-      <ion-card *ngFor="let bank of banksList" (click)="openBankAccount(bank.id)" class="account-card">
+      <ion-card *ngFor="let bank of banksList" (click)="selectBank(bank.id)" class="account-card">
         <ion-card-content class="account-card-content">
           <ion-img src="{{bank.icon}}"></ion-img>
           <ion-label class="lbl-bankName">{{bank.name}}</ion-label>
@@ -26,7 +26,7 @@
       <div class="imgContainer">
         <ion-img class="bank_icon" src="../../assets/project-icons/bank/bank.png"></ion-img>
       </div>
-      <ion-label class="add_bank-lbl" (click)="openBankAccount('')">Add Bank Account</ion-label>
+      <ion-label class="add_bank-lbl" (click)="addBank()">Add Bank Account</ion-label>
     </ion-item>
   </div>
 </ion-content>
