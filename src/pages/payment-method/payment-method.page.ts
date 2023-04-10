@@ -8,6 +8,8 @@ import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/n
 import { Profile } from '../../models/profile.model';
 
 import { ToastService } from './../../providers/plugin-services/toast.service';
+import { LoaderService } from './../../providers/plugin-services/loader.service';
+
 import { ProfileService } from './../../providers/services/main-module-services/profile.service';
 import { NavController } from '@ionic/angular';
 
@@ -32,7 +34,8 @@ export class PaymentMethodPage {
     public platform: Platform,
     private profileService: ProfileService,
     public navCtrl: NavController,
-    private toastService: ToastService) {
+    private toastService: ToastService,
+    private loader:LoaderService) {
 
       this.guid=localStorage.getItem('guid'); 
     }
@@ -54,12 +57,14 @@ export class PaymentMethodPage {
     this.getMXWidgetURL();
   }
 
-  getMXWidgetURL() {
+  getMXWidgetURL() { 
     
         let mxAccountData:any=new MxAccount();  
         mxAccountData.guid= this.guid; 
         // mxAccountData.mx_redirecturl=this.mx_redirecturl;  
-        this.profileService.mxCreateAccount(mxAccountData).subscribe((resp) => {  
+        this.loader.showLoading();
+        this.profileService.mxCreateAccount(mxAccountData).subscribe((resp) => { 
+        this.loader.dismissLoader();   
           const mxAccoutData: MxAccount = resp.data;              
           if (!mxAccoutData.error) { 
             this.widgetUrl=mxAccoutData.widgetUrl; 
@@ -70,15 +75,15 @@ export class PaymentMethodPage {
   linkBankAccount(){ 
     const options: InAppBrowserOptions = {
       location: 'no',
-      clearcache: 'yes',
       zoom: 'no',
-      toolbar: 'yes',
+      toolbar: 'no',
       closebuttoncaption: 'close',
-      clearsessioncache: 'yes',
-      toolbarcolor: "#488aff",
-      hideurlbar: "yes",
-      closebuttoncolor: "#fff",
-      navigationbuttoncolor: "#fff"
+      clearcache: 'yes',
+      // clearsessioncache: 'yes',
+      // toolbarcolor: "#488aff",
+      // hideurlbar: "yes",
+      // closebuttoncolor: "#fff",
+      // navigationbuttoncolor: "#fff"
      };    
     
        this.platform.ready().then( () => { 

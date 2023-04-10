@@ -8,6 +8,8 @@ import { DatePipe } from '@angular/common';
 import { Profile } from '../../models/profile.model';
  import { MxAccount } from '../../models/profile.model';  
  import { PopupType } from '../../common/enums/enums'; 
+ import { LoaderService } from './../../providers/plugin-services/loader.service';
+
 
 
 @Component({
@@ -28,7 +30,8 @@ export class CreateProfilePage {
     public navCtrl: NavController,
     public router: Router,
     public formBuilder: FormBuilder,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private loader:LoaderService
   ) {
     this.validateForm();
   }
@@ -55,6 +58,8 @@ export class CreateProfilePage {
     profileData['mobileNumber'] = localStorage.getItem('mobile');
     profileData.dob = profileData.dob.split('T')[0];
 
+    this.loader.showLoading();
+
     this.profileService.saveProfile(profileData).subscribe((resp) => { 
       const data: Profile = resp.data;
       if (!data.error) {
@@ -63,9 +68,10 @@ export class CreateProfilePage {
         mxAccountData.guid=data.mxGuid; 
         mxAccountData.mx_redirecturl=this.mx_redirecturl;  
         this.profileService.mxCreateAccount(mxAccountData).subscribe((resp) => {  
+        this.loader.dismissLoader();   
           const mxAccoutData: MxAccount = resp.data;              
           if (!mxAccoutData.error) { 
-               this.router.navigate(['/transapopup', {  widgetUrl: encodeURI(mxAccoutData.widgetUrl),message:mxAccoutData.message,mx_userId: mxAccoutData.mx_userId,popupType: PopupType.MX_ACCOUNT}]);
+            this.router.navigate(['/transapopup', {  widgetUrl: encodeURI(mxAccoutData.widgetUrl),message:mxAccoutData.message,mx_userId: mxAccoutData.mx_userId,popupType: PopupType.MX_ACCOUNT}]);
            } 
          });
       }

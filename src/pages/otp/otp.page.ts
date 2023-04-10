@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { ToastService } from 'src/providers/plugin-services/toast.service';
+import { LoaderService } from './../../providers/plugin-services/loader.service';
+
 
 @Component({
   selector: 'app-otp',
@@ -31,6 +33,7 @@ export class OtpPage {
     private toastService: ToastService,
     public activatedRoute: ActivatedRoute,
     private otpService: OtpService,
+    private loader:LoaderService
   ) {
     this.setupPage();
   }
@@ -60,8 +63,10 @@ export class OtpPage {
       enteredOtp.length == 4 &&
       enteredOtp == this.otpData.otp
     ) {
+      this.loader.showLoading();
       this.otpService.verifyOtp(this.otpData).subscribe(resp => {
         const data: VerifyOtp = resp.data; 
+        this.loader.dismissLoader();   
         if (!data.error) {
          localStorage.setItem("guid", data.guid);   
           if(data.isProfileComplete) {

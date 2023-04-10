@@ -1,4 +1,6 @@
-import { ToastService } from 'src/providers/plugin-services/toast.service';
+import { ToastService } from './../providers/plugin-services/toast.service';
+import { LoaderService } from './../providers/plugin-services/loader.service';
+
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +27,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   providers: [
     DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ToastService,InAppBrowser
+    ToastService,LoaderService,InAppBrowser
   ],
   bootstrap: [AppComponent],
 })

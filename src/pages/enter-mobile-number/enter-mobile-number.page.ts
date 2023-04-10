@@ -1,4 +1,6 @@
 import { OtpService } from './../../providers/services/auth/otp.service';
+import { LoaderService } from './../../providers/plugin-services/loader.service';
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -23,7 +25,8 @@ export class EnterMobileNumberPage {
   constructor(
     public router: Router,
     public formBuilder: FormBuilder,
-    private otpService: OtpService
+    private otpService: OtpService,
+    private loader:LoaderService
   ) {
     this.validateForm();
   }
@@ -48,8 +51,10 @@ export class EnterMobileNumberPage {
     }
 
     const phoneNumber = "+91"+this.form.controls['phoneNumber'].value;
+    this.loader.showLoading();
     this.otpService.sendOtp(phoneNumber).subscribe(resp => {
       console.log('send otp resp', resp);
+      this.loader.dismissLoader();   
       localStorage.setItem('mobile', phoneNumber);
       this.router.navigate(['/otp', {otp: resp.data.otp, mobile: resp.data.mobileNumber}]);
     });
