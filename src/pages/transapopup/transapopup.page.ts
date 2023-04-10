@@ -24,7 +24,7 @@ export class TransapopupPage implements OnInit {
   constructor(
     private router: Router,
     public activatedRoute: ActivatedRoute,
-      private _iab: InAppBrowser,
+    private _iab: InAppBrowser,
     public platform: Platform
   ) { }
 
@@ -70,7 +70,12 @@ export class TransapopupPage implements OnInit {
       clearcache: 'yes',
       zoom: 'no',
       toolbar: 'yes',
-      closebuttoncaption: 'close'
+      closebuttoncaption: 'close',
+      clearsessioncache: 'yes',
+      toolbarcolor: "#488aff",
+      hideurlbar: "yes",
+      closebuttoncolor: "#fff",
+      navigationbuttoncolor: "#fff"
      };    
     
        this.platform.ready().then( () => { 

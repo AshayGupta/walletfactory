@@ -61,8 +61,9 @@ export class OtpPage {
       enteredOtp == this.otpData.otp
     ) {
       this.otpService.verifyOtp(this.otpData).subscribe(resp => {
-        const data: VerifyOtp = resp.data;
+        const data: VerifyOtp = resp.data; 
         if (!data.error) {
+         localStorage.setItem("guid", data.guid);   
           if(data.isProfileComplete) {
             this.router.navigate(['/tabs/tab-home']);
           }

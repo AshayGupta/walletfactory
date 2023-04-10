@@ -12,4 +12,5 @@ export interface VerifyOtp {
     sec: number;
     error: boolean;
     message: string;
+    guid:string
 }
