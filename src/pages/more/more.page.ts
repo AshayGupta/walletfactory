@@ -28,6 +28,7 @@ export class MorePage {
     this.router.navigate(['/legal']);
   }
   logout() {
-    alert('Logout Action');
-  }
+     localStorage.clear(); 
+     this.router.navigate(['']); 
+   }
 }

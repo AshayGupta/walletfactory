@@ -7,7 +7,7 @@ export class LoaderService {
 
      private count: number = 0;
      loading;
-    constructor(private loadingCtrl: LoadingController) {
+    constructor(private loadingCtrl: LoadingController) { 
         console.log('LoaderService');
     }
 
@@ -16,7 +16,7 @@ export class LoaderService {
         if (this.count == 1) {
         this.loading = await this.loadingCtrl.create({
           message: 'Loading....',
-          duration: 180000,
+          duration: 500,
         });    
         this.loading.present();
         }

@@ -65,8 +65,8 @@ export class OtpPage {
     ) {
       this.loader.showLoading();
       this.otpService.verifyOtp(this.otpData).subscribe(resp => {
-        const data: VerifyOtp = resp.data; 
         this.loader.dismissLoader();   
+        const data: VerifyOtp = resp.data; 
         if (!data.error) {
          localStorage.setItem("guid", data.guid);   
           if(data.isProfileComplete) {
