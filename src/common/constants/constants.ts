@@ -13,6 +13,8 @@ export class ApiUrls {
   static readonly verifyOtp = '/verify-otp';
   static readonly saveProfile = '/save-profile';
   static readonly mxAccount = '/mx-widget-url';
+  static readonly mx_bank_list='/mx-linkbank-callback';
+
 
   
 }

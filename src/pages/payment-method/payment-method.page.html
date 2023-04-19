@@ -6,7 +6,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding [fullscreen]="true">
+<ion-content padding [fullscreen]="true">  
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
   <div class="page-container">
     <div class="header">
       <h1>Payment Method</h1>
@@ -26,7 +36,8 @@
       <div class="imgContainer">
         <ion-img class="bank_icon" src="../../assets/project-icons/bank/bank.png"></ion-img>
       </div>
-      <ion-label class="add_bank-lbl" (click)="linkBankAccount()">Add Bank Account</ion-label>
+      <!-- <ion-label class="add_bank-lbl" (click)="linkBankAccount()">Add Bank Account</ion-label> -->
+      <ion-button (click)="linkBankAccount()" class="apply-btn" expand="block" color="new-primary" type="submit">Add Bank Account </ion-button>
     </ion-item>
   </div>
 </ion-content>

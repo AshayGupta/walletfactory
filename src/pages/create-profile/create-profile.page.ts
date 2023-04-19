@@ -1,12 +1,14 @@
 import { ToastService } from './../../providers/plugin-services/toast.service';
 import { ProfileService } from './../../providers/services/main-module-services/profile.service';
+import { MxBankAccountService } from './../../providers/services/main-module-services/mx-bank-accounts.service';
+
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Profile } from '../../models/profile.model';
- import { MxAccount } from '../../models/profile.model';  
+ import { MxAccount } from '../../models/mxBank.model';  
  import { PopupType } from '../../common/enums/enums'; 
  import { LoaderService } from './../../providers/plugin-services/loader.service';
 
@@ -27,6 +29,7 @@ export class CreateProfilePage {
   constructor(
     private datePipe: DatePipe,
     private profileService: ProfileService,
+    private mxBankService: MxBankAccountService,    
     public navCtrl: NavController,
     public router: Router,
     public formBuilder: FormBuilder,
@@ -63,11 +66,10 @@ export class CreateProfilePage {
     this.profileService.saveProfile(profileData).subscribe((resp) => { 
       const data: Profile = resp.data;
       if (!data.error) {
-        // this.router.navigate(['/tabs/tab-home']); 
         let mxAccountData:any=new MxAccount();  
         mxAccountData.guid=data.mxGuid; 
         mxAccountData.mx_redirecturl=this.mx_redirecturl;  
-        this.profileService.mxCreateAccount(mxAccountData).subscribe((resp) => {  
+        this.mxBankService.mxCreateAccount(mxAccountData).subscribe((resp) => {  
         this.loader.dismissLoader();   
           const mxAccoutData: MxAccount = resp.data;              
           if (!mxAccoutData.error) { 

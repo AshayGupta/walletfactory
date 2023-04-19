@@ -16,7 +16,7 @@ export class LoaderService {
         if (this.count == 1) {
         this.loading = await this.loadingCtrl.create({
           message: 'Loading....',
-          duration: 500,
+          duration: 1000,
         });    
         this.loading.present();
         }

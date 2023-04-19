@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { MxaccountPage } from './mxaccount.page';
 
+
 describe('MxaccountPage', () => {
   let component: MxaccountPage;
   let fixture: ComponentFixture<MxaccountPage>;

@@ -104,6 +104,10 @@ const routes: Routes = [
     path: 'mx-account',
     loadChildren: () => import('../pages/mx-account/mx-account.module').then( m => m.MxAccountPageModule)
   },
+  {
+    path: 'mxaccount',
+    loadChildren: () => import('../pages/mxaccount/mxaccount.module').then( m => m.MxaccountPageModule)
+  },
   
 ];
 @NgModule({

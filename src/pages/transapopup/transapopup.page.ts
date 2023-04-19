@@ -2,7 +2,8 @@ import { TransactionPopup } from './../../models/transactionPopup.interface';
 import { PopupType } from './../../common/enums/enums';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
- import { MxAccount } from '../../../src/models/profile.model';  
+  import { MxAccount } from '../../../src/models/mxBank.model';  
+
  import { Platform } from '@ionic/angular';
 import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 

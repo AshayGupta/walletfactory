@@ -1,7 +1,46 @@
-<ion-content>
-  
- 
-      <!-- <iframe width="100%" height="100%"  src="{{safeSrc}}"    ></iframe> -->
-      <!-- [src]="safeSrc" -->
+<div style="height: 100%;" id="outerdiv">
+  <iframe title="mxaccount"  allowFullScreen frameBorder="0" loading="lazy" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" allow-popups  allow="fullscreen" class="iframeData" [src]="safeURL"   id="inneriframe" scrolling="yes">
+      
+  </iframe> 
+</div> 
 
- </ion-content>
+<!-- <ion-content>
+  
+</ion-content> -->
+  
+      <!-- <script src="https://atrium.mx.com/connect.js"></script>
+      /**
+       * The reference to "atrium" is a holdover from a legacy API.
+       * Nevertheless, this is still the correct source for the widget loader
+       * even in the context of the Platform API.
+       */
+      
+      <script>
+      var mxConnect = new window.MXConnect({
+        id: "connect-widget",
+        iframeTitle: "Connect",
+        /**
+         * Callback that for handling all events within Connect.
+         * Only called in  ui_message_version 4 or higher.
+         *
+         * The events called here are the same events that come through post
+         * messages.
+         */
+        onEvent: function (type, payload) {
+          console.log("onEvent", type, payload);
+          if (type === "mx/connect/memberConnected") {
+            myApp.handleSuccessfulConnection(payload)
+          }
+        },
+        targetOrigin: "*",
+        config: { ui_message_version: 4 },
+      })
+      </script> --> 
+ 
+    <!-- <iframe width="100%" height="100%"  [src]="widget_url "  ></iframe>   -->
+      <!-- [src]="safeSrcURL" src="{{safeSrcURL}}"-->
+    
+     
+       
+
+

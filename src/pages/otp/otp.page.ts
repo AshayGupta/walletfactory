@@ -69,6 +69,7 @@ export class OtpPage {
         const data: VerifyOtp = resp.data; 
         if (!data.error) {
          localStorage.setItem("guid", data.guid);   
+         localStorage.setItem("handle", data['handle']);            
           if(data.isProfileComplete) {
             this.router.navigate(['/tabs/tab-home']);
           }
