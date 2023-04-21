@@ -1,3 +1,4 @@
+import { Utils } from './../../../common/utils/utils';
 import { Profile} from '../../../models/profile.model';
 import { ApiUrls } from './../../../common/constants/constants';
 import { Injectable } from '@angular/core';
@@ -8,15 +9,12 @@ import { HttpService } from '../httpService';
 })
 export class ProfileService {
 
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService
+    ) {}
 
   saveProfile(profileData: Profile) {
-    const keys = Object.keys(profileData);
-
-    const form = new FormData();
-    for(let i=0; i<keys.length; i++) {
-      form.append(keys[i], profileData[keys[i]]);
-    }
+    const form = Utils.formData(profileData);
     return this.httpService.post(ApiUrls.saveProfile, form);
   } 
 

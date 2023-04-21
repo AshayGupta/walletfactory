@@ -14,6 +14,7 @@ export class ApiUrls {
   static readonly saveProfile = '/save-profile';
   static readonly mxAccount = '/mx-widget-url';
   static readonly mx_bank_list='/mx-linkbank-callback';
+  static readonly addFav='/add-favourite';
 
 
   

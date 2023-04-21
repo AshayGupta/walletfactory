@@ -1,3 +1,4 @@
+import { Utils } from './../../../common/utils/utils';
 import { MxAccount,MXBankList } from '../../../models//mxBank.model';   
 import { ApiUrls } from './../../../common/constants/constants';
 import { Injectable } from '@angular/core';
@@ -11,20 +12,12 @@ export class MxBankAccountService {
   constructor(private httpService: HttpService) {}
 
   mxCreateAccount(mxAccountData: MxAccount) {  
-    const keys = Object.keys(mxAccountData); 
-    const form = new FormData();
-    for(let i=0; i<keys.length; i++) {
-      form.append(keys[i], mxAccountData[keys[i]]);
-    }
+    const form = Utils.formData(mxAccountData);
     return this.httpService.post(ApiUrls.mxAccount, form); 
   }
 
   mxBankList(mxbankListData:MXBankList) {  
-    const keys = Object.keys(mxbankListData); 
-    const form = new FormData();
-    for(let i=0; i<keys.length; i++) {
-      form.append(keys[i], mxbankListData[keys[i]]); 
-    }
+    const form = Utils.formData(mxbankListData);
     return this.httpService.post(ApiUrls.mx_bank_list, form); 
   }
   
