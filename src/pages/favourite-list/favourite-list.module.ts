@@ -1,3 +1,4 @@
+import { FavouriteService } from './../../providers/services/main-module-services/favourite.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +17,6 @@ import { FavouriteListPage } from './favourite-list.page';
     FavouriteListPageRoutingModule
   ],
   declarations: [FavouriteListPage],
-  providers: []
+  providers: [FavouriteService]
 })
 export class FavouriteListPageModule {}

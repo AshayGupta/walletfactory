@@ -1,3 +1,4 @@
+import { PopupType } from './../../common/enums/enums';
 import { Component,OnInit,ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -99,5 +100,13 @@ export class TabhomePage {
 //   const result = await actionSheet.onDidDismiss();
 //   this.result = JSON.stringify(result, null, 2);
 // }
+
+addFav() {
+  this.router.navigate(['/transapopup', {popupType: PopupType.SEND_MONEY}]);
+}
+
+showFav() {
+  this.router.navigate(['/favourite-list']);
+}
 
 }

@@ -1,3 +1,4 @@
+import { FavouriteService } from './../../providers/services/main-module-services/favourite.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,15 @@ export class FavouriteListPage {
   public data = ['Amsterdam', 'Buenos Aires', 'Cairo', 'Geneva', 'Hong Kong', 'Istanbul', 'London', 'Madrid', 'New York', 'Panama City'];
   public results = [...this.data];
 
-  constructor() { }
+  constructor(
+    private favService: FavouriteService
+  ) { }
+
+  OnInit() {
+    this.favService.show({userHandle: 1234}).subscribe(resp => {
+      console.log('fav list', resp);
+    });
+  }
 
   handleSearch(event) {
     const query = event.target.value.toLowerCase();

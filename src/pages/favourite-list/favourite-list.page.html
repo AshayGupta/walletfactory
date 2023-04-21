@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>favouriteLis</ion-title>
+    <ion-title>favouriteList</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,9 +9,6 @@
     <ion-searchbar show-clear-button="always" [debounce]="500" (ionInput)="handleSearch($event)" class="searchbar"></ion-searchbar>
 
     <ion-list lines="none">
-      <!-- <ion-item *ngFor="let result of results" class="list-item">
-        <ion-label>{{ result }}</ion-label>
-      </ion-item> -->
       <ion-item class="list-item" *ngFor="let result of results">
         <ion-avatar slot="start" class="card-avatar">
           <img src="./assets/img/profile.png" />

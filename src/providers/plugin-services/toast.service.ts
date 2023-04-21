@@ -7,7 +7,7 @@ export class ToastService {
 
   async showToast(msg = "") {
     let toast = await this.toastCtrl.create({
-      message: msg || 'Enter valid otp',
+      message: msg || 'Error occured',
       duration: 2000,
       position: 'bottom',
     });
