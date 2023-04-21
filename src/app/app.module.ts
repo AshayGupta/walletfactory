@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+// import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SafePipe } from './safe.pipe'; 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { SafePipe } from './safe.pipe';
   providers: [
     DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ToastService,LoaderService,InAppBrowser
+    ToastService,LoaderService,
+    // InAppBrowser
   ],
   bootstrap: [AppComponent],
 })
