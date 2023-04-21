@@ -1,3 +1,4 @@
+import { Favourite } from './../../../models/favourite.model';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopupType } from 'src/common/enums/enums';
@@ -9,11 +10,13 @@ import { PopupType } from 'src/common/enums/enums';
 })
 export class TransferMoneyPage {
 
-  constructor(private router: Router ) { }
+  public transfer = {
+    amount: "500",
+    to: "",
+    note: ""
+  };
 
-  onConfirm() {
-    this.router.navigate(['/transapopup', { popupType: PopupType.SEND_MONEY}]);
-  }
+  constructor(private router: Router ) { }
 
   handleContacts() {
     this.router.navigate(['/contacts-list']);
@@ -22,4 +25,16 @@ export class TransferMoneyPage {
   showFavourites() {
     this.router.navigate(['/favourite-list']);
   }
+
+  onConfirm() {
+    if(!this.transfer.amount || !this.transfer.to) return;
+
+    const fav: Favourite = {
+      sourceHandle: localStorage.getItem('handle'),
+      destinationHandle: this.transfer.to,
+      amount: this.transfer.amount
+    };
+    this.router.navigate(['/transapopup', { popupType: PopupType.SEND_MONEY, addToFav: fav}]);
+  }
+
 }

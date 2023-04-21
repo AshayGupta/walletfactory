@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './favourite-list.page.html',
   styleUrls: ['./favourite-list.page.scss'],
 })
-export class FavouriteListPage {
+export class FavouriteListPage implements OnInit {
 
   public data = ['Amsterdam', 'Buenos Aires', 'Cairo', 'Geneva', 'Hong Kong', 'Istanbul', 'London', 'Madrid', 'New York', 'Panama City'];
   public results = [...this.data];
@@ -15,7 +15,7 @@ export class FavouriteListPage {
     private favService: FavouriteService
   ) { }
 
-  OnInit() {
+  ngOnInit() {
     this.favService.show({userHandle: 1234}).subscribe(resp => {
       console.log('fav list', resp);
     });

@@ -20,14 +20,14 @@
       <ion-label>To</ion-label>
     </ion-item>
     <ion-item class="contact-item">
-      <ion-input type="text" placeholder="+1"></ion-input>
+      <ion-input type="text" placeholder="+1" [value]="transfer.to"></ion-input>
       <ion-button class="contact-btn" (click)="handleContacts()">
         <ion-img src="../../assets/project-icons/group934/group934.svg"></ion-img>
         <ion-label>Contacts</ion-label>
       </ion-button>
     </ion-item>
     <ion-item class="item-note">
-      <ion-input type="text" placeholder="Note"></ion-input>
+      <ion-input type="text" placeholder="Note" [(ngModel)]="transfer.note"></ion-input>
     </ion-item>
   </ion-list>
   

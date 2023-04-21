@@ -1,23 +1,19 @@
-<ion-header [translucent]="true">
+<ion-header style="--background: #fff">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button icon="caret-back"><ion-title>Contacts List</ion-title></ion-back-button>
+      <ion-back-button text="Contacts List" icon="caret-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <div class="app-container">
     <ion-searchbar show-clear-button="always" [debounce]="500" (ionInput)="handleSearch($event)" class="searchbar"></ion-searchbar>
 
     <ion-list lines="none">
       <ion-item class="list-item" *ngFor="let result of results">
-        <ion-avatar slot="start" class="card-avatar">
-          <img src="./assets/img/profile.png" />
-        </ion-avatar>
         <ion-label>
-          <h2 class="card-title">Settings</h2>
-          <p class="card-sub-title">Change Language, PIN, etc.</p>
+          <h2 class="card-title">{{result}}</h2>
         </ion-label>
       </ion-item>
     </ion-list>

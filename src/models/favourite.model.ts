@@ -1,6 +1,6 @@
 export interface Favourite {
     sourceHandle?: string;
-    destinationHandle?: number;
-    amount?: number;
+    destinationHandle?: string;
+    amount?: string;
     userHandle?: number;
 }

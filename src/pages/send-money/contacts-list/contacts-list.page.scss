@@ -1,0 +1,29 @@
+ion-content, ion-toolbar {
+    --background: #DBE6E9;
+}
+
+.searchbar {
+    --background: #F5F7FA;
+    --color: #555555;
+    --placeholder-color: #6E8B93;
+    --icon-color: #6E8B93;
+    --clear-button-color: #6E8B93;
+}
+
+ion-list {
+    margin: 12px;
+    background: transparent;
+}
+
+.list-item {
+    height: 60px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 13px;
+    box-shadow: 0px 3px 6px #00000029;
+    .card-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: #555555;
+    }
+}

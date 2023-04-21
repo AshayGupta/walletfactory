@@ -71,13 +71,7 @@ export class TransapopupPage implements OnInit {
   }
 
   addToFav() {
-    let fav: Favourite = {
-      sourceHandle: 'a',
-      destinationHandle: 4,
-      amount: 123,
-    };
-
-    this.favService.add(fav).subscribe(resp => {
+    this.favService.add(this.activatedRoute.snapshot.params['addToFav']).subscribe(resp => {
       if(resp.status == "200" && !resp.data.error) {
       }
       this.toastService.showToast(resp.data.message);

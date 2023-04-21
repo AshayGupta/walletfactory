@@ -1,11 +1,9 @@
+import { HandleService } from './../../../providers/services/main-module-services/handle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { ContactsListPageRoutingModule } from './contacts-list-routing.module';
-
 import { ContactsListPage } from './contacts-list.page';
 
 @NgModule({
@@ -15,6 +13,9 @@ import { ContactsListPage } from './contacts-list.page';
     IonicModule,
     ContactsListPageRoutingModule
   ],
-  declarations: [ContactsListPage]
+  declarations: [ContactsListPage],
+  providers: [
+    HandleService
+  ]
 })
 export class ContactsListPageModule {}
