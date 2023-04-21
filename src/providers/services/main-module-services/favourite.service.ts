@@ -16,4 +16,8 @@ export class FavouriteService {
     return this.httpService.post(ApiUrls.addFav, form);
   }  
 
+  show(fav: Favourite) {
+    const form = Utils.formData(fav);
+    return this.httpService.post(ApiUrls.favList, form);
+  }
 }

@@ -1,5 +1,6 @@
-export class Favourite {
-    sourceHandle: string;
-    destinationHandle: number;
-    amount: number;
+export interface Favourite {
+    sourceHandle?: string;
+    destinationHandle?: number;
+    amount?: number;
+    userHandle?: string;
 }
