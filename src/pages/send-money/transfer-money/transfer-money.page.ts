@@ -15,4 +15,11 @@ export class TransferMoneyPage {
     this.router.navigate(['/transapopup', { popupType: PopupType.SEND_MONEY}]);
   }
 
+  handleContacts() {
+    this.router.navigate(['/contacts-list']);
+  }
+
+  showFavourites() {
+    this.router.navigate(['/favourite-list']);
+  }
 }

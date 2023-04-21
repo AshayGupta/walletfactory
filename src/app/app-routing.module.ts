@@ -78,7 +78,7 @@ const routes: Routes = [
   },
   {
     path: 'transfer-money',
-    loadChildren: () => import('../pages/transfer-money/transfer-money.module').then( m => m.TransferMoneyPageModule)
+    loadChildren: () => import('../pages/send-money/transfer-money/transfer-money.module').then( m => m.TransferMoneyPageModule)
   },
   {
     path: '',
@@ -111,6 +111,10 @@ const routes: Routes = [
   {
     path: 'favourite-list',
     loadChildren: () => import('../pages/favourite-list/favourite-list.module').then( m => m.FavouriteListPageModule)
+  },
+  {
+    path: 'contacts-list',
+    loadChildren: () => import('../pages/send-money/contacts-list/contacts-list.module').then( m => m.ContactsListPageModule)
   },
   
 ];

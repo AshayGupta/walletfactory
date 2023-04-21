@@ -101,12 +101,4 @@ export class TabhomePage {
 //   this.result = JSON.stringify(result, null, 2);
 // }
 
-addFav() {
-  this.router.navigate(['/transapopup', {popupType: PopupType.SEND_MONEY}]);
-}
-
-showFav() {
-  this.router.navigate(['/favourite-list']);
-}
-
 }
