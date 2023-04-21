@@ -108,6 +108,10 @@ const routes: Routes = [
     path: 'mxaccount',
     loadChildren: () => import('../pages/mxaccount/mxaccount.module').then( m => m.MxaccountPageModule)
   },
+  {
+    path: 'favourite-list',
+    loadChildren: () => import('../pages/favourite-list/favourite-list.module').then( m => m.FavouriteListPageModule)
+  },
   
 ];
 @NgModule({

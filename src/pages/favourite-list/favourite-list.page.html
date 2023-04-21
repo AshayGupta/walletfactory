@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>favouriteLis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="app-container">
+    <ion-searchbar show-clear-button="always" [debounce]="500" (ionInput)="handleSearch($event)" class="searchbar"></ion-searchbar>
+
+    <ion-list lines="none">
+      <!-- <ion-item *ngFor="let result of results" class="list-item">
+        <ion-label>{{ result }}</ion-label>
+      </ion-item> -->
+      <ion-item class="list-item" *ngFor="let result of results">
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Settings</h2>
+          <p class="card-sub-title">Change Language, PIN, etc.</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
