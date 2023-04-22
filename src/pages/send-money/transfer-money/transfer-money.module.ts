@@ -1,11 +1,9 @@
+import { SendMoneyService } from './../../../providers/services/main-module-services/send-money.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { TransferMoneyPageRoutingModule } from './transfer-money-routing.module';
-
 import { TransferMoneyPage } from './transfer-money.page';
 
 @NgModule({
@@ -15,6 +13,9 @@ import { TransferMoneyPage } from './transfer-money.page';
     IonicModule,
     TransferMoneyPageRoutingModule
   ],
-  declarations: [TransferMoneyPage]
+  declarations: [TransferMoneyPage],
+  providers: [
+    SendMoneyService
+  ]
 })
 export class TransferMoneyPageModule {}

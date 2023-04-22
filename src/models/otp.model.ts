@@ -8,6 +8,7 @@ export interface VerifyOtp {
     isBankAdded: string;
     isProfileComplete: boolean;
     lname: string;
+    handle: string;
     mobileNumber: string;
     sec: number;
     error: boolean;

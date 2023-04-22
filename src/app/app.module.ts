@@ -1,3 +1,4 @@
+import { ModalCtrlService } from './../providers/plugin-services/modal-ctrl.service';
 import { ToastService } from './../providers/plugin-services/toast.service';
 import { LoaderService } from './../providers/plugin-services/loader.service';
 
@@ -28,7 +29,9 @@ import { SafePipe } from './safe.pipe';
   providers: [
     DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ToastService,LoaderService,
+    ToastService,
+    LoaderService,
+    ModalCtrlService
     // InAppBrowser
   ],
   bootstrap: [AppComponent],

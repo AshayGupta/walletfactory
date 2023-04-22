@@ -1,3 +1,5 @@
+import { LoaderService } from './../../../providers/plugin-services/loader.service';
+import { ModalCtrlService } from './../../../providers/plugin-services/modal-ctrl.service';
 import { HandleService } from './../../../providers/services/main-module-services/handle.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,15 +14,19 @@ export class ContactsListPage implements OnInit {
   public results = [];
 
   constructor(
+    private modalCtrl: ModalCtrlService,
+    private loader: LoaderService,
     private handleService: HandleService
   ) { }
 
   ngOnInit() {
+    this.loader.showLoading();
     this.handleService.getHandleList().subscribe(resp => {
       console.log('handle list', resp);
       if(resp.status == 200) {
         this.handleList = this.results = [...resp.data];
       }
+      this.loader.dismissLoader();
     });
   }
 
@@ -29,4 +35,11 @@ export class ContactsListPage implements OnInit {
     this.results = this.handleList.filter(d => d.toLowerCase().indexOf(query) > -1);
   }
 
+  selectHandle(handle) {
+    this.modalCtrl.dismissModal(handle);
+  }
+
+  cancel() {
+    this.modalCtrl.dismissModal();
+  }
 }

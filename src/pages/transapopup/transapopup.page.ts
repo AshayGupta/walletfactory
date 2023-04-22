@@ -60,27 +60,15 @@ export class TransapopupPage implements OnInit {
     }
   }
 
-  handleClick() {
-    // this.router.navigate(['/enter-mobile-number']);
-  }
-
-  cancelClicked() {}
-
-  backToHome() {
-    this.router.navigate(['/tabs/tab-home']);
-  }
-
   addToFav() {
     this.favService.add(this.activatedRoute.snapshot.params['addToFav']).subscribe(resp => {
-      if(resp.status == "200" && !resp.data.error) {
+      if(resp.status == 200 && !resp.data.error) {
+        this.router.navigate(['/tabs/tab-home']);
       }
       this.toastService.showToast(resp.data.message);
     });
   }
 
-  skipAccountLink() {
-    this.router.navigate(['/tabs/tab-home']);
-  }
   linkBankAccount() {
     // this.router.navigate(['/mx-account',this.widgetUrl]);
     // const options: InAppBrowserOptions = {
@@ -103,6 +91,22 @@ export class TransapopupPage implements OnInit {
     //    this.platform.ready().then( () => {
     //     const linkBankAccount : any = this._iab.create(this.widgetUrl, '_blank', options);
     //  })
+  }
+
+  handleClick() {
+    // this.router.navigate(['/enter-mobile-number']);
+  }
+
+  backToHome() {
+    this.router.navigate(['/tabs/tab-home']);
+  }
+  
+  skipAccountLink() {
+    this.backToHome();
+  }
+
+  cancelClicked() {
+    this.backToHome();
   }
 
   ngOnDestroy() {

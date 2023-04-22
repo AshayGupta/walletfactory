@@ -7,7 +7,6 @@ import { Platform } from '@ionic/angular';
 import { ToastService } from 'src/providers/plugin-services/toast.service';
 import { LoaderService } from './../../providers/plugin-services/loader.service';
 
-
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.page.html',
@@ -24,7 +23,7 @@ export class OtpPage {
     otp: '',
     phoneNumber: '',
   };
-  phone = ""
+  phone = '';
 
   constructor(
     public router: Router,
@@ -33,7 +32,7 @@ export class OtpPage {
     private toastService: ToastService,
     public activatedRoute: ActivatedRoute,
     private otpService: OtpService,
-    private loader:LoaderService
+    private loader: LoaderService
   ) {
     this.setupPage();
   }
@@ -45,45 +44,41 @@ export class OtpPage {
   setupPage() {
     this.otpData.otp = this.activatedRoute.snapshot.params['otp'];
     this.otpData.phoneNumber = this.activatedRoute.snapshot.params['mobile'];
-    this.phone = this.otpData.phoneNumber.replace("+91", "+1")
+    this.phone = this.otpData.phoneNumber.replace('+91', '+1');
   }
 
-  otpController(event,next,prev) {
-    if(event.target.value.length < 1 && prev){
-      prev.setFocus()
-    }
-    else if(next && event.target.value.length > 0){
+  otpController(event, next, prev) {
+    if (event.target.value.length < 1 && prev) {
+      prev.setFocus();
+    } else if (next && event.target.value.length > 0) {
       next.setFocus();
     }
   }
 
   onSubmit() {
     const enteredOtp = this.otp1.value + this.otp2.value + this.otp3.value + this.otp4.value;
-    if (
-      enteredOtp.length == 4 &&
-      enteredOtp == this.otpData.otp
-    ) {
+    if (enteredOtp.length == 4 && enteredOtp == this.otpData.otp) {
       this.loader.showLoading();
-      this.otpService.verifyOtp(this.otpData).subscribe(resp => {
-        this.loader.dismissLoader();   
-        const data: VerifyOtp = resp.data; 
-        if (!data.error) {
-         localStorage.setItem("guid", data.guid);   
-         localStorage.setItem("handle", data['handle']);            
-          if(data.isProfileComplete) {
-            this.router.navigate(['/tabs/tab-home']);
+      this.otpService.verifyOtp(this.otpData).subscribe(
+        (resp) => {
+          this.loader.dismissLoader();
+          const data: VerifyOtp = resp.data;
+          if (!data.error) {
+            localStorage.setItem('guid', data.guid);
+            localStorage.setItem('handle', data.handle);
+            if (data.isProfileComplete) {
+              this.router.navigate(['/tabs/tab-home']);
+            } else {
+              this.router.navigate(['/create-profile']);
+            }
           }
-          else{
-            this.router.navigate(['/create-profile']);
-          }
+          this.toastService.showToast(data.message);
+        },
+        (err) => {
+          this.toastService.showToast(err);
         }
-        this.toastService.showToast(data.message);
-      },
-      err => {
-        this.toastService.showToast(err);
-      });
-    }
-    else {
+      );
+    } else {
       this.otp1.setFocus();
       this.toastService.showToast();
     }

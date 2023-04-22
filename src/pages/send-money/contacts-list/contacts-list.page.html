@@ -1,8 +1,9 @@
-<ion-header style="--background: #fff">
+<ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button text="Contacts List" icon="caret-back"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
+    <ion-title>Contacts List</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +12,7 @@
     <ion-searchbar show-clear-button="always" [debounce]="500" (ionInput)="handleSearch($event)" class="searchbar"></ion-searchbar>
 
     <ion-list lines="none">
-      <ion-item class="list-item" *ngFor="let result of results">
+      <ion-item class="list-item" *ngFor="let result of results" (click)="selectHandle(result)">
         <ion-label>
           <h2 class="card-title">{{result}}</h2>
         </ion-label>
