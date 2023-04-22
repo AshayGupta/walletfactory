@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouriteListPage implements OnInit {
 
-  public data = ['Amsterdam', 'Buenos Aires', 'Cairo', 'Geneva', 'Hong Kong', 'Istanbul', 'London', 'Madrid', 'New York', 'Panama City'];
+  public data = ['12369', '12367','12368'];
+ 
+  
   public results = [...this.data];
 
   constructor(
