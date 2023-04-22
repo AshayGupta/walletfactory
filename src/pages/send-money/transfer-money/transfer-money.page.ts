@@ -48,7 +48,7 @@ export class TransferMoneyPage {
     this.loader.dismissLoader();
     this.sendMoneyService.send(fav).subscribe(res => {
       if(res.status == 200 && !res.data.error) {
-        this.router.navigate(['/transapopup', { popupType: PopupType.SEND_MONEY, addToFav: fav}]);
+        this.router.navigate(['/transapopup', { popupType: PopupType.SEND_MONEY, addToFav: JSON.stringify(fav)}]);
       }
       this.loader.dismissLoader();
     });

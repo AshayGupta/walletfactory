@@ -61,7 +61,8 @@ export class TransapopupPage implements OnInit {
   }
 
   addToFav() {
-    this.favService.add(this.activatedRoute.snapshot.params['addToFav']).subscribe(resp => {
+    const fav = this.activatedRoute.snapshot.params['addToFav'];
+    this.favService.add(JSON.parse(fav)).subscribe(resp => {
       if(resp.status == 200 && !resp.data.error) {
         this.router.navigate(['/tabs/tab-home']);
       }
@@ -100,7 +101,7 @@ export class TransapopupPage implements OnInit {
   backToHome() {
     this.router.navigate(['/tabs/tab-home']);
   }
-  
+
   skipAccountLink() {
     this.backToHome();
   }
