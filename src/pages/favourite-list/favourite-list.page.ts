@@ -21,7 +21,8 @@ export class FavouriteListPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.favService.show({userHandle: 6767}).subscribe(resp => {
+    this.loader.showLoading();
+    this.favService.show({userHandle: localStorage.getItem("handle")}).subscribe(resp => {
       console.log('fav list', resp);
       if(resp.status == 200 && !resp.data.error) {
         this.favList = this.results = [...resp.data.favList];
