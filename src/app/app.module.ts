@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 // import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SafePipe } from './safe.pipe'; 
+import { ActionSheetService } from 'src/providers/plugin-services/actionsheet.service';
 
 @NgModule({
   declarations: [AppComponent, SafePipe],
@@ -31,7 +32,8 @@ import { SafePipe } from './safe.pipe';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ToastService,
     LoaderService,
-    ModalCtrlService
+    ModalCtrlService,
+    ActionSheetService
     // InAppBrowser
   ],
   bootstrap: [AppComponent],

@@ -6,7 +6,7 @@ import { Favourite } from './../../../models/favourite.model';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopupType } from 'src/common/enums/enums';
-import { ModalCtrlService } from 'src/providers/plugin-services/modal-ctrl.service';
+import { ModalCtrlInterface, ModalCtrlService } from 'src/providers/plugin-services/modal-ctrl.service';
 
 @Component({
   selector: 'app-transfer-money',
@@ -29,7 +29,10 @@ export class TransferMoneyPage {
   ) { }
 
   async handleContacts() {
-    this.transfer.sendTo = await this.modalCtrl.openModal(ContactsListPage) || "";
+    const modal: ModalCtrlInterface = {
+      pageName: ContactsListPage
+    };
+    this.transfer.sendTo = await this.modalCtrl.openModal(modal) || "";
   }
 
   showFavourites() {
