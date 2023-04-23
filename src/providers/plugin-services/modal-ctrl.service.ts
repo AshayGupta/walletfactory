@@ -11,7 +11,7 @@ export class ModalCtrlService {
 
   constructor(private modalCtrl: ModalController) {}
 
-  async openModal(opts: ModalCtrlInterface) {
+  async create(opts: ModalCtrlInterface) {
     const modal = await this.modalCtrl.create({
         component: opts.pageName,
     });
@@ -24,7 +24,7 @@ export class ModalCtrlService {
     }
   }
 
-  async dismissModal(result = null) {
+  async dismiss(result = null) {
     if (result) {
       return this.modalCtrl.dismiss(result, 'confirm');
     }

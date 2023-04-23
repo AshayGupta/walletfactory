@@ -1,3 +1,4 @@
+import { FavouriteListPage } from './../../favourite-list/favourite-list.page';
 import { LoaderService } from './../../../providers/plugin-services/loader.service';
 import { SendMoney } from './../../../models/sendMoney.model';
 import { SendMoneyService } from './../../../providers/services/main-module-services/send-money.service';
@@ -32,11 +33,7 @@ export class TransferMoneyPage {
     const modal: ModalCtrlInterface = {
       pageName: ContactsListPage
     };
-    this.transfer.sendTo = await this.modalCtrl.openModal(modal) || "";
-  }
-
-  showFavourites() {
-    this.router.navigate(['/favourite-list']);
+    this.transfer.sendTo = await this.modalCtrl.create(modal) || "";
   }
 
   onConfirm() {
@@ -56,5 +53,16 @@ export class TransferMoneyPage {
       this.loader.dismissLoader();
     });
   }
+
+  async favoritesList() {
+    const modal: ModalCtrlInterface = {
+      pageName: FavouriteListPage
+    };
+    await this.modalCtrl.create(modal) || "";
+  }
+
+    // showFavourites() {
+  //   this.router.navigate(['/favourite-list']);
+  // }
 
 }
