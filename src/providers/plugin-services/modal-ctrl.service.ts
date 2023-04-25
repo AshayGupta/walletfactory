@@ -1,29 +1,32 @@
 import { Injectable } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
+export interface ModalCtrlInterface {
+  pageName: any;
+  data?: any;
+}
+
 @Injectable()
 export class ModalCtrlService {
 
-  private modal;
-
   constructor(private modalCtrl: ModalController) {}
 
-  async openModal(pageName, params?) {
-    this.modal = await this.modalCtrl.create({
-        component: pageName,
+  async create(opts: ModalCtrlInterface) {
+    const modal = await this.modalCtrl.create({
+        component: opts.pageName,
     });
-    this.modal.present();
+    modal.present();
 
-    const { data, role } = await this.modal.onWillDismiss();
+    const { data, role } = await modal.onWillDismiss();
 
     if (role === 'confirm') {
         return data;
     }
   }
 
-  async dismissModal(result = null) {
+  async dismiss(result = null) {
     if (result) {
-        return this.modalCtrl.dismiss(result, 'confirm');
+      return this.modalCtrl.dismiss(result, 'confirm');
     }
     return this.modalCtrl.dismiss(null, 'cancel');
   }

@@ -8,7 +8,7 @@
 
   <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
     <ion-slide *ngFor="let card of cardsItems" class="slide-container">
-      <ion-col (click)="goToClickOption(card.id)" style="min-height: 100%">
+      <ion-col (click)="clickSlideOption(card.id)" style="min-height: 100%">
         <div class="slide-icon">
           <ion-img src="{{card.icon}}"></ion-img>
         </div>

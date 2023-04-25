@@ -1,46 +1,26 @@
-import { ActionSheetController, ActionSheet } from 'ionic-angular'
+import { ActionSheetController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class ActionsheetService {
+export interface ActionSheetInterface {
+    header: string;
+    subHeader?: string;
+    buttons: any;
+}
 
-    private actionSheet: ActionSheet
+@Injectable()
+export class ActionSheetService {
 
     constructor(private actionSheetCtrl: ActionSheetController) { }
 
-    ActionSheet = {
-        profilePicSheet: () => {
-            return new Promise((resolve, reject) => {
-                this.actionSheet = this.actionSheetCtrl.create({
-                    title: 'Profile Photo',
-                    enableBackdropDismiss: true,
-                    buttons: [
-                        {
-                            text: 'Gallery',
-                            // role: 'destructive',
-                            handler: () => {
-                                resolve('gallery');
-                            }
-                        },
-                        {
-                            text: 'Camera',
-                            handler: () => {
-                                resolve('camera')
-                            }
-                        },
-                        {
-                            text: 'Cancel',
-                            role: 'cancel',
-                            handler: () => {
-                                console.log('Cancel clicked');
-                            }
-                        }
-                    ]
-                });
-                this.actionSheet.present();
-            });
-        }
+    async create(opts: ActionSheetInterface) {
+        const actionSheet = await this.actionSheetCtrl.create({
+            header: opts.header,
+            subHeader: opts.subHeader || '',
+            buttons: opts.buttons || []
+        });
+
+        actionSheet.present();
+        
+        return await actionSheet.onWillDismiss();
     }
-
-
 }

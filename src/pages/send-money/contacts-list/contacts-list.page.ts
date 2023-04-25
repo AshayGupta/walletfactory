@@ -22,7 +22,6 @@ export class ContactsListPage implements OnInit {
   ngOnInit() {
     this.loader.showLoading();
     this.handleService.getHandleList().subscribe(resp => {
-      console.log('handle list', resp);
       if(resp.status == 200) {
         this.handleList = this.results = [...resp.data];
       }
@@ -36,10 +35,10 @@ export class ContactsListPage implements OnInit {
   }
 
   selectHandle(handle) {
-    this.modalCtrl.dismissModal(handle);
+    this.modalCtrl.dismiss(handle);
   }
 
   cancel() {
-    this.modalCtrl.dismissModal();
+    this.modalCtrl.dismiss();
   }
 }
