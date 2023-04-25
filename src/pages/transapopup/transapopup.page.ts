@@ -6,8 +6,10 @@ import { PopupType } from './../../common/enums/enums';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MxAccount } from '../../../src/models/mxBank.model';
+import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
 import { Platform } from '@ionic/angular';
+import { ApiUrls } from 'src/common/constants/constants';
 // import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
@@ -25,11 +27,35 @@ export class TransapopupPage implements OnInit {
   widgetUrl;
   mxAccountMessage;
   mx_userId;
-
+  options : InAppBrowserOptions = {
+    location : 'yes',//Or 'no' 
+    hidden : 'no', //Or  'yes'
+    clearcache : 'yes',
+    clearsessioncache : 'yes',
+    zoom : 'yes',//Android only ,shows browser zoom controls 
+    hardwareback : 'yes',
+    mediaPlaybackRequiresUserAction : 'no',
+    shouldPauseOnSuspend : 'no', //Android only 
+    closebuttoncaption : 'Close', //iOS only
+    disallowoverscroll : 'no', //iOS only 
+    toolbar : 'yes', //iOS only ,
+    toolbarcolor:'#00ff00',
+    toolbarposition:'top',
+    enableViewportScale : 'no', //iOS only 
+    allowInlineMediaPlayback : 'no',//iOS only 
+    presentationstyle : 'pagesheet',//iOS only 
+    fullscreen : 'yes',//Windows only   
+    isTrusted:true ,
+    closebuttoncolor:'#00ff00',
+    footer:'yes',
+    footercolor:'#CC00ff00',
+    hidenavigationbuttons:'yes'
+  
+  };
   constructor(
     private router: Router,
     public activatedRoute: ActivatedRoute,
-    // private _iab: InAppBrowser,
+    private _iab: InAppBrowser,
     public platform: Platform,
     private toastService: ToastService,
     private favService: FavouriteService
@@ -70,28 +96,23 @@ export class TransapopupPage implements OnInit {
     });
   }
 
+  public openWithInAppBrowser(url : string){
+    let target = "_blank";
+    let openURLInApp=this._iab.create(url,target,this.options);   
+    openURLInApp.insertCSS({ code: "body{font-size: 25px;}" });
+
+}
+
   linkBankAccount() {
-    // this.router.navigate(['/mx-account',this.widgetUrl]);
-    // const options: InAppBrowserOptions = {
-    //   toolbar: 'no',
-    //   location: 'no',
-    //   zoom: 'no'
-    // }
-    // const options: InAppBrowserOptions = {
-    //   location: 'no',
-    //   clearcache: 'yes',
-    //   zoom: 'no',
-    //   toolbar: 'yes',
-    //   closebuttoncaption: 'close',
-    //   clearsessioncache: 'yes',
-    //   toolbarcolor: "#488aff",
-    //   hideurlbar: "yes",
-    //   closebuttoncolor: "#fff",
-    //   navigationbuttoncolor: "#fff"
-    //  };
-    //    this.platform.ready().then( () => {
-    //     const linkBankAccount : any = this._iab.create(this.widgetUrl, '_blank', options);
-    //  })
+    let handle:any;
+
+    if(!!localStorage.getItem('handle') && localStorage.getItem('handle')!=''){ 
+         handle = localStorage.getItem('handle'); 
+    } 
+   let plaidWidgetURL:any=ApiUrls.plaidWidgetURL+handle;         
+       this.platform.ready().then( () => {
+        this.openWithInAppBrowser(plaidWidgetURL);      
+     })
   }
 
   handleClick() {

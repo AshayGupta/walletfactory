@@ -20,3 +20,10 @@ export class MXBankList {
 	userHandle:string;
   
 }
+
+export class plaidWidgetData { 
+ 	handle:string;	 
+	error: boolean;
+	message: string;
+  
+}

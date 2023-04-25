@@ -1,9 +1,10 @@
 // import { FileAttachmentReq } from './../../dataModels/file-attachment.model';
 import {Observable} from 'rxjs';
 import { timer } from 'rxjs'; 
+ 
 
 export class Utils {
-
+ 
     static formatDateDDMMYY(date) {
         var monthNames = [
             "January", "February", "March",
@@ -57,7 +58,12 @@ export class Utils {
         return form;
     }
 
+
+
+
 }
+
+
 
     // static removeNull(obj) {
     //     if (obj == undefined || obj == NaN) {

@@ -1,11 +1,12 @@
 import { TransactionPopup } from './../../models/transactionPopup.interface';
 import { PopupType } from './../../common/enums/enums';
+import { InAppbrowserClass } from './../../common/inAppBrowser/inAppBrowser';
+import { ApiUrls } from './../../common/constants/constants';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MxAccount,MXBankList } from '../../../src/models/mxBank.model';  
+import { MxAccount,MXBankList,plaidWidgetData } from '../../../src/models/mxBank.model';  
 import { Platform } from '@ionic/angular';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx'; 
-import { Profile } from '../../models/profile.model';
+ import { Profile } from '../../models/profile.model';
 
 import { ToastService } from './../../providers/plugin-services/toast.service';
 import { LoaderService } from './../../providers/plugin-services/loader.service';
@@ -14,6 +15,7 @@ import { ProfileService } from './../../providers/services/main-module-services/
 import { MxBankAccountService } from './../../providers/services/main-module-services/mx-bank-accounts.service';
 
 import { NavController } from '@ionic/angular';
+import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
    @Component({
   selector: 'app-payment-method',
@@ -21,29 +23,53 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./payment-method.page.scss'],  
 })
 export class PaymentMethodPage {
-  mxAccountData;
-  widgetUrl;
-  mxAccountMessage; 
-  mx_userId;
-  profile: Profile;
-  guid:any;
-  mx_redirecturl:any='http://cashdrop.v3ainfo.com/api/mx-linkbank-callback';
+mxAccountData;
+widgetUrl;
+mxAccountMessage; 
+mx_userId;
+profile: Profile;
+guid:any;
+mx_redirecturl:any='http://cashdrop.v3ainfo.com/api/mx-linkbank-callback';
 window:any;
+options : InAppBrowserOptions = {
+  location : 'yes',//Or 'no' 
+  hidden : 'no', //Or  'yes'
+  clearcache : 'yes',
+  clearsessioncache : 'yes',
+  zoom : 'yes',//Android only ,shows browser zoom controls 
+  hardwareback : 'yes',
+  mediaPlaybackRequiresUserAction : 'no',
+  shouldPauseOnSuspend : 'no', //Android only 
+  closebuttoncaption : 'Close', //iOS only
+  disallowoverscroll : 'no', //iOS only 
+  toolbar : 'yes', //iOS only ,
+  toolbarcolor:'#00ff00',
+  toolbarposition:'top',
+  enableViewportScale : 'no', //iOS only 
+  allowInlineMediaPlayback : 'no',//iOS only 
+  presentationstyle : 'pagesheet',//iOS only 
+  fullscreen : 'yes',//Windows only   
+  isTrusted:true ,
+  closebuttoncolor:'#00ff00',
+  footer:'yes',
+  footercolor:'#CC00ff00',
+  hidenavigationbuttons:'yes'
+
+};
   constructor(    
     private router: Router,
     public activatedRoute: ActivatedRoute,
-    private _iab: InAppBrowser,
-    public platform: Platform,
+     public platform: Platform,
     private profileService: ProfileService,
     private mxBankService: MxBankAccountService,
     public navCtrl: NavController,
     private toastService: ToastService,
-    private loader:LoaderService) {
+    private _iab: InAppBrowser,
+     private loader:LoaderService) {
 
       this.guid=localStorage.getItem('guid'); 
      
-      this.getUserMXBankList(); 
-    }
+     }
 
   banksList = [
     { id: 1, name: "Bank of America", icon: "../../assets/project-icons/bank/bank.png" },
@@ -56,19 +82,17 @@ window:any;
 
 
   async ngOnInit() {
-    setTimeout(() => {
-      this.getUserMXBankList(); 
-    }, 500);
-    this.getMXWidgetURL();
-  }
+    setTimeout(() => { 
+     }, 500);
+   }
 
   handleRefresh(event) {
     setTimeout(() => {
       // Any calls to load data go here
       setTimeout(() => {
-        this.getUserMXBankList(); 
+        // this.getUserMXBankList(); 
       }, 500);
-      this.getMXWidgetURL();
+      // this.getMXWidgetURL();
 
  
 
@@ -76,73 +100,71 @@ window:any;
     }, 2000);
   };
 
+////////////
 
-  getMXWidgetURL() { 
+linkBankAccount(){ 
+  let handle:any;
+
+   if(!!localStorage.getItem('handle') && localStorage.getItem('handle')!=''){ 
+        handle = localStorage.getItem('handle'); 
+   } 
+  let plaidWidgetURL:any=ApiUrls.plaidWidgetURL+handle; 
+   this.platform.ready().then( () => { 
+      if(!!ApiUrls.plaidWidgetURL){ 
+        
+        this.openWithInAppBrowser(plaidWidgetURL);     
+       }         
+   }) 
+
+  }
+
+ 
+   public openWithInAppBrowser(url : string){
+    let target = "_blank";
+    let openURLInApp=this._iab.create(url,target,this.options);   
+    openURLInApp.insertCSS({ code: "body{font-size: 25px;}" });
+
+}
+  //////////////////////// MX Account Code ///////////////////////////
+
+  // getMXWidgetURL() { 
     
-        let mxAccountData:any=new MxAccount();  
-        mxAccountData.guid= this.guid; 
-         this.loader.showLoading();
-        this.mxBankService.mxCreateAccount(mxAccountData).subscribe((resp) => {       
-          const mxAccoutData: MxAccount = resp.data;   
-          this.loader.dismissLoader();              
-          if (!mxAccoutData.error) { 
-            this.widgetUrl=mxAccoutData.widgetUrl; 
-          } 
-         });
-      } 
+  //       let mxAccountData:any=new MxAccount();  
+  //       mxAccountData.guid= this.guid; 
+  //        this.loader.showLoading();
+  //       this.mxBankService.mxCreateAccount(mxAccountData).subscribe((resp) => {       
+  //         const mxAccoutData: MxAccount = resp.data;   
+  //         this.loader.dismissLoader();              
+  //         if (!mxAccoutData.error) { 
+  //           this.widgetUrl=mxAccoutData.widgetUrl; 
+  //         } 
+  //        });
+  //     } 
 
      
-      getUserMXBankList() { 
+      // plaidWidgetBankList() { 
     
-      let mxBanKlList:any=new MXBankList();  
-      if(!!localStorage.getItem('member_guid') && localStorage.getItem('member_guid')!=''){ 
-        mxBanKlList.memberGuid= localStorage.getItem('member_guid');
-        mxBanKlList.userHandle= localStorage.getItem('handle'); 
-        this.loader.showLoading();
-        this.mxBankService.mxBankList(mxBanKlList).subscribe((resp) => { 
-          console.log('resp',JSON.stringify(resp));      
-          const mxBanKlList: MXBankList = resp.data;   
-          this.loader.dismissLoader();              
-          if (!mxBanKlList.error) { 
-            console.log('mxBanKlList',JSON.stringify(mxBanKlList));
-
-            localStorage.setItem('member_guid','');
-
-           } 
-        });  
-      } 
-      else{
-        console.log('no member guid ');
-      }
-
-      }
+      // let plaidWidgetBankData:any=new plaidWidgetData();  
+      // if(!!localStorage.getItem('member_guid') && localStorage.getItem('member_guid')!=''){ 
+      //   plaidWidgetBankData.handle= localStorage.getItem('handle'); 
+      //   this.loader.showLoading();
+      //   this.mxBankService.plaidWidgetList(plaidWidgetBankData).subscribe((resp) => { 
+      //     console.log('resp',JSON.stringify(resp));      
+      //     const plaidWidgetBankData: plaidWidgetData = resp.data;   
+      //     this.loader.dismissLoader();              
+      //     if (!plaidWidgetBankData.error) { 
+      //       console.log('plaidWidgetBankData',JSON.stringify(plaidWidgetBankData)); 
  
-  linkBankAccount(){ 
-    if(!!this.widgetUrl && this.widgetUrl!=undefined){
-      this.router.navigate(['/mxaccount', {  widgetUrl: this.widgetUrl}]);   
-    }
+      //      } 
+      //   });  
+      // } 
+      // else{
+      //   console.log('no member guid ');
+      // }
 
-      //  this.connectMXWIdget(); 
+      // }
  
- 
-    const options: InAppBrowserOptions = {
-      location: 'no',
-      zoom: 'no',
-      toolbar: 'no',
-      closebuttoncaption: 'close',
-      clearcache: 'yes',
-      // clearsessioncache: 'yes',
-      // toolbarcolor: "#488aff",
-      // hideurlbar: "yes",
-      // closebuttoncolor: "#fff",
-      // navigationbuttoncolor: "#fff"
-     };    
-    
-    //    this.platform.ready().then( () => { 
-    //     if(!!this.widgetUrl){
-    //       const linkBankAccount : any = this._iab.create(this.widgetUrl, '_self', options);      
-    //     }        
-    //  }) 
+
 //---------------------------------------------------------
 //   if(!!this.widgetUrl){
 // let linkBankAccount = (window as any).open(this.widgetUrl, '_blank', 'location=no,toolbar=no,hidden=yes');
@@ -153,7 +175,7 @@ window:any;
 //  }
 
 
-  }
+
 
   // connectMXWIdget(){
   //   let tempRouter = this.router;
