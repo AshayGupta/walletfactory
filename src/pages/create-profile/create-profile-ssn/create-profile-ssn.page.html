@@ -1,0 +1,40 @@
+<ion-header style="--background: #fff">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="Complete Your Profile"
+        icon="caret-back"
+      ></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>OTP</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [fullscreen]="true">
+  <div class="page-container">
+    <div class="header">
+      <h2>Complete Your Profile</h2>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="clickNext()">
+      <ion-item lines="none">
+        <ion-label class="input-label" position="stacked">Social Security Number</ion-label>
+        <div class="input-container">
+          <ion-input
+            class="input-ssn"
+            type="text"
+            formControlName="ssn"
+          ></ion-input>
+        </div>
+        <ng-template [ngIf]="!isFormSubmit && form.controls['ssn'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter social security number</ion-label
+          >
+        </ng-template>
+      </ion-item>
+
+     
+      <ion-button class="primary-btn next-btn" expand="block" type="submit">Next</ion-button>
+    </form>
+  </div>
+</ion-content>

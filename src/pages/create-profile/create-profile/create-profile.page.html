@@ -1,0 +1,113 @@
+<ion-header style="--background: #fff">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="Complete Your Profile"
+        icon="caret-back"
+      ></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>OTP</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [fullscreen]="true">
+  <div class="page-container">
+    <div class="header">
+      <h2>Complete Your Profile</h2>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="clickSave()">
+      <ion-item lines="none">
+        <ion-label class="input-label" position="stacked">First Name</ion-label>
+        <div class="input-container">
+          <ion-input
+            class="input-fname"
+            type="text"
+            formControlName="fName"
+          ></ion-input>
+        </div>
+        <ng-template [ngIf]="!isFormSubmit && form.controls['fName'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter first name</ion-label
+          >
+        </ng-template>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label class="input-label" position="stacked">Last Name</ion-label>
+        <div class="input-container">
+          <ion-input
+            class="input-lname"
+            type="text"
+            formControlName="lName"
+          ></ion-input>
+        </div>
+        <ng-template [ngIf]="!isFormSubmit && form.controls['lName'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter last name</ion-label
+          >
+        </ng-template>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="input-label" position="stacked">Email</ion-label>
+        <div class="input-container">
+          <ion-input
+            class="input-email"
+            type="text"
+            formControlName="email"
+          ></ion-input>
+        </div>
+        <ng-template [ngIf]="!isFormSubmit && form.controls['email'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter email id</ion-label
+          >
+        </ng-template>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="input-label" position="stacked">Date of Birth</ion-label>
+        <div class="input-container">
+          <ion-input
+            value="{{ date | date: 'dd.MM.yyyy' }}"
+            id="date"
+            class="input-dob"
+            required>
+          </ion-input>
+        </div>
+        <ion-popover trigger="date" size="cover">
+          <ng-template>
+            <ion-datetime
+              formControlName="dob"
+              presentation="date"
+              [(ngModel)]="date"
+            ></ion-datetime>
+          </ng-template>
+        </ion-popover>
+
+        <ng-template [ngIf]="!isFormSubmit && form.controls['dob'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Please enter valid date of birth</ion-label
+          >
+        </ng-template>
+      </ion-item>    
+
+      <ion-item lines="none">
+        <ion-label class="input-label" position="stacked">Handle</ion-label>
+        <div class="input-container">
+          <ion-input
+            class="input-handle"
+            type="number"
+            formControlName="handle"
+            minlength="4"
+          ></ion-input>
+        </div>
+        <ng-template [ngIf]="!isFormSubmit && form.controls['handle'].invalid">
+          <ion-label class="err-validation" position="stacked"
+            >Handle should be more than 4 digits</ion-label
+          >
+        </ng-template>
+      </ion-item>
+
+      <ion-button class="primary-btn next-btn" expand="block" type="submit">Next</ion-button>
+    </form>
+  </div>
+</ion-content>

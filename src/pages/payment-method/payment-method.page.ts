@@ -4,7 +4,7 @@ import { InAppbrowserClass } from './../../common/inAppBrowser/inAppBrowser';
 import { ApiUrls } from './../../common/constants/constants';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MxAccount,MXBankList,plaidWidgetData } from '../../../src/models/mxBank.model';  
+import { MxAccount,MXBankList,userBankAccountData } from '../../../src/models/mxBank.model';  
 import { Platform } from '@ionic/angular';
  import { Profile } from '../../models/profile.model';
 
@@ -29,31 +29,34 @@ mxAccountMessage;
 mx_userId;
 profile: Profile;
 guid:any;
-mx_redirecturl:any='http://cashdrop.v3ainfo.com/api/mx-linkbank-callback';
-window:any;
-options : InAppBrowserOptions = {
-  location : 'yes',//Or 'no' 
-  hidden : 'no', //Or  'yes'
-  clearcache : 'yes',
-  clearsessioncache : 'yes',
-  zoom : 'yes',//Android only ,shows browser zoom controls 
-  hardwareback : 'yes',
-  mediaPlaybackRequiresUserAction : 'no',
-  shouldPauseOnSuspend : 'no', //Android only 
-  closebuttoncaption : 'Close', //iOS only
-  disallowoverscroll : 'no', //iOS only 
-  toolbar : 'yes', //iOS only ,
-  toolbarcolor:'#00ff00',
-  toolbarposition:'top',
-  enableViewportScale : 'no', //iOS only 
-  allowInlineMediaPlayback : 'no',//iOS only 
-  presentationstyle : 'pagesheet',//iOS only 
-  fullscreen : 'yes',//Windows only   
-  isTrusted:true ,
-  closebuttoncolor:'#00ff00',
-  footer:'yes',
-  footercolor:'#CC00ff00',
-  hidenavigationbuttons:'yes'
+ window:any;
+userAccountListData:any;
+bankIcon='../assets/project-icons/bank/bank.png';
+
+options: InAppBrowserOptions = {
+  location: 'no', //Or 'no'
+  hidden: 'no', //Or  'yes'
+  clearcache: 'yes',
+  clearsessioncache: 'yes',
+  zoom: 'yes', //Android only ,shows browser zoom controls
+  hardwareback: 'yes',
+  mediaPlaybackRequiresUserAction: 'no',
+  shouldPauseOnSuspend: 'no', //Android only
+  closebuttoncaption: 'Close', //iOS only
+  disallowoverscroll: 'no', //iOS only
+  toolbar: 'yes', //iOS only ,
+  toolbarcolor: '#dbe6e9',
+  toolbarposition: 'top',
+  enableViewportScale: 'no', //iOS only
+  allowInlineMediaPlayback: 'no', //iOS only
+  presentationstyle: 'pagesheet', //iOS only
+  fullscreen: 'yes', //Windows only
+  isTrusted: true,
+  closebuttoncolor: '#6c2c76',
+  footer: 'yes',
+  footercolor: '#dbe6e9',
+  // hidenavigationbuttons: 'yes',
+ 
 
 };
   constructor(    
@@ -71,10 +74,6 @@ options : InAppBrowserOptions = {
      
      }
 
-  banksList = [
-    { id: 1, name: "Bank of America", icon: "../../assets/project-icons/bank/bank.png" },
-    { id: 2, name: "City Bank", icon: "../../assets/project-icons/bank/bank.png" }
-  ];
 
   selectBank(bank) {
     console.log(bank);
@@ -82,21 +81,14 @@ options : InAppBrowserOptions = {
 
 
   async ngOnInit() {
-    setTimeout(() => { 
-     }, 500);
-   }
+       this.userAccountInformation();
+    }
 
   handleRefresh(event) {
     setTimeout(() => {
       // Any calls to load data go here
-      setTimeout(() => {
-        // this.getUserMXBankList(); 
-      }, 500);
-      // this.getMXWidgetURL();
-
- 
-
-      event.target.complete();
+         this.userAccountInformation();
+       event.target.complete();
     }, 2000);
   };
 
@@ -110,8 +102,7 @@ linkBankAccount(){
    } 
   let plaidWidgetURL:any=ApiUrls.plaidWidgetURL+handle; 
    this.platform.ready().then( () => { 
-      if(!!ApiUrls.plaidWidgetURL){ 
-        
+      if(!!ApiUrls.plaidWidgetURL){         
         this.openWithInAppBrowser(plaidWidgetURL);     
        }         
    }) 
@@ -121,10 +112,45 @@ linkBankAccount(){
  
    public openWithInAppBrowser(url : string){
     let target = "_blank";
+    // let target = "_self"; 
+    
     let openURLInApp=this._iab.create(url,target,this.options);   
     openURLInApp.insertCSS({ code: "body{font-size: 25px;}" });
+      
+    // openURLInApp.on('exit').subscribe(event => { 
+    //   console.log("inAppBrowser is closed now");  
+    //    // your action here when close inAppBrowser
+    //   }, err => {
+    //     console.error(err);
+    // });
 
 }
+
+
+userAccountInformation() {     
+  try {
+    let userAccountListData:any=new userBankAccountData();  
+    if(!!localStorage.getItem('handle') && localStorage.getItem('handle')!=''){ 
+      userAccountListData.userHandle= localStorage.getItem('handle'); 
+      this.loader.showLoading();
+      this.mxBankService.userAccountList(userAccountListData.userHandle).subscribe((resp) => { 
+        this.loader.dismissLoader();         
+        if (!!resp.data || resp.data.length>0) {  
+            this.userAccountListData=resp.data;  
+           } 
+        });  
+    } 
+    else{
+      console.log('no member guid ');
+    }
+  } catch (error) {
+     console.log(error);
+  }
+     
+
+      }
+ 
+
   //////////////////////// MX Account Code ///////////////////////////
 
   // getMXWidgetURL() { 

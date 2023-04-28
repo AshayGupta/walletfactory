@@ -18,6 +18,12 @@ export class ProfileService {
     return this.httpService.post(ApiUrls.saveProfile, form);
   } 
 
+  getUserProfile(profileData: Profile) {
+    const form = Utils.formData(profileData);
+    return this.httpService.post(ApiUrls.handleUserInfo, form); 
+  } 
+  
+
    
 
 }

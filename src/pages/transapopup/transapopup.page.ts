@@ -6,7 +6,10 @@ import { PopupType } from './../../common/enums/enums';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MxAccount } from '../../../src/models/mxBank.model';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import {
+  InAppBrowser,
+  InAppBrowserOptions,
+} from '@ionic-native/in-app-browser/ngx';
 
 import { Platform } from '@ionic/angular';
 import { ApiUrls } from 'src/common/constants/constants';
@@ -24,33 +27,32 @@ export class TransapopupPage implements OnInit {
     return PopupType;
   }
   mxAccountData;
-  widgetUrl;
-  mxAccountMessage;
+  plaidWidgetURL;
+  accountCreationMessage;
   mx_userId;
-  options : InAppBrowserOptions = {
-    location : 'yes',//Or 'no' 
-    hidden : 'no', //Or  'yes'
-    clearcache : 'yes',
-    clearsessioncache : 'yes',
-    zoom : 'yes',//Android only ,shows browser zoom controls 
-    hardwareback : 'yes',
-    mediaPlaybackRequiresUserAction : 'no',
-    shouldPauseOnSuspend : 'no', //Android only 
-    closebuttoncaption : 'Close', //iOS only
-    disallowoverscroll : 'no', //iOS only 
-    toolbar : 'yes', //iOS only ,
-    toolbarcolor:'#00ff00',
-    toolbarposition:'top',
-    enableViewportScale : 'no', //iOS only 
-    allowInlineMediaPlayback : 'no',//iOS only 
-    presentationstyle : 'pagesheet',//iOS only 
-    fullscreen : 'yes',//Windows only   
-    isTrusted:true ,
-    closebuttoncolor:'#00ff00',
-    footer:'yes',
-    footercolor:'#CC00ff00',
-    hidenavigationbuttons:'yes'
-  
+  options: InAppBrowserOptions = {
+    location: 'no', //Or 'no'
+    hidden: 'no', //Or  'yes'
+    clearcache: 'yes',
+    clearsessioncache: 'yes',
+    zoom: 'yes', //Android only ,shows browser zoom controls
+    hardwareback: 'yes',
+    mediaPlaybackRequiresUserAction: 'no',
+    shouldPauseOnSuspend: 'no', //Android only
+    closebuttoncaption: 'Close', //iOS only
+    disallowoverscroll: 'no', //iOS only
+    toolbar: 'yes', //iOS only ,
+    toolbarcolor: '#dbe6e9',
+    toolbarposition: 'top',
+    enableViewportScale: 'no', //iOS only
+    allowInlineMediaPlayback: 'no', //iOS only
+    presentationstyle: 'pagesheet', //iOS only
+    fullscreen: 'yes', //Windows only
+    isTrusted: true,
+    closebuttoncolor: '#6c2c76',
+    footer: 'yes',
+    footercolor: '#dbe6e9',
+    // hidenavigationbuttons: 'yes',
   };
   constructor(
     private router: Router,
@@ -76,11 +78,9 @@ export class TransapopupPage implements OnInit {
       case PopupType.CARD_EDIT:
         break;
       case PopupType.MX_ACCOUNT:
-        this.mxAccountData = this.activatedRoute.snapshot.params['mxAccoutData'];
-        this.widgetUrl = this.activatedRoute.snapshot.params['widgetUrl'];
-        this.mxAccountMessage = 'MX Account Created';
-        this.mx_userId = this.activatedRoute.snapshot.params['mx_userId'];
-      break;
+        this.accountCreationMessage =
+          this.activatedRoute.snapshot.params['message'];
+        break;
       default:
         break;
     }
@@ -88,31 +88,46 @@ export class TransapopupPage implements OnInit {
 
   addToFav() {
     const fav = this.activatedRoute.snapshot.params['addToFav'];
-    this.favService.add(JSON.parse(fav)).subscribe(resp => {
-      if(resp.status == 200 && !resp.data.error) {
+    this.favService.add(JSON.parse(fav)).subscribe((resp) => {
+      if (resp.status == 200 && !resp.data.error) {
         this.router.navigate(['/tabs/tab-home']);
       }
       this.toastService.showToast(resp.data.message);
     });
   }
 
-  public openWithInAppBrowser(url : string){
-    let target = "_blank";
-    let openURLInApp=this._iab.create(url,target,this.options);   
-    openURLInApp.insertCSS({ code: "body{font-size: 25px;}" });
+  public openWithInAppBrowser(url: string) {
+    let target = '_blank'; 
+    // let target = "_self";
+    let openURLInApp = this._iab.create(url, target, this.options);
+    openURLInApp.insertCSS({ code: 'body{font-size: 25px;}' }); 
+    // let insppClose:any=openURLInApp.close(); 
+    //   if(insppClose){
+    //     this.router.navigate(['/payment-method']);  
+    // }
+  //   openURLInApp.on('exit').subscribe(event => {
+  //     console.log("inAppBrowser is closed now");
+  //     this.router.navigate(['/payment-method']); 
+  //     // your action here when close inAppBrowser
+  //   }, err => {
+  //     console.error(err);
+  // });
 
-}
+  }
 
   linkBankAccount() {
-    let handle:any;
+    let handle: any;
 
-    if(!!localStorage.getItem('handle') && localStorage.getItem('handle')!=''){ 
-         handle = localStorage.getItem('handle'); 
-    } 
-   let plaidWidgetURL:any=ApiUrls.plaidWidgetURL+handle;         
-       this.platform.ready().then( () => {
-        this.openWithInAppBrowser(plaidWidgetURL);      
-     })
+    if (
+      !!localStorage.getItem('handle') &&
+      localStorage.getItem('handle') != ''
+    ) {
+      handle = localStorage.getItem('handle');
+    }
+    let plaidWidgetURL: any = ApiUrls.plaidWidgetURL + handle;
+    this.platform.ready().then(() => {
+      this.openWithInAppBrowser(plaidWidgetURL);
+    });
   }
 
   handleClick() {
@@ -131,7 +146,5 @@ export class TransapopupPage implements OnInit {
     this.backToHome();
   }
 
-  ngOnDestroy() {
-    this.mxAccountData.unsubscribe();
-  }
+  ngOnDestroy() {}
 }

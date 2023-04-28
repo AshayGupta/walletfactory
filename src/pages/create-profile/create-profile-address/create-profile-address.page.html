@@ -16,82 +16,72 @@
       <h2>Complete Your Profile</h2>
     </div>
 
-    <form [formGroup]="form" (ngSubmit)="clickSave()">
+    <form [formGroup]="form" (ngSubmit)="clickNext()">
       <ion-item lines="none">
-        <ion-label class="input-label" position="stacked">First Name</ion-label>
+        <ion-label class="input-label" position="stacked">Street Address</ion-label>
         <div class="input-container">
           <ion-input
-            class="input-fname"
+            class="input-streetAddress"
             type="text"
-            formControlName="fName"
+            formControlName="streetAddress"
           ></ion-input>
         </div>
-        <ng-template [ngIf]="!isFormSubmit && form.controls['fName'].invalid">
+        <ng-template [ngIf]="!isFormSubmit && form.controls['streetAddress'].invalid">
           <ion-label class="err-validation" position="stacked"
-            >Please enter first name</ion-label
+            >Please enter street aAddress</ion-label
           >
         </ng-template>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label class="input-label" position="stacked">Last Name</ion-label>
+        <ion-label class="input-label" position="stacked">City</ion-label>
         <div class="input-container">
           <ion-input
-            class="input-lname"
+            class="input-city"
             type="text"
-            formControlName="lName"
+            formControlName="city"
           ></ion-input>
         </div>
-        <ng-template [ngIf]="!isFormSubmit && form.controls['lName'].invalid">
+        <ng-template [ngIf]="!isFormSubmit && form.controls['city'].invalid">
           <ion-label class="err-validation" position="stacked"
-            >Please enter last name</ion-label
+            >Please enter city</ion-label
           >
         </ng-template>
       </ion-item>
+     
       <ion-item lines="none">
-        <ion-label class="input-label" position="stacked">Date of Birth</ion-label>
+        <ion-label class="input-label" position="stacked">State</ion-label>
         <div class="input-container">
           <ion-input
-            value="{{ date | date: 'dd.MM.yyyy' }}"
-            id="date"
-            class="input-dob"
-            required>
-          </ion-input>
+            class="input-state"
+            type="text"
+            formControlName="state"
+          ></ion-input>
         </div>
-        <ion-popover trigger="date" size="cover">
-          <ng-template>
-            <ion-datetime
-              formControlName="dob"
-              presentation="date"
-              [(ngModel)]="date"
-            ></ion-datetime>
-          </ng-template>
-        </ion-popover>
-
-        <ng-template [ngIf]="!isFormSubmit && form.controls['dob'].invalid">
+        <ng-template [ngIf]="!isFormSubmit && form.controls['state'].invalid">
           <ion-label class="err-validation" position="stacked"
-            >Please enter valid date of birth</ion-label
+            >Please enter state</ion-label
           >
         </ng-template>
-      </ion-item>    
+      </ion-item>
 
       <ion-item lines="none">
-        <ion-label class="input-label" position="stacked">Handle</ion-label>
+        <ion-label class="input-label" position="stacked">Postal Code</ion-label>
         <div class="input-container">
           <ion-input
-            class="input-handle"
+            class="input-postalCode"
             type="number"
-            formControlName="handle"
+            formControlName="postalCode"
             minlength="4"
           ></ion-input>
         </div>
-        <ng-template [ngIf]="!isFormSubmit && form.controls['handle'].invalid">
+        <ng-template [ngIf]="!isFormSubmit && form.controls['postalCode'].invalid">
           <ion-label class="err-validation" position="stacked"
-            >Handle should be more than 4 digits</ion-label
+            >Please enter postal code</ion-label
           >
         </ng-template>
       </ion-item>
-
+      
       <ion-button class="primary-btn next-btn" expand="block" type="submit">Next</ion-button>
     </form>
   </div>

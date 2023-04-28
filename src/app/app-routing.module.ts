@@ -50,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'create-profile',
-    loadChildren: () => import('../pages/create-profile/create-profile.module').then( m => m.CreateProfilePageModule)
+    loadChildren: () => import('../pages/create-profile/create-profile/create-profile.module').then( m => m.CreateProfilePageModule)
   },
   {
     path: 'faq',
@@ -116,6 +116,15 @@ const routes: Routes = [
     path: 'contacts-list',
     loadChildren: () => import('../pages/send-money/contacts-list/contacts-list.module').then( m => m.ContactsListPageModule)
   },
+  {
+    path: 'create-profile-address',
+    loadChildren: () => import('../pages/create-profile/create-profile-address/create-profile-address.module').then( m => m.CreateProfileAddressPageModule)
+  },
+  {
+    path: 'create-profile-ssn',
+    loadChildren: () => import('../pages/create-profile/create-profile-ssn/create-profile-ssn.module').then( m => m.CreateProfileSsnPageModule)
+  },
+
   
 ];
 @NgModule({

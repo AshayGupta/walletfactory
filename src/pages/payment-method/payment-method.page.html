@@ -1,21 +1,30 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Payment Method" icon="caret-back"></ion-back-button>
+      <ion-back-button
+        text="Payment Method"
+        icon="caret-back"
+      ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding [fullscreen]="true">  
-  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+<ion-content padding [fullscreen]="true">
+  <ion-refresher
+    slot="fixed"
+    [pullFactor]="0.5"
+    [pullMin]="100"
+    [pullMax]="200"
+    (ionRefresh)="handleRefresh($event)"
+  >
     <ion-refresher-content
       pullingIcon="chevron-down-circle-outline"
       pullingText="Pull to refresh"
       refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+      refreshingText="Refreshing..."
+    >
     </ion-refresher-content>
   </ion-refresher>
-
 
   <div class="page-container">
     <div class="header">
@@ -24,20 +33,39 @@
     </div>
 
     <div class="acc-card-list">
-      <ion-card *ngFor="let bank of banksList" (click)="selectBank(bank.id)" class="account-card">
+      <ion-card
+        *ngFor="let bank of userAccountListData"
+        (click)="selectBank(bank.id)"
+        class="account-card"
+      >
         <ion-card-content class="account-card-content">
-          <ion-img src="{{bank.icon}}"></ion-img>
-          <ion-label class="lbl-bankName">{{bank.name}}</ion-label>
+          <div *ngIf="!! bank.bankcon && bank.bankcon != '' ">
+            <ion-img src="{{bank.bankcon}}"></ion-img>
+          </div>
+          <div *ngIf="!bank.bankcon || bank.bankcon== '' ">
+            <ion-img src="{{bankIcon}}"></ion-img>
+          </div>
+          <ion-label class="lbl-bankName">{{bank.institution_name}}</ion-label>
         </ion-card-content>
       </ion-card>
     </div>
 
-    <ion-item style="margin-top: 35px;" lines="none">
+    <ion-item style="margin-top: 35px" lines="none">
       <div class="imgContainer">
-        <ion-img class="bank_icon" src="../../assets/project-icons/bank/bank.png"></ion-img>
+        <ion-img
+          class="bank_icon"
+          src="../../assets/project-icons/bank/bank.png"
+        ></ion-img>
       </div>
       <!-- <ion-label class="add_bank-lbl" (click)="linkBankAccount()">Add Bank Account</ion-label> -->
-      <ion-button (click)="linkBankAccount()" class="apply-btn" expand="block" color="new-primary" type="submit">Add Bank Account </ion-button>
+      <ion-button
+        (click)="linkBankAccount()"
+        class="apply-btn"
+        expand="block"
+        color="new-primary"
+        type="submit"
+        >Add Bank Account
+      </ion-button>
     </ion-item>
   </div>
 </ion-content>

@@ -1,6 +1,8 @@
 export class Profile {
 	fName: string;
+	name:string;
 	lName: string;
+	lname:string;
 	email: string;
 	mobileNumber: string;
 	dob: string;
@@ -11,6 +13,12 @@ export class Profile {
 	isBankAdded:boolean;
 	isvalidHandel:boolean;
 	userHandle:string;  
+	ssn:string;
+	streetAddress:string;
+	city:string;
+	state:string;
+	postalCode:number;
+	country:string;
 }
 export class createProfileData {
 	firstName: string;
@@ -20,4 +28,5 @@ export class createProfileData {
 	phone: string;
 	dob: string;
 	handler:string;
+	
 }

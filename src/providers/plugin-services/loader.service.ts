@@ -6,8 +6,8 @@ import { LoadingController } from '@ionic/angular';
 export class LoaderService {
 
      private count: number = 0;
-     loading;
-    constructor(private loadingCtrl: LoadingController) { 
+     loading: HTMLIonLoadingElement;
+     constructor(private loadingCtrl: LoadingController) { 
         console.log('LoaderService');
     }
 
@@ -18,14 +18,17 @@ export class LoaderService {
           message: 'Loading....',
           duration: 1000,
         });    
-        this.loading.present();
+        await  this.loading.present();
         }
       }
 
-      dismissLoader() {
+      async dismissLoader() {
         this.count--;
         if (this.count == 0) {
+          if(this.loading){
             this.loading.dismiss();
+
+          }
         }
     }
 

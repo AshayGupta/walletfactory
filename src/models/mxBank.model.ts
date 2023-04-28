@@ -21,9 +21,24 @@ export class MXBankList {
   
 }
 
-export class plaidWidgetData { 
+export class userBankAccountData { 
  	handle:string;	 
 	error: boolean;
 	message: string;
+	userHandle:string;
+	institution_name:string;
+	created_at:string;
+	institution_id:string;
+	account_name:string;
+	account_mask:string;
+	account_type:string;
+	account_subtype:string;
+	plaid_item_id:string;
+	plaid_access_token:string;
+	plaid_public_token:string;
+	account_id:string;
+	user_id:number;
+	last_status:string;
+	last_update:string;
   
 }

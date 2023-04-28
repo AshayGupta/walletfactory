@@ -1,13 +1,13 @@
 <ion-content>
 
-  <ion-card class="card-layout profile-card">
+  <ion-card (click)="showUserProfileDetails()" class="card-layout profile-card">
     <ion-list lines="none">
       <ion-item>
         <ion-avatar slot="start">
           <img src="../../assets/project-imgs/avatar-icon/profile.png" />
-        </ion-avatar>
+        </ion-avatar> 
         <ion-label>
-          <h2 class="card-title">Angelica Williams</h2>
+          <h2  class="card-title">{{FullName}}</h2>
           <div class="wallet-box">
             <ion-img src="../../assets/project-icons/group934/group934.png"></ion-img>
             <p>Standard Wallet</p>

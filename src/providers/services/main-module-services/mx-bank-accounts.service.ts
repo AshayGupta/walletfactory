@@ -1,5 +1,5 @@
 import { Utils } from './../../../common/utils/utils';
-import { MxAccount,MXBankList,plaidWidgetData } from '../../../models//mxBank.model';   
+import { MxAccount,MXBankList,userBankAccountData } from '../../../models//mxBank.model';   
 import { ApiUrls } from './../../../common/constants/constants';
 import { Injectable } from '@angular/core';
 import { HttpService } from '../httpService';
@@ -15,11 +15,11 @@ export class MxBankAccountService {
     const form = Utils.formData(mxAccountData);
     return this.httpService.post(ApiUrls.mxAccount, form); 
   }
-
-  plaidWidgetList(plaidWidgetList:plaidWidgetData) {  
-    const form = Utils.formData(plaidWidgetList);
-    return this.httpService.post(ApiUrls.plaidWidgetURL, form); 
-  }
+ 
+  userAccountList(handle:any) {
+    let apiUrl:any=ApiUrls.userAccountList+handle;
+    return this.httpService.get(apiUrl);
+  } 
   
 
 }

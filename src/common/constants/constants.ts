@@ -22,6 +22,7 @@ export class ApiUrls {
   static readonly handleList='/handle-list';
   static readonly handleUserInfo='/handle-user-information';
   static readonly sendMoney='/send-money';
+  static readonly userAccountList='/user-account-list?userHandle=';
   static readonly plaidWidgetURL='https://cashdrop.v3ainfo.com/plaidwidget?userhandler='; //=65757
 
 
