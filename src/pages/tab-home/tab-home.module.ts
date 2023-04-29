@@ -1,3 +1,4 @@
+import { ProfileService } from 'src/providers/services/main-module-services/profile.service';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,7 @@ import { TabhomePageRoutingModule } from './tab-home-routing.module';
     FormsModule,
     TabhomePageRoutingModule
   ],
-  declarations: [TabhomePage]
+  declarations: [TabhomePage],
+  providers: [ProfileService]
 })
 export class TabhomePageModule {}

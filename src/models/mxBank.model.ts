@@ -50,7 +50,7 @@ export class userWalletData {
 	error: boolean;
 	message: string;
 	userHandle:string;
-	sila_balance:string;
+	sila_balance:string = '0';
       
  
 }

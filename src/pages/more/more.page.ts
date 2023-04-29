@@ -1,42 +1,29 @@
 import { ToastService } from './../../providers/plugin-services/toast.service';
-import { ProfileService } from './../../providers/services/main-module-services/profile.service';
- import { ApiUrls } from './../../common/constants/constants';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DatePipe } from '@angular/common';
-import { Profile, createProfileData } from '../../models/profile.model';
- import { LoaderService } from './../../providers/plugin-services/loader.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-more',
   templateUrl: 'more.page.html',
   styleUrls: ['more.page.scss'],
 })
-export class MorePage {
-  profile: Profile;
-   form: FormGroup;
-   isFormSubmit = true;
-   public arr = new Array(5);
-   reponseProfileData:any;
-   FullName:any;
+export class MorePage implements OnInit {
+  form: FormGroup;
+  isFormSubmit = true;
+  fullName: string;
 
-  constructor( private datePipe: DatePipe,
-    private profileService: ProfileService,
-     public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     private router: Router,
     public formBuilder: FormBuilder,
-    private toastService: ToastService,
-    private loader: LoaderService,
-    public activatedRoute: ActivatedRoute) {}
+    public activatedRoute: ActivatedRoute
+  ) {}
 
-
-    ngOnInit() {
-
-      this.getUserProfile();
-    }
-
+  ngOnInit(): void {
+    this.fullName = localStorage.getItem('fullName');
+  }
 
   openWalletLevel() {
     this.router.navigate(['/wallet-levels']);
@@ -56,34 +43,12 @@ export class MorePage {
     this.router.navigate(['/legal']);
   }
   logout() {
-     localStorage.clear(); 
-     this.router.navigate(['']); 
-   }
-
-
-
-   getUserProfile() {
-   
-    let profileData=new Profile;
-     profileData.userHandle = localStorage.getItem('handle'); 
-
-    this.loader.showLoading();
-    this.profileService.getUserProfile(profileData).subscribe((resp) => {
-      const data: Profile = resp.data;
-      this.loader.dismissLoader();
-
-      this.reponseProfileData=data;
-      this.FullName=data.name + ' ' +data.lname;
-      
-    });
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 
 
-  showUserProfileDetails(){ 
-    this.router.navigate([
-      '/profile-details',{ reponseProfileData: JSON.stringify(this.reponseProfileData)},
-    ]);   
+  showUserProfileDetails() {
+    this.router.navigate(['/profile-details']);
   }
-
-
 }

@@ -1,11 +1,14 @@
-import { ActionSheetService, ActionSheetInterface } from './../../providers/plugin-services/actionsheet.service';
+import {
+  ActionSheetService,
+  ActionSheetInterface,
+} from './../../providers/plugin-services/actionsheet.service';
 import { Component } from '@angular/core';
- import { PopupType } from './../../common/enums/enums';
- import { ApiUrls } from './../../common/constants/constants';
- import { ActivatedRoute, Router } from '@angular/router';
-import {  userWalletData } from '../../../src/models/mxBank.model';  
+import { PopupType } from './../../common/enums/enums';
+import { ApiUrls } from './../../common/constants/constants';
+import { ActivatedRoute, Router } from '@angular/router';
+import { userWalletData } from '../../../src/models/mxBank.model';
 import { Platform } from '@ionic/angular';
- import { Profile } from '../../models/profile.model';
+import { Profile } from '../../models/profile.model';
 
 import { ToastService } from './../../providers/plugin-services/toast.service';
 import { LoaderService } from './../../providers/plugin-services/loader.service';
@@ -20,9 +23,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['tab-home.page.scss'],
 })
 export class TabhomePage {
-  result: any;
-  sila_balance:any;
-  nickname:any;
 
   cardsItems = [
     {
@@ -75,32 +75,42 @@ export class TabhomePage {
     },
   ];
 
-  userWalletData: userWalletData;
-
+  userWalletData: userWalletData = new userWalletData();
 
   constructor(
     public navCtrl: NavController,
     private router: Router,
     private actionSheet: ActionSheetService,
-     public activatedRoute: ActivatedRoute,
-     private mxBankService: MxBankAccountService,
-     private toastService: ToastService,
-      private loader:LoaderService
-  ) {
+    public activatedRoute: ActivatedRoute,
+    private mxBankService: MxBankAccountService,
+    private profileService: ProfileService,
+    private toastService: ToastService,
+    private loader: LoaderService
+  ) {}
 
-   }
+  async ngOnInit() {
+    this.userWalletInformation();
+    this.getUserProfile();
+  }
+
+  getUserProfile() {
+    this.profileService.getUserProfile({userHandle: localStorage.getItem('handle')}).subscribe((resp) => {
+      if(resp.status == 200 && resp.data) {
+        const profile: Profile = resp.data;
+        localStorage.setItem('fullName', profile.name + ' ' + profile.lname);
+        localStorage.setItem('userInfo', JSON.stringify(resp.data));
+      }
+    });
+  }
 
   showWalletLevelsPage(): void {
     // this.router.navigate(['/wallet-levels']);
-
   }
-
 
   clickSlideOption(id: string) {
     if (id === 'sendMoney') {
       // this.transferMoney();
       this.router.navigate(['/transfer-money']);
-
     }
   }
 
@@ -120,7 +130,7 @@ export class TabhomePage {
   //   };
 
   //   const {data} = await this.actionSheet.create(actionSheet);
-    
+
   //   if (data && data.action == 'retail') {
   //     this.router.navigate(['/transfer-money']);
   //   }
@@ -128,47 +138,39 @@ export class TabhomePage {
   //   }
   // }
 
-  async ngOnInit() {
-    this.userWalletInformation();
- }
 
-handleRefresh(event) {
- setTimeout(() => {
-   // Any calls to load data go here
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
       this.userWalletInformation();
-    event.target.complete();
- }, 2000);
-};
+      event.target.complete();
+    }, 2000);
+  }
 
-  userWalletInformation() {     
+  userWalletInformation() {
     try {
-      let userWallet:any=new userWalletData();  
-      if(!!localStorage.getItem('handle') && localStorage.getItem('handle')!=''){ 
-        userWallet.userHandle= localStorage.getItem('handle'); 
-        this.loader.showLoading();
-        this.mxBankService.userWallet(userWallet.userHandle).subscribe((resp) => { 
-          this.loader.dismissLoader();         
-          if (!!resp.data || resp.data.length>0) {  
-               if(resp.data.walletDetail){ 
-                this.sila_balance=resp.data.walletDetail.sila_balance;                
-                this.nickname=resp.data.walletDetail.wallet.nickname || 'USD Wallet';
+      let handle = localStorage.getItem('handle');
 
-                localStorage.setItem('walletAmount',this.sila_balance);
-                localStorage.setItem('nickname',this.nickname);  
-              }
-              
-              } 
-          });  
-      } 
-      else{
+      if (handle) {
+        this.loader.showLoading();
+        this.mxBankService.userWallet(handle).subscribe((resp) => {
+          if (resp.data && resp.data.length) {
+            if (resp.data.walletDetail) {
+              const walletDetail = resp.data.walletDetail;
+              this.userWalletData.sila_balance = walletDetail.sila_balance || '0';
+              this.userWalletData.nickname = walletDetail.wallet?.nickname || 'USD Wallet';
+
+              localStorage.setItem('walletAmount', this.userWalletData.sila_balance);
+              localStorage.setItem('nickname', this.userWalletData.nickname);
+            }
+          }
+          this.loader.dismissLoader();
+        });
+      } else {
         console.log('no wallet ');
       }
     } catch (error) {
-       console.log(error);
+      console.log(error);
     }
-       
-  
-        }
-
-
+  }
 }

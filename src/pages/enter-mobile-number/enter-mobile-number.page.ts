@@ -34,7 +34,7 @@ export class EnterMobileNumberPage {
   validateForm() {
     this.form = this.formBuilder.group({
       phoneNumber: [
-        '',
+        '9944332511',
         Validators.compose([
           Validators.required,
           Validators.pattern('[0-9]{10}'),
