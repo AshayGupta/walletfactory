@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopupType } from 'src/common/enums/enums';
 import { ModalCtrlInterface, ModalCtrlService } from 'src/providers/plugin-services/modal-ctrl.service';
+import { ChangeDetectorRef } from '@angular/core';
+
+
+
 
 @Component({
   selector: 'app-transfer-money',
@@ -27,7 +31,9 @@ export class TransferMoneyPage {
     private router: Router,
     private modalCtrl: ModalCtrlService,
     private loader: LoaderService,
-    private sendMoneyService: SendMoneyService
+    private sendMoneyService: SendMoneyService,
+    private cdRef:ChangeDetectorRef
+ 
   ) { 
 
     this.walletAmount=localStorage.getItem('walletAmount');
@@ -44,6 +50,7 @@ export class TransferMoneyPage {
   onConfirm() {
     if(!this.transfer.amount || !this.transfer.sendTo) return;
 
+    
     const fav: Favourite = {
       sourceHandle: localStorage.getItem('handle'),
       destinationHandle: this.transfer.sendTo,
@@ -58,6 +65,12 @@ export class TransferMoneyPage {
       }
       this.loader.dismissLoader();
     });
+  }
+
+  change(value){
+    //manually launch change detection
+    this.cdRef.detectChanges();
+    this.transfer.amount = value.length < 6 ? value.substring(0,6) : value; 
   }
 
   async favoritesList() {

@@ -14,7 +14,7 @@
   <ion-list lines="none">
     <ion-item class="lbl-amt">
       <ion-label>USD </ion-label> 
-      <ion-input type="text" placeholder="0" [(ngModel)]="transfer.amount"></ion-input> 
+      <ion-input type="text" placeholder="0" (ngModelChange)="change($event)" required  [attr.maxlength]="6" [(ngModel)]="transfer.amount"></ion-input> 
     </ion-item>
     <ion-item class="lbl-balance">
       <ion-label class="balance">USD wallet balance USD {{walletAmount}}.00</ion-label>
