@@ -71,6 +71,8 @@ options: InAppBrowserOptions = {
      private loader:LoaderService) {
 
       this.guid=localStorage.getItem('guid'); 
+
+      this.userAccountInformation();
      
      }
 

@@ -22,4 +22,9 @@ export class MxBankAccountService {
   } 
   
 
+  userWallet(handle:any) {
+    let apiUrl:any=ApiUrls.userWallet+handle;
+    return this.httpService.get(apiUrl);
+  } 
+
 }

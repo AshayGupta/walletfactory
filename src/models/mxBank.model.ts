@@ -42,3 +42,15 @@ export class userBankAccountData {
 	last_update:string;
   
 }
+
+
+
+export class userWalletData { 
+	nickname:string;
+	error: boolean;
+	message: string;
+	userHandle:string;
+	sila_balance:string;
+      
+ 
+}

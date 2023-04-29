@@ -15,9 +15,10 @@ import { ModalCtrlInterface, ModalCtrlService } from 'src/providers/plugin-servi
   styleUrls: ['./transfer-money.page.scss'],
 })
 export class TransferMoneyPage {
-
+  walletAmount:any;
+  feesCharge:any='0.35';
   public transfer: SendMoney = {
-    amount: "500",
+    amount: "",
     sendTo: "",
     note: ""
   };
@@ -27,7 +28,11 @@ export class TransferMoneyPage {
     private modalCtrl: ModalCtrlService,
     private loader: LoaderService,
     private sendMoneyService: SendMoneyService
-  ) { }
+  ) { 
+
+    this.walletAmount=localStorage.getItem('walletAmount');
+    
+  }
 
   async handleContacts() {
     const modal: ModalCtrlInterface = {
@@ -42,7 +47,8 @@ export class TransferMoneyPage {
     const fav: Favourite = {
       sourceHandle: localStorage.getItem('handle'),
       destinationHandle: this.transfer.sendTo,
-      amount: this.transfer.amount
+      amount: this.transfer.amount,
+      note: this.transfer.note
     };
 
     this.loader.dismissLoader();

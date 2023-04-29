@@ -1,8 +1,25 @@
 <ion-content [fullscreen]="true" class="home-page">
 
+
+  <ion-refresher
+  slot="fixed"
+  [pullFactor]="0.5"
+  [pullMin]="100"
+  [pullMax]="200"
+  (ionRefresh)="handleRefresh($event)"
+>
+  <ion-refresher-content
+    pullingIcon="chevron-down-circle-outline"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="Refreshing..."
+  >
+  </ion-refresher-content>
+</ion-refresher>
+
   <ion-card class="wallet-detail-card">
-    <ion-label class="info1">USD Wallet</ion-label>
-    <ion-label class="wallet-amt">USD <span>0.</span>00</ion-label>
+    <ion-label class="info1">{{nickname}}</ion-label>
+    <ion-label class="wallet-amt">USD <span>{{sila_balance}}.</span>00</ion-label>
     <ion-img class="wallet-img" src="../../assets/project-icons/wallet/wallet.png"></ion-img>
   </ion-card>
 
@@ -17,19 +34,19 @@
     </ion-slide>
   </ion-slides>
 
-  <ion-card (click)="showWalletLevelsPage()" class="wallet-card">  
+  <!-- <ion-card (click)="showWalletLevelsPage()" class="wallet-card">  
     <ion-card-content class="wallet-card-content">
       <div>
         <ion-img [src]='walletTypes[1].icon'></ion-img>
       </div>
       <div>
-        <ion-label class="lbl1">{{walletTypes[1].title}}</ion-label>
-        <p class="lbl2">{{walletTypes[1].subTitle}}</p>
+        <ion-label class="lbl1">{{walletTypes[0].title}}</ion-label>
+        <p class="lbl2">{{walletTypes[0].subTitle}}</p>
       </div>
       <div class="right-arrow">
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
     </ion-card-content>    
-  </ion-card> 
+  </ion-card>  -->
 
 </ion-content>

@@ -3,6 +3,7 @@ export interface Favourite {
     destinationHandle?: string;
     amount?: string;
     userHandle?: string;
+    note?:string;
 }
 
 export interface ShowFavList {

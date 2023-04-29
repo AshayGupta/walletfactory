@@ -13,11 +13,12 @@
 
   <ion-list lines="none">
     <ion-item class="lbl-amt">
-      <ion-label>USD <span>0</span></ion-label>
+      <ion-label>USD </ion-label> 
+      <ion-input type="text" placeholder="0" [(ngModel)]="transfer.amount"></ion-input> 
     </ion-item>
     <ion-item class="lbl-balance">
-      <ion-label class="balance">USD wallet balance USD500.00</ion-label>
-      <ion-label class="fee">Fee USD 0.35</ion-label>
+      <ion-label class="balance">USD wallet balance USD {{walletAmount}}.00</ion-label>
+      <ion-label class="fee">Fee USD {{feesCharge}}</ion-label>
     </ion-item>
     <ion-item class="lbl-to">
       <ion-label>To</ion-label>

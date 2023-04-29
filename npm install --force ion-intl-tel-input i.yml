@@ -107,23 +107,6 @@ npm install --save @ionic-native/in-app-browser
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
 
-
-mobileNumber
-: 
-"+919654165977"
-otp
-: 
-9093
-[[Prototype]]
-: 
-Object
-status
-: 
-200
-[[Prototype]]
-: 
-Object
-
-
-/mx-linkbank-callback
-
+-------------------------------------------
+mobileNumber - 9944332511
+  
