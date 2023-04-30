@@ -4,6 +4,7 @@ export class Profile {
 	lName: string;
 	lname:string;
 	email: string;
+	mobile: string;
 	mobileNumber: string;
 	dob: string;
 	handle:string;

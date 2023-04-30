@@ -59,6 +59,12 @@ export class Utils {
     }
 
 
+    static removeEmpty(value) {
+        if (value == undefined || value == '' || value == null || !value.trim().length) {
+            return false;
+        }
+        return value;
+    }
 
 
 }
@@ -74,12 +80,6 @@ export class Utils {
     //     }
     // }
 
-    // static isEmpty(value): boolean {
-    //     if (value == undefined || value == '' || value == null || NaN) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
 
     // static autoIncID() {
     //     return Math.floor(100000 + Math.random() * 900000);
@@ -101,16 +101,6 @@ export class Utils {
     //     let dv = (parseFloat(value) * decimalCount);
     //     var finalValue = parseInt(dv.toString()) / decimalCount;
     //     return finalValue.toString();
-    // }
-
-    // static getLobID(name: string) {
-    //     var lob = { "Life": "4", "Asset": "5", "GI": "6" };
-    //     return lob[name];
-    // }
-
-    // static getLobName(id: string) {
-    //     var lob = { "4": "Life", "5": "Asset", "6": "GI" };
-    //     return lob[id];
     // }
 
     // static readFile(event) {

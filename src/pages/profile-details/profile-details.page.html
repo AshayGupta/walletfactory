@@ -7,11 +7,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> 
-  {{userProfileDetails.name}}
-  {{userProfileDetails.lname}}
-{{userProfileDetails.mobile}}
-{{userProfileDetails.email}}
-{{userProfileDetails.city}} {{userProfileDetails.streetAddress}} 
-{{userProfileDetails.postalCode}} {{userProfileDetails.state}} 
+<ion-content>
+  <ion-card class="profile-card">
+    <div class="img-avatar">
+      <img src="../../assets/project-imgs/avatar-icon/profile.png" />
+    </div>
+    <ion-label>
+      <h2 class="card-title">Angelina williams</h2>
+      <div class="wallet-box">
+        <ion-img src="../../assets/project-icons/group934/group934.png"></ion-img>
+        <p>Standard Wallet</p>
+      </div>
+    </ion-label>
+  </ion-card>
+
+  <ion-card class="profile-details">
+    <ion-list lines="none">
+      <ion-item class="list-item" *ngFor="let detail of detailsToDisplay">
+        <ion-avatar slot="start" class="card-avatar">
+          <img src="./assets/img/profile.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">{{detail.title}}</h2>
+          <p class="card-sub-title">{{detail.subTitle}}</p>
+        </ion-label>
+        <div class="right-arrow" *ngIf="detail.isInfoAvailable">
+          <img src="./assets/project-icons/group935.svg" />
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
 </ion-content>

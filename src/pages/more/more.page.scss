@@ -1,5 +1,5 @@
 ion-content {
-	--background: #DBE6E9;
+  --background: #DBE6E9;
 }
 
 .card-layout {
@@ -40,18 +40,20 @@ ion-content {
   color: #BDB5B5;
 }
 
-.profile-card {  
+.profile-card {
   height: 106px;
   border-radius: 22px;
-  
+
   ion-avatar {
     width: 60px;
     height: 66px;
     margin-right: 13px;
   }
+
   .card-title {
     font-size: 16px;
   }
+
   .wallet-box {
     display: flex;
     align-items: center;
