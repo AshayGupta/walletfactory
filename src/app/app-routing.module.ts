@@ -126,7 +126,7 @@ const routes: Routes = [
   },
   {
     path: 'how-to-cash-in',
-    loadChildren: () => import('../pages/Cash-In/how-to-cash-in/how-to-cash-in.module').then( m => m.HowToCashInPageModule)
+    loadChildren: () => import('../pages/Cash-In-out/how-to-cash-in/how-to-cash-in.module').then( m => m.HowToCashInPageModule)
   },
 
   

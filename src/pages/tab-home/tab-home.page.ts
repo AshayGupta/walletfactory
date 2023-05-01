@@ -114,11 +114,14 @@ export class TabhomePage {
       this.router.navigate(['/transfer-money']);
     }
     else if(id === 'cashIn') {
-      this.cashInActionSheet();
+      this.showActionSheet(id);
+    }
+    else if(id === 'cashOut') {
+      this.showActionSheet(id);
     }
   }
 
-  async cashInActionSheet() {
+  async showActionSheet(id: string) {
     const actionSheet: ActionSheetInterface = {
       header: 'Cash in Method',
       buttons: [
@@ -136,10 +139,14 @@ export class TabhomePage {
     const {data} = await this.actionSheet.create(actionSheet);
 
     if (data && data.action == 'retail') {
-      // this.router.navigate(['/transfer-money']);
     }
     else if (data && data.action == 'bank') {
-      this.router.navigateByUrl('/how-to-cash-in');
+      if(id === 'cashIn') {
+        this.router.navigateByUrl('/how-to-cash-in');
+      }
+      else if(id === 'cashOut') {
+        // this.router.navigateByUrl('/how-to-cash-in');
+      }
     }
   }
 
