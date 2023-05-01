@@ -124,6 +124,10 @@ const routes: Routes = [
     path: 'create-profile-ssn',
     loadChildren: () => import('../pages/create-profile/create-profile-ssn/create-profile-ssn.module').then( m => m.CreateProfileSsnPageModule)
   },
+  {
+    path: 'how-to-cash-in',
+    loadChildren: () => import('../pages/Cash-In/how-to-cash-in/how-to-cash-in.module').then( m => m.HowToCashInPageModule)
+  },
 
   
 ];

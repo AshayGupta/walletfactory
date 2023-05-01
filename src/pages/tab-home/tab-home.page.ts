@@ -23,7 +23,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['tab-home.page.scss'],
 })
 export class TabhomePage {
-
   cardsItems = [
     {
       id: 'cashIn',
@@ -94,13 +93,15 @@ export class TabhomePage {
   }
 
   getUserProfile() {
-    this.profileService.getUserProfile({userHandle: localStorage.getItem('handle')}).subscribe((resp) => {
-      if(resp.status == 200 && resp.data) {
-        const profile: Profile = resp.data;
-        localStorage.setItem('fullName', profile.name + ' ' + profile.lname);
-        localStorage.setItem('userInfo', JSON.stringify(resp.data));
-      }
-    });
+    this.profileService
+      .getUserProfile({ userHandle: localStorage.getItem('handle') })
+      .subscribe((resp) => {
+        if (resp.status == 200 && resp.data) {
+          const profile: Profile = resp.data;
+          localStorage.setItem('fullName', profile.name + ' ' + profile.lname);
+          localStorage.setItem('userInfo', JSON.stringify(resp.data));
+        }
+      });
   }
 
   showWalletLevelsPage(): void {
@@ -112,39 +113,34 @@ export class TabhomePage {
       // this.transferMoney();
       this.router.navigate(['/transfer-money']);
     }
+    else if(id === 'cashIn') {
+      this.cashInActionSheet();
+    }
   }
 
-  // async transferMoney() {
-  //   const actionSheet: ActionSheetInterface = {
-  //     header: 'Cash in Method',
-  //     buttons: [
-  //       {
-  //         text: 'At the Retails Store',
-  //         data: { action: 'retail'},
-  //       },
-  //       {
-  //         text: 'From the Bank',
-  //         data: { action: 'bank'},
-  //       }
-  //     ]
-  //   };
+  async cashInActionSheet() {
+    const actionSheet: ActionSheetInterface = {
+      header: 'Cash in Method',
+      buttons: [
+        {
+          text: 'At the Retails Store',
+          data: { action: 'retail'},
+        },
+        {
+          text: 'From the Bank',
+          data: { action: 'bank'},
+        }
+      ]
+    };
 
-  //   const {data} = await this.actionSheet.create(actionSheet);
+    const {data} = await this.actionSheet.create(actionSheet);
 
-  //   if (data && data.action == 'retail') {
-  //     this.router.navigate(['/transfer-money']);
-  //   }
-  //   else if (data && data.action == 'bank') {
-  //   }
-  // }
-
-
-  handleRefresh(event) {
-    setTimeout(() => {
-      // Any calls to load data go here
-      this.userWalletInformation();
-      event.target.complete();
-    }, 2000);
+    if (data && data.action == 'retail') {
+      // this.router.navigate(['/transfer-money']);
+    }
+    else if (data && data.action == 'bank') {
+      this.router.navigateByUrl('/how-to-cash-in');
+    }
   }
 
   userWalletInformation() {
@@ -173,4 +169,12 @@ export class TabhomePage {
       console.log(error);
     }
   }
+
+  handleRefresh(event) {
+    setTimeout(() => {
+      this.userWalletInformation();
+      event.target.complete();
+    }, 2000);
+  }
+
 }

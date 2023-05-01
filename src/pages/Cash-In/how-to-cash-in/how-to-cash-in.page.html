@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="How to Cash In ?" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page-container">
+    <p class="para-heading">
+      If you have a bank account, you can cash in your wallet via the online transfer
+    </p>
+
+    <ion-list lines="none">
+      <ion-item class="cashin-steps-item" >
+        <ion-avatar slot="start" class="card-avatar">
+          <label>1</label>
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Log in to your online banking services</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item class="cashin-steps-item" >
+        <ion-avatar slot="start" class="card-avatar">
+          <label>2</label>
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">From the list of the bank choose the bank</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item class="cashin-steps-item" >
+        <ion-avatar slot="start" class="card-avatar">
+          <label>3</label>
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Perform transfer for the desired amount to the wallet number</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-card class="card-details">
+      <ion-list lines="none">
+        <ion-item class="list-item">
+          <ion-avatar slot="start" class="card-avatar">
+            <img src="./assets/project-icons/smartphone/smartphone.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2 class="card-title">Wallet number</h2>
+            <p class="card-sub-title">{{walletNumber}}</p>
+          </ion-label>
+          <div class="copy-icon">
+            <img src="./assets/project-icons/copy.svg" />
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>

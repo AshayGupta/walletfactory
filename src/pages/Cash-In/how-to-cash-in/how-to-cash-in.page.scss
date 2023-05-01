@@ -1,0 +1,80 @@
+ion-content, ion-header, ion-toolbar {
+    --background: #dbe6e9;
+    --border-width: 0px;
+}
+
+.para-heading {
+    margin: 30px 15px;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: left;
+    color: black;
+}
+
+ion-list, .cashin-steps-item {
+    background: transparent;
+    --background: transparent;
+}
+
+.cashin-steps-item {
+    .card-avatar {
+        width: 26px;
+        height: 26px;
+        font-weight: 400;
+        display: flex;
+        place-items: center;
+        justify-content: center;
+        background: #571E60;
+        color: #FFFFFF;
+    }
+    .card-title {
+        font-size: 12px;
+        font-weight: 300;
+        white-space: pre-wrap;
+        color: #571E60;
+    }
+}
+
+.card-details {
+    margin: 25px 10px;
+    padding: 10px 0px;
+    background: white;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 22px;
+
+    .list-item {
+        .card-avatar {
+            width: 57px;
+            height: 57px;
+            margin-left: -10px;
+            display: flex;
+            background: #F5F7FA;
+            border-radius: 16px;
+            place-content: center;
+            place-items: center;
+
+            img {
+                height: 30px;
+                width: 18px;
+                border-radius: 0px;
+            }
+        }
+        .card-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #571E60;
+        } 
+        .card-sub-title {
+            font-size: 16px;
+            margin-top: 7px;
+            font-weight: 300;
+            color: #555555;
+        }
+        .copy-icon {
+            margin-right: 10px;
+            img {
+                width: 27px;
+            }
+        }
+    }
+}
