@@ -43,11 +43,7 @@ export class CreateProfilePage {
       fName: ['', Validators.compose([Validators.required])],
       lName: ['', Validators.compose([Validators.required])],
       dob: ['', Validators.compose([Validators.required])],
-      email: ['', Validators.compose([Validators.required])],
-      handle: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(4)]),
-      ],
+      email: ['', Validators.compose([Validators.required])]
     });
   }
 

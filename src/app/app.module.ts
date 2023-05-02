@@ -1,3 +1,4 @@
+import { AlertService } from './../providers/plugin-services/alert.service';
 import { ModalCtrlService } from './../providers/plugin-services/modal-ctrl.service';
 import { ToastService } from './../providers/plugin-services/toast.service';
 import { LoaderService } from './../providers/plugin-services/loader.service';
@@ -34,6 +35,7 @@ import { ActionSheetService } from 'src/providers/plugin-services/actionsheet.se
     LoaderService,
     ModalCtrlService,
     ActionSheetService,
+    AlertService,
     InAppBrowser
   ],
   bootstrap: [AppComponent],

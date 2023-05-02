@@ -141,11 +141,14 @@ export class TabhomePage {
     if (data && data.action == 'retail') {
     }
     else if (data && data.action == 'bank') {
-      if(id === 'cashIn') {
-        this.router.navigateByUrl('/how-to-cash-in');
-      }
-      else if(id === 'cashOut') {
-        // this.router.navigateByUrl('/how-to-cash-in');
+      switch (id) {
+        case 'cashIn':
+          this.router.navigateByUrl('/how-to-cash-in');
+          break;
+        case 'cashOut':
+          break;
+        default:
+          break;
       }
     }
   }

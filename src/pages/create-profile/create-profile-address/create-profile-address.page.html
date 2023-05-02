@@ -1,21 +1,17 @@
 <ion-header style="--background: #fff">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button
-        text="Complete Your Profile"
-        icon="caret-back"
-      ></ion-back-button>
+      <ion-back-button text="" icon="caret-back"></ion-back-button>
     </ion-buttons>
-    <!-- <ion-title>OTP</ion-title> -->
+    <ion-buttons slot="end">
+      <ion-button color="medium">2/3</ion-button>
+    </ion-buttons>
+    <ion-title>Complete Your Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding [fullscreen]="true">
   <div class="page-container">
-    <div class="header">
-      <h2>Complete Your Profile</h2>
-    </div>
-
     <form [formGroup]="form" (ngSubmit)="clickNext()">
       <ion-item lines="none">
         <ion-label class="input-label" position="stacked">Street Address</ion-label>

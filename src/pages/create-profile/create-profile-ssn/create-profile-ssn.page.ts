@@ -23,6 +23,7 @@ export class CreateProfileSsnPage implements OnInit {
   date;
   isFormSubmit = true;
   createProfileDetails: any;
+
   constructor(
     private datePipe: DatePipe,
     private profileService: ProfileService,
@@ -45,6 +46,7 @@ export class CreateProfileSsnPage implements OnInit {
   validateForm() {
     this.form = this.formBuilder.group({
       ssn: ['', Validators.compose([Validators.required])],
+      handle: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
     });
   }
 
@@ -53,6 +55,7 @@ export class CreateProfileSsnPage implements OnInit {
       this.isFormSubmit = false;
       return;
     }
+    
     let profileData: Profile = this.form.value;
     profileData.fName = this.createProfileDetails.fName;
     profileData.lName = this.createProfileDetails.lName;

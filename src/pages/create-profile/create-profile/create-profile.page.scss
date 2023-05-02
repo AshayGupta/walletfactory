@@ -1,7 +1,5 @@
 .page-container {
-  margin-left: 26px;
-  margin-right: 26px;
-  opacity: 1;
+  margin: 25px;
 }
 
 ion-item {
@@ -24,8 +22,9 @@ ion-input {
   height: 44px;
   display: flex;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 2px solid #87A5A6;
-  border-radius: 22px;
+  border-bottom: 1px solid #555555;
+  // border: 2px solid #87A5A6;
+  // border-radius: 22px;
 }
 
 .next-btn {

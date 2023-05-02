@@ -1,8 +1,7 @@
 <ion-content padding [fullscreen]="true">
   <div class="page-container">
     <div class="header">
-      <h1>Login Account</h1>
-      <h2>Hello welcome back to our account</h2>
+      <h1>Welcome</h1>
     </div>
 
     <!-- <ion-segment class="segment" [(ngModel)]="segment">
@@ -10,8 +9,8 @@
       <ion-segment-button value="phonenumber" class="seg-phone">Phone Number</ion-segment-button>
     </ion-segment> -->
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <!-- <ion-item *ngIf="segment === 'email'" lines="none">
+    <form [formGroup]="form" (ngSubmit)="showTncAlert()">
+      <ion-item *ngIf="segment === 'email'" lines="none">
         <ion-label class="label-email" position="stacked">Email</ion-label>
         <div class="email-input-container">
           <ion-input
@@ -21,13 +20,13 @@
             formControlName="emailId">
           </ion-input>
         </div>
-      </ion-item> -->
+      </ion-item>
 
       <ion-item *ngIf="segment === 'phonenumber'" lines="none">
         <ion-label class="label-phoneNo" position="stacked">Phone Number</ion-label>
         <div class="phone-input-container">
-          <ion-img class="country_flag" src="../../assets/project-icons/usa-flag.png"></ion-img>
-          <span class="country_code">+1</span> 
+          <!-- <ion-img class="country_flag" src="../../assets/project-icons/usa-flag.png"></ion-img> -->
+          <!-- <span class="country_code">+1</span>  -->
           <ion-input
             type="number"
             class="input-phone"
@@ -45,16 +44,16 @@
       <ion-button
         class="primary-btn otp-btn"
         expand="block"
-        type="submit">Request OTP
+        type="submit">Next
       </ion-button>
     </form>
 
-    <div class="submit-info-container">
+    <!-- <div class="submit-info-container">
       <ion-label class="info-1">Not a member yet? <a href="">Click here</a></ion-label>
       <ion-label class="info-2">By continuing you will receive an message for verification</ion-label>
       <ion-label class="info-3">By submit I agree to</ion-label>
       <ion-label class="tnc"><a href="">Terms & Condition | Privacy Policy</a></ion-label>
-    </div>
+    </div> -->
     
   </div>
 </ion-content>
