@@ -4,6 +4,9 @@ export interface Favourite {
     amount?: string;
     userHandle?: string;
     note?:string;
+    bankName?:string;
+    sendToBank?:string;
+
 }
 
 export interface ShowFavList {

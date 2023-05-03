@@ -124,9 +124,17 @@ const routes: Routes = [
     path: 'create-profile-ssn',
     loadChildren: () => import('../pages/create-profile/create-profile-ssn/create-profile-ssn.module').then( m => m.CreateProfileSsnPageModule)
   },
+  // {
+  //   path: 'how-to-cash-in',
+  //   loadChildren: () => import('../pages/Cash-In-out/how-to-cash-in/how-to-cash-in.module').then( m => m.HowToCashInPageModule)
+  // },
   {
-    path: 'how-to-cash-in',
-    loadChildren: () => import('../pages/Cash-In-out/how-to-cash-in/how-to-cash-in.module').then( m => m.HowToCashInPageModule)
+    path: 'cash-in-transfer-money',
+    loadChildren: () => import('../pages/Cash-In-out/cash-in-transfer-money/cash-in-transfer-money.module').then( m => m.CashInTransferMoneyPageModule)
+  },
+  {
+    path: 'contacts-list',
+    loadChildren: () => import('../pages/Cash-In-out/bank-list/bank-list.module').then( m => m.BankListPageModule)
   },
 
   

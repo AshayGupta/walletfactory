@@ -1,0 +1,121 @@
+ion-header, ion-toolbar, ion-content {
+    --background: #dbe6e9;
+    --border-width: 0px;
+}
+
+ion-list {
+    margin: 20% 15px 0px;
+    background: transparent;
+}
+
+ion-item {
+    --padding-start: 0px;
+}
+
+ion-input {
+    border-bottom: 1px solid #B3B9BA;
+}
+
+.lbl-amt {
+    height: 53px;
+    text-align: center;
+    color: #571E60;
+    --background: transparent;
+    width: 56%;
+    margin-left: 27%;
+    font-size: 38px;
+    font-weight: 500;
+
+    ion-label {
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    span {
+        font-size: 38px;
+        font-weight: 500;
+    }
+}
+
+.lbl-balance {
+    display: initial;
+    margin-top: 13px;
+    font-size: 10px;
+    font-weight: 400;
+    color: #555;
+    --background: transparent;
+    
+    .fee {
+        position: absolute;
+        right: 0px;
+    }
+}
+
+.lbl-to {
+    font-size: 16px;
+    height: 23px;
+    margin-top: 20px;
+    font-weight: 400;
+    color: #555;
+    --background: transparent;
+
+    ion-label {
+        margin: 0px;
+        top: 0px;
+        position: absolute;
+    }
+}
+
+.contact-item {
+    margin-top: -10px;
+    border-radius: 6px;
+    color: #555;
+    --background: transparent;
+
+    .contact-btn {
+        position: absolute;
+        right: 0;
+        // width: 88px;
+        height: 25px;
+        --color: #571E60;
+        --background: white;
+
+        ion-img {
+            width: 11px;
+            height: 13px;
+        }
+        ion-label {
+            font-size: 12px;
+            font-weight: 400;
+            margin-left: 6px;
+        }
+    }
+}
+
+.item-note {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 20px;
+    color: #555;
+    --background: transparent;
+}
+
+ion-footer {
+    background: #dbe6e9;
+    // border: 1px solid;
+}
+
+.button_border{
+    border-radius: 10px !important;
+    border: 2px solid #ffffff;
+    background-color: white;
+    color: #0032fe;
+    box-shadow: none !important;
+    padding-left: 24px;
+    padding-right: 34px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    margin-left: 20px;
+    margin-right: 20px;
+} 

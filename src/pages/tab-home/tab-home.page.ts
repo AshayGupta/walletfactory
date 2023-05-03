@@ -102,7 +102,7 @@ export class TabhomePage {
           localStorage.setItem('userInfo', JSON.stringify(resp.data));
         }
       });
-  }
+  } 
 
   showWalletLevelsPage(): void {
     // this.router.navigate(['/wallet-levels']);
@@ -114,10 +114,14 @@ export class TabhomePage {
       this.router.navigate(['/transfer-money']);
     }
     else if(id === 'cashIn') {
-      this.showActionSheet(id);
+      // this.showActionSheet(id);
+      this.router.navigate(['/cash-in-transfer-money']);
+
     }
     else if(id === 'cashOut') {
-      this.showActionSheet(id);
+      // this.showActionSheet(id);
+      // this.router.navigate(['/cash-out-transfer-money']);
+
     }
   }
 
