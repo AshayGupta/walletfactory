@@ -11,9 +11,9 @@ export class CashInService {
 
   constructor(private httpService: HttpService) {}
 
-  sendMoney(fav: Favourite) {
+  sendMoney(fav: Favourite) { 
     const form = Utils.formData(fav);
-    return this.httpService.post(ApiUrls.sendMoney, form);
+    return this.httpService.post(ApiUrls.cashInTransfer, form);
   }
 
   userAccountList(handle:any) {

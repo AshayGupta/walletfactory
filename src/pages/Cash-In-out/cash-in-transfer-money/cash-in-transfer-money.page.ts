@@ -51,16 +51,18 @@ export class CashInTransferMoneyPage {
 
     
     const fav: Favourite = {
-      sourceHandle: localStorage.getItem('handle'),
-      destinationHandle: this.transfer.sendToBank,
+      userHandle: localStorage.getItem('handle'),
+      accountName: this.transfer.sendToBank, 
       amount: this.transfer.amount,
       note: this.transfer.note
-    };
-
+    }; 
+   
     this.loader.dismissLoader();
     this.cashInService.sendMoney(fav).subscribe(res => {
       if(res.status == 200 && !res.data.error) {
-        this.router.navigate(['/transapopup', { popupType: PopupType.CASH_OUT_TRANSFER, addToFav: JSON.stringify(fav)}]);
+        let message:any=res.data.cashInResponse.message.trim();
+        
+        this.router.navigate(['/transapopup', { cashInmessage:message,popupType: PopupType.CASH_OUT_TRANSFER, addToFav: JSON.stringify(fav)}]);
       }
       this.loader.dismissLoader();
     });

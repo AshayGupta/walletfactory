@@ -46,9 +46,9 @@
       >
         <ion-img
           class="avatar-img"
-          src="../../assets/project-icons/group934.svg"
+          src="../../assets/project-imgs/avatar-icon/profile@2x.png"
         ></ion-img>
-        <ion-label class="title-lbl">13534XXXX Successfully Add</ion-label>
+        <ion-label class="title-lbl">{{cashInTransferMessage}}</ion-label>
         <ion-label class="sub-title-lbl">Feel Free to transaction</ion-label>
       </div>
 
@@ -77,7 +77,7 @@
     </ion-card>
 
     <ion-button
-      *ngIf="PopupType.SEND_MONEY == popupToOpen || PopupType.TRANSFER == popupToOpen"
+      *ngIf="PopupType.SEND_MONEY == popupToOpen || PopupType.TRANSFER == popupToOpen || PopupType.CASH_OUT_TRANSFER == popupToOpen"
       class="primary-btn"
       expand="block"
       (click)="backToHome()"

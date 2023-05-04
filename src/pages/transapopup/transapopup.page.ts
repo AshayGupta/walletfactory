@@ -29,6 +29,7 @@ export class TransapopupPage implements OnInit {
   mxAccountData;
   plaidWidgetURL;
   accountCreationMessage;
+  cashInTransferMessage;
   mx_userId;
   options: InAppBrowserOptions = {
     location: 'no', //Or 'no'
@@ -61,7 +62,11 @@ export class TransapopupPage implements OnInit {
     public platform: Platform,
     private toastService: ToastService,
     private favService: FavouriteService
-  ) {}
+  ) {
+
+    this.cashInTransferMessage =
+    decodeURI(this.activatedRoute.snapshot.params['cashInmessage']); 
+  }
 
   ngOnInit() {
     this.popupToOpen = this.activatedRoute.snapshot.params['popupType'];
@@ -73,7 +78,7 @@ export class TransapopupPage implements OnInit {
         break;
       case PopupType.TRANSFER:
         break;
-      case PopupType.CASH_OUT_TRANSFER:
+      case PopupType.CASH_OUT_TRANSFER:        
         break;
       case PopupType.CARD_EDIT:
         break;

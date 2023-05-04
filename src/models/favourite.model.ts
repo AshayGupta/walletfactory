@@ -6,6 +6,7 @@ export interface Favourite {
     note?:string;
     bankName?:string;
     sendToBank?:string;
+    accountName?:string;
 
 }
 
