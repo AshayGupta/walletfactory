@@ -25,7 +25,7 @@
           ></ion-input>
         </div>
         <ng-template [ngIf]="!isFormSubmit && form.controls['ssn'].invalid">
-          <ion-label class="err-validation" position="stacked">Please enter social security number</ion-label>
+          <ion-label class="err-validation" position="stacked">Please enter a valid ssn</ion-label>
         </ng-template>
       </ion-item>
 
@@ -34,7 +34,7 @@
         <div class="input-container">
           <ion-input
             class="input-handle"
-            type="number"
+            type="text"
             formControlName="handle"
             minlength="4"
           ></ion-input>

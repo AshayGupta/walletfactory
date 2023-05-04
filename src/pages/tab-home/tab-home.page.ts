@@ -93,15 +93,22 @@ export class TabhomePage {
   }
 
   getUserProfile() {
+    let userHandle :any = localStorage.getItem('handle');
+    if (userHandle) { 
+    // let profileData=new Profile;
+    // profileData.userHandle=userHandle;
+    this.loader.showLoading();
     this.profileService
-      .getUserProfile({ userHandle: localStorage.getItem('handle') })
+      .getUserProfile(userHandle)
       .subscribe((resp) => {
+        this.loader.dismissLoader();
         if (resp.status == 200 && resp.data) {
           const profile: Profile = resp.data;
-          localStorage.setItem('fullName', profile.name + ' ' + profile.lname);
-          localStorage.setItem('userInfo', JSON.stringify(resp.data));
+          localStorage.setItem('fullName', resp.data.userinfo.name + ' ' + resp.data.userinfo.lname);
+          localStorage.setItem('userInfo', JSON.stringify(resp.data.userinfo));
         }
       });
+    }
   } 
 
   showWalletLevelsPage(): void {

@@ -62,17 +62,18 @@ export class OtpPage {
       this.otpService.verifyOtp(this.otpData).subscribe(
         (resp) => {
           this.loader.dismissLoader();
-          const data: VerifyOtp = resp.data;
-          if (!data.error) {
-            localStorage.setItem('guid', data.guid);
-            localStorage.setItem('handle', data.handle);
-            if (data.isProfileComplete) {
+          // const data: VerifyOtp = resp.data;
+          let responseData:any=resp.data;
+          if (!responseData.error) {
+            localStorage.setItem('guid', responseData.guid);
+            localStorage.setItem('handle', responseData.handle);
+            if (responseData.isProfileComplete) {
               this.router.navigate(['/tabs/tab-home']);
             } else {
               this.router.navigate(['/create-profile']);
             }
           }
-          this.toastService.showToast(data.message);
+          this.toastService.showToast(responseData.message);
         },
         (err) => {
           this.toastService.showToast(err);

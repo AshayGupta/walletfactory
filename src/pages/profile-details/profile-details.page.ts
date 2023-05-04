@@ -10,12 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileDetailsPage implements OnInit {
   detailsToDisplay = [];
+  fullName:any;
 
   constructor(
     public navCtrl: NavController,
     public activatedRoute: ActivatedRoute
   ) {
     const profile: Profile = JSON.parse(localStorage.getItem('userInfo'));
+
+    this.fullName=localStorage.getItem('fullName');
     const {streetAddress, city, state, mobile, email} = profile;
 
     this.detailsToDisplay = [

@@ -37,7 +37,7 @@ export class CreateProfileSsnPage implements OnInit {
   ) {
     this.validateForm();
     this.createProfileDetails =
-      this.activatedRoute.snapshot.params['profileData'];
+    this.activatedRoute.snapshot.params['profileData'];
     this.createProfileDetails = JSON.parse(this.createProfileDetails);
   }
 
@@ -45,8 +45,10 @@ export class CreateProfileSsnPage implements OnInit {
 
   validateForm() {
     this.form = this.formBuilder.group({
-      ssn: ['', Validators.compose([Validators.required])],
+      ssn: ['', Validators.compose([Validators.required,Validators.maxLength(9)])],
       handle: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+
+      // handle: ['', Validators.compose([Validators.required, Validators.pattern(/^(?:[a-zA-Z0-9\s]+)?$/), Validators.minLength(4)])],
     });
   }
 
@@ -61,7 +63,7 @@ export class CreateProfileSsnPage implements OnInit {
     profileData.lName = this.createProfileDetails.lName;
     profileData.email = this.createProfileDetails.email;
     profileData.dob = this.createProfileDetails.dob;
-    profileData.handle = this.createProfileDetails.handle;
+    profileData.handle = this.form.value['handle'];
     profileData.streetAddress = this.createProfileDetails.streetAddress;
     profileData.city = this.createProfileDetails.city;
     profileData.state = this.createProfileDetails.state;
@@ -69,10 +71,11 @@ export class CreateProfileSsnPage implements OnInit {
     profileData.mobileNumber = this.createProfileDetails.mobileNumber;
     profileData.ssn = this.form.value['ssn'];
     profileData.country = 'USA';
-
+    
     this.loader.showLoading();
     this.profileService.saveProfile(profileData).subscribe((resp) => {
       const data: Profile = resp.data;
+      this.loader.dismissLoader();
       if (!data.error) {
         this.router.navigate([
           '/transapopup',

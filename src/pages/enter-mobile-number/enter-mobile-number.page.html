@@ -9,7 +9,7 @@
       <ion-segment-button value="phonenumber" class="seg-phone">Phone Number</ion-segment-button>
     </ion-segment> -->
 
-    <form [formGroup]="form" (ngSubmit)="showTncAlert()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <ion-item *ngIf="segment === 'email'" lines="none">
         <ion-label class="label-email" position="stacked">Email</ion-label>
         <div class="email-input-container">
@@ -48,12 +48,12 @@
       </ion-button>
     </form>
 
-    <!-- <div class="submit-info-container">
-      <ion-label class="info-1">Not a member yet? <a href="">Click here</a></ion-label>
-      <ion-label class="info-2">By continuing you will receive an message for verification</ion-label>
-      <ion-label class="info-3">By submit I agree to</ion-label>
+    <div class="submit-info-container">
+      <!-- <ion-label class="info-1">Not a member yet? <a href="">Click here</a></ion-label>
+      <ion-label class="info-2">By continuing you will receive an message for verification</ion-label> -->
+      <ion-label class="info-3">By entering and tapping Next , you agree to the terms,Electronic Signature & Privacy Policy.</ion-label>
       <ion-label class="tnc"><a href="">Terms & Condition | Privacy Policy</a></ion-label>
-    </div> -->
+    </div> 
     
   </div>
-</ion-content>
+</ion-content> 

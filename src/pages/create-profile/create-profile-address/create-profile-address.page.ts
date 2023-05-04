@@ -70,7 +70,7 @@ export class CreateProfileAddressPage implements OnInit {
     profileData.lName=this.navParams.lName;
     profileData.email=this.navParams.email;
     profileData.dob=this.navParams.dob;
-    profileData.handle=this.navParams.handle;
+    // profileData.handle=this.navParams.handle;
     profileData.mobileNumber=this.navParams.mobileNumber;    
     profileData.streetAddress=this.form.value['streetAddress'];
     profileData.city=this.form.value['city'];

@@ -67,6 +67,10 @@ export class TransapopupPage implements OnInit {
 
     this.cashInOutTransferMessage =
     decodeURI(this.activatedRoute.snapshot.params['cashInOutmessage']); 
+
+    this.accountCreationMessage =
+    decodeURI(this.activatedRoute.snapshot.params['message']); 
+    
     
   }
 

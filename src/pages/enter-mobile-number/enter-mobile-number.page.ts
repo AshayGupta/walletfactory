@@ -52,7 +52,9 @@ export class EnterMobileNumberPage {
       return;
     }
 
-    const phoneNumber = "+91"+this.form.controls['phoneNumber'].value;
+    // const phoneNumber = "+91"+this.form.controls['phoneNumber'].value;
+    const phoneNumber = this.form.controls['phoneNumber'].value;
+
     this.loader.showLoading();
     this.otpService.sendOtp(phoneNumber).subscribe(resp => {
       console.log('send otp resp', resp);
