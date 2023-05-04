@@ -4,7 +4,7 @@ import { CashInService } from '../../../providers/services/main-module-services/
 import { BankListPage } from './../bank-list/bank-list.page';
 import { Favourite } from '../../../models/favourite.model';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PopupType } from '../../../common/enums/enums';
 import { ModalCtrlInterface, ModalCtrlService } from '../../../providers/plugin-services/modal-ctrl.service';
 import { ChangeDetectorRef } from '@angular/core';
@@ -19,6 +19,9 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class CashInTransferMoneyPage {
   walletAmount:any;
+  slideId:string;
+  pageHeaderText:string;
+
   public transfer: CashIn = {
     amount: "",
     sendToBank: "",
@@ -31,12 +34,24 @@ export class CashInTransferMoneyPage {
     private modalCtrl: ModalCtrlService,
     private loader: LoaderService,
     private cashInService: CashInService,
-    private cdRef:ChangeDetectorRef
+    private cdRef:ChangeDetectorRef,
+    public activatedRoute: ActivatedRoute,
+
  
   ) { 
 
     this.walletAmount=localStorage.getItem('walletAmount');
-    
+    this.slideId =
+    this.activatedRoute.snapshot.params['slideId'];
+
+    if(this.slideId === 'cashIn') {
+ 
+      this.pageHeaderText='Cash In Transfer';
+    }
+    if(this.slideId === 'cashOut') { 
+      this.pageHeaderText='Cash Out Transfer'; 
+    }
+
   }
 
   async handleBanks() {
@@ -57,15 +72,28 @@ export class CashInTransferMoneyPage {
       note: this.transfer.note
     }; 
    
-    this.loader.dismissLoader();
+    if(this.slideId === 'cashIn') {  
+      this.loader.dismissLoader();
     this.cashInService.sendMoney(fav).subscribe(res => {
       if(res.status == 200 && !res.data.error) {
-        let message:any=res.data.cashInResponse.message.trim();
-        
+        let message:any=res.data.cashInResponse.message.trim();        
         this.router.navigate(['/transapopup', { cashInmessage:message,popupType: PopupType.CASH_OUT_TRANSFER, addToFav: JSON.stringify(fav)}]);
       }
       this.loader.dismissLoader();
     });
+    }
+    if(this.slideId === 'cashOut') { 
+      this.loader.dismissLoader();
+      this.cashInService.cashOutMoney(fav).subscribe(res => {
+        if(res.status == 200 && !res.data.error) {
+          let message:any=res.data.cashOutResponse.message.trim();        
+          this.router.navigate(['/transapopup', { cashInOutmessage:message,popupType: PopupType.CASH_OUT_TRANSFER, slideId:this.slideId,addToFav: JSON.stringify(fav)}]);
+        }
+        this.loader.dismissLoader();
+      });
+    }
+
+   
   }
 
   change(value){

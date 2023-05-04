@@ -115,12 +115,12 @@ export class TabhomePage {
     }
     else if(id === 'cashIn') {
       // this.showActionSheet(id);
-      this.router.navigate(['/cash-in-transfer-money']);
+      this.router.navigate(['/cash-in-transfer-money',{slideId:id}]);
 
     }
     else if(id === 'cashOut') {
       // this.showActionSheet(id);
-      // this.router.navigate(['/cash-out-transfer-money']);
+      this.router.navigate(['/cash-in-transfer-money',{slideId:id}]);
 
     }
   }

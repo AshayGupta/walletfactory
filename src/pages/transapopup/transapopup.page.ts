@@ -27,10 +27,11 @@ export class TransapopupPage implements OnInit {
     return PopupType;
   }
   mxAccountData;
-  plaidWidgetURL;
-  accountCreationMessage;
-  cashInTransferMessage;
-  mx_userId;
+  plaidWidgetURL:any;
+  accountCreationMessage:any;
+  cashInOutTransferMessage:any;
+   mx_userId:any;
+
   options: InAppBrowserOptions = {
     location: 'no', //Or 'no'
     hidden: 'no', //Or  'yes'
@@ -64,8 +65,9 @@ export class TransapopupPage implements OnInit {
     private favService: FavouriteService
   ) {
 
-    this.cashInTransferMessage =
-    decodeURI(this.activatedRoute.snapshot.params['cashInmessage']); 
+    this.cashInOutTransferMessage =
+    decodeURI(this.activatedRoute.snapshot.params['cashInOutmessage']); 
+    
   }
 
   ngOnInit() {

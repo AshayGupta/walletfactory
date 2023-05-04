@@ -31,10 +31,10 @@ export class BankListPage implements OnInit {
     });
     }
   }
-
-  bankSearch(event) {
-    const query = event.target.value.toLowerCase();
-    this.results = this.bankList.filter(d => d.toLowerCase().indexOf(query) > -1);
+   
+  bankSearch(event:any) {
+     const query = event.target.value.toLowerCase();
+    this.results = this.bankList.filter(d => d.account_name.toLowerCase().indexOf(query) > -1);
   }
 
   selectBank(handle) {

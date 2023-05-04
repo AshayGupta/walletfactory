@@ -16,6 +16,12 @@ export class CashInService {
     return this.httpService.post(ApiUrls.cashInTransfer, form);
   }
 
+  cashOutMoney(fav: Favourite) { 
+    const form = Utils.formData(fav);
+    return this.httpService.post(ApiUrls.cashOutTransfer, form);
+  }
+  
+
   userAccountList(handle:any) {
     let apiUrl:any=ApiUrls.userAccountList+handle;
     return this.httpService.get(apiUrl);

@@ -1,10 +1,10 @@
 import { OtpService } from './../../providers/services/auth/otp.service';
-import { VerifyOtp } from 'src/models/otp.model';
+import { VerifyOtp } from '../../models/otp.model';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { ToastService } from 'src/providers/plugin-services/toast.service';
+import { ToastService } from './../../providers/plugin-services/toast.service';
 import { LoaderService } from './../../providers/plugin-services/loader.service';
 
 @Component({
