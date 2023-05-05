@@ -75,6 +75,7 @@ export class CreateProfileSsnPage implements OnInit {
     this.loader.showLoading();
     this.profileService.saveProfile(profileData).subscribe((resp) => {
       const data: Profile = resp.data;
+       localStorage.setItem('handle',resp.data.userHandle);
       this.loader.dismissLoader();
       if (!data.error) {
         this.router.navigate([

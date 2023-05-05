@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-tabs',
@@ -12,6 +13,15 @@ bloodDrop= 'assets/project-icons/blood-drop.svg';
 piggyBank= 'assets/project-icons/piggy-bank.svg'; 
 menu= 'assets/project-icons/menu.svg'; 
 
-  constructor() {}
+  constructor(private router: Router,) {}
+
+  ionViewWillEnter(){
+this.homeScreen();
+  }
+
+  homeScreen(){
+    this.router.navigateByUrl('/tabs/tab-home');
+
+  }
 
 }

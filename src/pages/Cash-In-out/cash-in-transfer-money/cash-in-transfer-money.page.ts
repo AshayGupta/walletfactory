@@ -76,8 +76,8 @@ export class CashInTransferMoneyPage {
       this.loader.dismissLoader();
     this.cashInService.sendMoney(fav).subscribe(res => {
       if(res.status == 200 && !res.data.error) {
-        let message:any=res.data.cashInResponse.message.trim();        
-        this.router.navigate(['/transapopup', { cashInmessage:message,popupType: PopupType.CASH_OUT_TRANSFER, addToFav: JSON.stringify(fav)}]);
+        let message:any=res.data.cashInResponse.message;        
+        this.router.navigate(['/transapopup', { cashInOutmessage:message,popupType: PopupType.CASH_OUT_TRANSFER, addToFav: JSON.stringify(fav)}]);
       }
       this.loader.dismissLoader();
     });

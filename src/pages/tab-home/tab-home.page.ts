@@ -75,7 +75,8 @@ export class TabhomePage {
   ];
 
   userWalletData: userWalletData = new userWalletData();
-
+  sila_balance:any;
+   nickname:any;
   constructor(
     public navCtrl: NavController,
     private router: Router,
@@ -85,7 +86,12 @@ export class TabhomePage {
     private profileService: ProfileService,
     private toastService: ToastService,
     private loader: LoaderService
-  ) {}
+  ) {
+
+    this.userWalletInformation();
+    this.getUserProfile();
+
+  }
 
   async ngOnInit() {
     this.userWalletInformation();
@@ -166,19 +172,19 @@ export class TabhomePage {
 
   userWalletInformation() {
     try {
-      let handle = localStorage.getItem('handle');
+      let handle = localStorage.getItem('handle');    
 
       if (handle) {
         this.loader.showLoading();
         this.mxBankService.userWallet(handle).subscribe((resp) => {
-          if (resp.data && resp.data.length) {
+          if (resp.data) {
             if (resp.data.walletDetail) {
-              const walletDetail = resp.data.walletDetail;
-              this.userWalletData.sila_balance = walletDetail.sila_balance || '0';
-              this.userWalletData.nickname = walletDetail.wallet?.nickname || 'USD Wallet';
+              let walletDetail :any = resp.data.walletDetail;
+              this.sila_balance = walletDetail.sila_balance || '0';
+              this.nickname = walletDetail.wallet?.nickname || 'USD Wallet';
 
-              localStorage.setItem('walletAmount', this.userWalletData.sila_balance);
-              localStorage.setItem('nickname', this.userWalletData.nickname);
+              localStorage.setItem('walletAmount', this.sila_balance);
+              localStorage.setItem('nickname', this.nickname);
             }
           }
           this.loader.dismissLoader();
