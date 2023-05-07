@@ -46,9 +46,9 @@ export class CreateProfileSsnPage implements OnInit {
   validateForm() {
     this.form = this.formBuilder.group({
       ssn: ['', Validators.compose([Validators.required,Validators.maxLength(9)])],
-      handle: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      // handle: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
 
-      // handle: ['', Validators.compose([Validators.required, Validators.pattern(/^(?:[a-zA-Z0-9\s]+)?$/), Validators.minLength(4)])],
+      handle: ['', Validators.compose([Validators.required, Validators.pattern(/^(?:[a-zA-Z0-9\s]+)?$/), Validators.minLength(4)])],
     });
   }
 
@@ -77,13 +77,13 @@ export class CreateProfileSsnPage implements OnInit {
       const data: Profile = resp.data;
        localStorage.setItem('handle',resp.data.userHandle);
       this.loader.dismissLoader();
-      if (!data.error) {
+      if (resp.data && !resp.data.error) {
         this.router.navigate([
           '/transapopup',
-          { message: data.message, popupType: PopupType.MX_ACCOUNT },
+          { registrationMessage: resp.data.message, popupType: PopupType.MX_ACCOUNT },
         ]);
       }
-      this.toastService.showToast(data.message);
+      this.toastService.showToast(resp.data.message);
     });
   }
 }

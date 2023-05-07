@@ -94,6 +94,13 @@ export class TabhomePage {
   }
 
   async ngOnInit() {
+    // this.userWalletInformation();
+    // this.getUserProfile();
+  }
+
+
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter tab-home');
     this.userWalletInformation();
     this.getUserProfile();
   }

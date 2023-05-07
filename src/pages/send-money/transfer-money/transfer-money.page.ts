@@ -57,13 +57,13 @@ export class TransferMoneyPage {
       amount: this.transfer.amount,
       note: this.transfer.note
     };
-
-    this.loader.dismissLoader();
-    this.sendMoneyService.send(fav).subscribe(res => {
+    
+     this.sendMoneyService.send(fav).subscribe(res => {
+      this.loader.dismissLoader(); 
       if(res.status == 200 && !res.data.error) {
-        this.router.navigate(['/transapopup', { popupType: PopupType.SEND_MONEY, addToFav: JSON.stringify(fav)}]);
+
+        this.router.navigate(['/transapopup', { sendMoneyMessage:res.data.linkResponse.message,popupType: PopupType.SEND_MONEY, addToFav: JSON.stringify(fav)}]);
       }
-      this.loader.dismissLoader();
     });
   }
 

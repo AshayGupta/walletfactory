@@ -73,23 +73,25 @@ export class CashInTransferMoneyPage {
     }; 
    
     if(this.slideId === 'cashIn') {  
-      this.loader.dismissLoader();
+      this.loader.showLoading();
     this.cashInService.sendMoney(fav).subscribe(res => {
+      this.loader.dismissLoader();
       if(res.status == 200 && !res.data.error) {
         let message:any=res.data.cashInResponse.message;        
         this.router.navigate(['/transapopup', { cashInOutmessage:message,popupType: PopupType.CASH_OUT_TRANSFER, addToFav: JSON.stringify(fav)}]);
       }
-      this.loader.dismissLoader();
     });
     }
+
     if(this.slideId === 'cashOut') { 
-      this.loader.dismissLoader();
+      this.loader.showLoading();
       this.cashInService.cashOutMoney(fav).subscribe(res => {
+        this.loader.dismissLoader();
+
         if(res.status == 200 && !res.data.error) {
           let message:any=res.data.cashOutResponse.message.trim();        
           this.router.navigate(['/transapopup', { cashInOutmessage:message,popupType: PopupType.CASH_OUT_TRANSFER, slideId:this.slideId,addToFav: JSON.stringify(fav)}]);
         }
-        this.loader.dismissLoader();
       });
     }
 

@@ -30,6 +30,11 @@ export class TransapopupPage implements OnInit {
   plaidWidgetURL:any;
   accountCreationMessage:any;
   cashInOutTransferMessage:any;
+  sendMoneyMessage:any;
+  destinationHandle:any;
+  transferAmount:any;
+  registrationMessage:any;
+  
    mx_userId:any;
 
   options: InAppBrowserOptions = {
@@ -69,18 +74,36 @@ export class TransapopupPage implements OnInit {
     decodeURI(this.activatedRoute.snapshot.params['cashInOutmessage']); 
 
     this.accountCreationMessage =
-    decodeURI(this.activatedRoute.snapshot.params['message']); 
+    decodeURI(this.activatedRoute.snapshot.params['message']).toLowerCase(); 
     
+    this.sendMoneyMessage =
+    decodeURI(this.activatedRoute.snapshot.params['sendMoneyMessage']);
+
+    const favData = JSON.parse(this.activatedRoute.snapshot.params['addToFav']);
+    this.destinationHandle =favData.destinationHandle;
+    this.transferAmount = favData.amount;
+
     
+    this.registrationMessage =
+    decodeURI(this.activatedRoute.snapshot.params['registrationMessage']);
+    
+
   }
 
   ngOnInit() {
     this.popupToOpen = this.activatedRoute.snapshot.params['popupType'];
 
+
+
     switch (this.popupToOpen) {
       case PopupType.TRANSACTION:
         break;
       case PopupType.SEND_MONEY:
+       
+
+        // this.sendMoneyMessage =
+        // decodeURI(this.activatedRoute.snapshot.params['message']);
+
         break;
       case PopupType.TRANSFER:
         break;
@@ -90,7 +113,7 @@ export class TransapopupPage implements OnInit {
         break;
       case PopupType.MX_ACCOUNT:
         this.accountCreationMessage =
-          this.activatedRoute.snapshot.params['message'];
+        decodeURI(this.activatedRoute.snapshot.params['message']);
         break;
       default:
         break;
